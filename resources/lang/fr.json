@@ -1,0 +1,18 @@
+{
+    "Name": "Nom",
+    "Email": "Adresse email",
+    "Password": "Mot de passe",
+    "Confirm Password": "Confirmer le mot de passe",
+    "Already registered?": "Vous avez déjà un compte ?",
+    
+    "Remember me": "Se souvenir de moi",
+    "Forgot your password?": "Mot de passe oublié ?",
+    "Log in": "Se connecter",
+    "Register": "S'enregistrer",
+    "Manage Account": "Gestion du compte",
+    "Profile": "Profil",
+    "API Tokens": "Clé apis",
+    "Log Out": "Se déconnecter",
+    "Log In": "Se connecter"
+
+}
