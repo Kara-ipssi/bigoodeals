@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ImagesProduits extends Migration
+class Utilisateurs extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class ImagesProduits extends Migration
      */
     public function up()
     {
-        Schema::create('images_produits', function (Blueprint $table){
+        Schema::create("utilisateurs",function(Blueprint $table){
             $table->bigIncrements("id");
             $table->string("nom", 50);
-            $table->text("url_image");
-            $table->foreignId('id_produit')->constrained("produits");
+            $table->string("prenom", 50);
+            $table->string("adresse_email", 50);
+            $table->string("password");
+            ///$table->foreignId("id_role")->constrained("roles");
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class ImagesProduits extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists("images_produits");
+        Schema::dropIfExists("utilisateurs");
     }
 }

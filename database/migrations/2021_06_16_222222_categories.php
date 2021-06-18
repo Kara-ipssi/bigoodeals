@@ -18,9 +18,7 @@ class Categories extends Migration
             $table->string("nom", 50);
             $table->integer("code_categorie");
             $table->text("description");
-            $table->timestamp('created_at')->nullable();
-            $table->timestamp('updated_at')->nullable();
-
+            $table->timestamps();
         });
     }
 

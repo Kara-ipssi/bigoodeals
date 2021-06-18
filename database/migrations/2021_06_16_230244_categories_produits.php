@@ -17,8 +17,7 @@ class CategoriesProduits extends Migration
             $table->bigIncrements("id");
             $table->foreignId("id_categorite")->constrained("categories");
             $table->foreignId("id_produit")->constrained("produits");
-            $table->timestamp('created_at')->nullable();
-            $table->timestamp('updated_at')->nullable();
+            $table->timestamps();
 
         });
     }

@@ -19,9 +19,8 @@ class Produits extends Migration
             $table->text("description")->nullable();
             $table->double("prix");
             $table->string("nom", 50);
-            $table->timestamp('created_at')->nullable();
-            $table->timestamp('updated_at')->nullable();
-            
+            $table->foreignId("id_stock")->constrained("stocks");
+            $table->timestamps();
         });
     }
 
