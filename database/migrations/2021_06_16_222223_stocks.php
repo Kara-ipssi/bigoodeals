@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Stock extends Migration
+class Stocks extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,7 @@ class Stock extends Migration
     {
         Schema::create("stocks", function (Blueprint $table) {
             $table->bigIncrements("id");
-            $table->integer("quantite", 3);
+            $table->integer("quantite");
             $table->text("description");
             $table->timestamps();
         });

@@ -19,7 +19,6 @@ class Utilisateurs extends Migration
             $table->string("prenom", 50);
             $table->string("adresse_email", 50);
             $table->string("password");
-            ///$table->foreignId("id_role")->constrained("roles");
             $table->timestamps();
         });
     }
