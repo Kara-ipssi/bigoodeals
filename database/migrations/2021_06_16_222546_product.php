@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Stocks extends Migration
+class Product extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class Stocks extends Migration
      */
     public function up()
     {
-        Schema::create("stocks", function (Blueprint $table) {
+        Schema::create("product", function (Blueprint $table) {
             $table->bigIncrements("id");
-            $table->integer("quantite");
-            $table->text("description");
+            $table->string('reference', 20)->unique();
+            $table->string("name", 50);
+            $table->text("description")->nullable();
+            $table->double("price");
+            $table->string("stripe_price")->unique();
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class Stocks extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists("stocks");
+        Schema::dropIfExists("product");
     }
 }

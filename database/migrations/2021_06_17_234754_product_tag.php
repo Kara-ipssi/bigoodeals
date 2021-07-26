@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Produits extends Migration
+class ProductTag extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class Produits extends Migration
      */
     public function up()
     {
-        Schema::create("produits", function (Blueprint $table) {
+        Schema::create("product_tag", function(Blueprint $table){
             $table->bigIncrements("id");
-            $table->string('reference_produit', 20);
-            $table->text("description")->nullable();
-            $table->double("prix");
-            $table->string("nom", 50);
-            $table->foreignId("id_stock")->constrained("stocks");
+            $table->foreignId("tag_id")->constrained("tag");
+            $table->foreignId("product_id")->constrained("product");
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class Produits extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists("produits");
+        Schema::dropIfExists("product_tag");
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ImagesProduits extends Migration
+class Stock extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class ImagesProduits extends Migration
      */
     public function up()
     {
-        Schema::create('images_produits', function (Blueprint $table){
+        Schema::create("stock", function (Blueprint $table) {
             $table->bigIncrements("id");
-            $table->string("nom", 50);
-            $table->text("url_image");
-            $table->foreignId('id_produit')->constrained("produits");
+            $table->integer("quantity");
+            $table->text("description");
+            $table->foreignId("product_id")->constrained("product");
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class ImagesProduits extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists("images_produits");
+        Schema::dropIfExists("stock");
     }
 }

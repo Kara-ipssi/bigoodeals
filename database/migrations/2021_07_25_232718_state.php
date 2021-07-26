@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CategoriesProduits extends Migration
+class State extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CategoriesProduits extends Migration
      */
     public function up()
     {
-        Schema::create("categories_produits", function(Blueprint $table) {
-            $table->bigIncrements("id");
-            $table->foreignId("id_categorite")->constrained("categories");
-            $table->foreignId("id_produit")->constrained("produits");
+        Schema::create('state', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name',50);
+            $table->text('description');
             $table->timestamps();
-
         });
     }
 
@@ -29,6 +28,6 @@ class CategoriesProduits extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists("categories_produits");
+        Schema::dropIfExists('state');
     }
 }

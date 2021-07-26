@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class TagsProduits extends Migration
+class Tag extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class TagsProduits extends Migration
      */
     public function up()
     {
-        Schema::create("tags_produits", function(Blueprint $table){
+        Schema::create("tag", function(Blueprint $table){
             $table->bigIncrements("id");
-            $table->foreignId("id_tag")->constrained("tags");
-            $table->foreignId("id_produit")->constrained("produits");
+            $table->string("name", 50);
+            $table->text("description");
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class TagsProduits extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists("tags_produits");
+        Schema::dropIfExists("tag");
     }
 }

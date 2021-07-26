@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Categories extends Migration
+class Cart extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class Categories extends Migration
      */
     public function up()
     {
-        Schema::create("categories", function(Blueprint $table){
-            $table->bigIncrements("id");
-            $table->string("nom", 50);
-            $table->integer("code_categorie");
-            $table->text("description");
+        Schema::create('cart', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->foreignId("customer_id")->constrained("customer");
+            $table->foreignId("state_id")->constrained("state");
+            $table->float('total');
+            $table->date("purchase_at");
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class Categories extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists("categories");
+        Schema::dropIfExists('cart');
     }
 }
