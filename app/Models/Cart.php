@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Cart extends Model
 {
     use HasFactory;
+
+    /**
+     * the table associate to the modal
+     * @var string
+     */
+    protected $table = "cart";
 }

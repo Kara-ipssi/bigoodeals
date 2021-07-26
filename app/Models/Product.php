@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CartContent extends Model
+class Product extends Model
 {
     use HasFactory;
 
@@ -13,5 +13,5 @@ class CartContent extends Model
      * the table associate to the modal
      * @var string
      */
-    protected $table = "cart_content";
+    protected $table = "product";
 }

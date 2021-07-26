@@ -9,5 +9,9 @@ class Stock extends Model
 {
     use HasFactory;
 
-    protected $table = 'stocks';
+    /**
+     * the table associate to the modal
+     * @var string
+     */
+    protected $table = "stock";
 }

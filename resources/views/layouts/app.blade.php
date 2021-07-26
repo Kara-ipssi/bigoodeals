@@ -10,8 +10,14 @@
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
+        <!-- font-awesone -->
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+
+        <!--Datatable style-->
+        <link href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
         {{--On importe les les styles dans le template s'ils sont envoyés--}}
         @if(isset($styles))
             {{$styles}}
@@ -46,6 +52,9 @@
         @stack('modals')
 
         @livewireScripts
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+        <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
         {{--On importe les les scripts dans le template s'ils sont envoyés--}}
         @if(isset($scripts))
             {{$scripts}}
