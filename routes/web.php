@@ -20,8 +20,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/test', function () {
+    return view('product.test');
+});
+
+
 //dashboard routes
-Route::get('/dashboard', ['uses'=>'HomeController@index', 'as'=>'dashboard'])->middleware(['auth:sanctum', 'verified']);
+Route::get('/dashboard', ['uses'=>'App\Http\Controllers\HomeController@index', 'as'=>'dashboard'])->middleware(['auth:sanctum', 'verified']);
 
 
 /**
@@ -32,12 +37,18 @@ Route::get('/dashboard', ['uses'=>'HomeController@index', 'as'=>'dashboard'])->m
  */
 
 Route::group(['middleware'=>'auth:sanctum'], function(){
-    Route::resource('tags', TagController::class)
+    /**
+     * Tags Routes
+     */
+    Route::resource('/dashboard/tags', TagController::class)
         ->missing(function (Request $request) {
             return Redirect::route('tags.index');
         });
 
-    Route::resource('products', ProductController::class)
+    /**
+     * Products Routes
+     */
+    Route::resource('/dashboard/products', ProductController::class)
         ->missing(function (Request $request) {
             return Redirect::route('product.index');
         });

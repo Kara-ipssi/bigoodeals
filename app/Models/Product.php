@@ -14,4 +14,23 @@ class Product extends Model
      * @var string
      */
     protected $table = "product";
+    protected $fillable = [
+        'reference',
+        'name',
+        'description',
+        'price',
+        'stripe_price',
+    ];
+
+    public $timestamps = true;
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * Get the stock of the current Product
+     * One product can have many stock.
+     */
+    public function stocks(){
+        return $this->hasMany(Stock::class, "product_id");
+    }
 }

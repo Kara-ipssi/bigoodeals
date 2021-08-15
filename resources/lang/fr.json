@@ -711,6 +711,16 @@
     "Zimbabwe": "Zimbabwe",
     "Zip \/ Postal Code": "Code postal",
     "Åland Islands": "Les îles d'Åland",
-    "Products list": "Liste des produits"
-
+    "Products list": "Liste des produits",
+    "Products": "Produits",
+    "Product": "Produit",
+    "Lastname": "Nom",
+    "Firstname": "Prénom",
+    "Added date": "Date d'ajout",
+    "In stock": "En stock",
+    "Price": "Prix",
+    "Reference": "Référence",
+    "Stripe price": "Stripe (code produit)",
+    "Show": "Afficher",
+    "Add date": "Date d'ajout"
 }
