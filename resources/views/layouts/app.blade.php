@@ -5,7 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    @if (isset($title))
+    <!-- Ripple template -->
+    <link rel="stylesheet" href="/assets/vendors/iconfonts/font-awesome/css/font-awesome.css">
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="/assets/vendors/iconfonts/mdi/css/materialdesignicons.css">
+    <link rel="stylesheet" href="/assets/vendors/css/vendor.addons.css">
+    <!-- endinject -->
+    <!-- vendor css for this page -->
+    <link rel="stylesheet" href="/assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="/assets/vendors/iconfonts/font-awesome/css/font-awesome.css">
+    <!-- End vendor css for this page -->
+    <!-- Layout style-->
+    <link rel="stylesheet" href="/assets/css/demo_1/style.css">
+    <!-- End Ripple template -->
+
+@if (isset($title))
         {{$title}}
     @else
         <title>BiGooDeal - Panel Administration</title>
@@ -19,9 +33,9 @@
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
 
-    {{-- <link rel="icon" href="{{ URL::asset('assets/img/favicon.ico') }}"> --}} {{-- asset dans public/assets/css --}}
+    {{-- <link rel="icon" href="{{ URL::asset('assets/img/favicon.ico') }}"> --}} {{-- asset dans public/assets/css
 
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>--}}
 
     <!-- Datatable style  -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css"/>
@@ -110,6 +124,18 @@
     @if (isset($scripts))
         {{$scripts}}
     @endif
+{{--    <!-- SCRIPT LOADING START FORM HERE /////////////-->
+    <!-- plugins:js -->
+    <script src="/assets/vendors/js/core.js"></script>
+    <script src="/assets/vendors/js/vendor.addons.js"></script>
+    <!-- endinject -->
+    <!-- Vendor Js For This Page Ends-->
+    <script src="/assets/vendors/chartjs/Chart.min.js"></script>
+    <!-- Vendor Js For This Page Ends-->
+    <!-- build:js -->
+    <script src="/assets/js/template.js"></script>
+    <script src="/assets/js/dashboard.js"></script>
+    <!-- endbuild -->--}}
 </body>
 
 

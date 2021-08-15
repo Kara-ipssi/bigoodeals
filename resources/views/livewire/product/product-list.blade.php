@@ -65,9 +65,9 @@
                     </span>
                 </td>--}}
                 <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                    <a href="{{route('products.show', $product->id)}}" class="text-indigo-600 hover:text-indigo-900">{{ __('Show') }}</a>
-                    <a href="{{route('products.edit', $product->id)}}" class="text-yellow-600 hover:text-yellow-900">{{ __('Edit') }}</a>
-                    <button wire:click="setDeleteModalVisibilityToFixed({{$product->id}})" class="text-red-600 hover:text-red-900">{{ __('Delete') }}</button>
+                    <a href="{{route('products.show', $product->id)}}" class="text-indigo-600 hover:text-indigo-900"><i class="fa fa-eye"></i> {{ __('Show') }} </a>
+                    <a href="{{route('products.edit', $product->id)}}" class="text-yellow-600 hover:text-yellow-900"><i class="fa fa-pencil-square"></i>  {{ __('Edit') }}</a>
+                    <button wire:click="setDeleteModalVisibilityToFixed({{$product->id}})" class="text-red-600 hover:text-red-900"><i class="fa fa-trash-o"></i> {{ __('Delete') }}</button>
                 </td>
             </tr>
         @endforeach
