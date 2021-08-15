@@ -9,7 +9,7 @@ class ProductEditForm extends Component
 {
     public $product;
 
-    public $reference = "REF_";
+    public $reference = "";
     public $name;
     public $description = "";
     public $price;
@@ -21,10 +21,9 @@ class ProductEditForm extends Component
     public $categories = [];
 
     protected $rules = [
-        'reference' => 'required|unique:product|min:3',
-        'name' => 'required|unique:product|min:3|max:25',
+        'name' => 'required|min:3|max:25',
         'price' => 'required|int|min:0',
-        'stripe_price' => 'required|unique:product|min:0',
+        'stripe_price' => 'required|min:0',
     ];
 
     protected $messages = [
@@ -57,16 +56,45 @@ class ProductEditForm extends Component
 
     }
 
-    public function updateProduct($propertyName)
+    public function updateProduct()
     {
-        $validate = $this->validateOnly($propertyName);
-        $this->product = $validate;
-        $this->product->save();
+        $validate = $this->validate();
+        $this->product->update($validate);
 
         session()->flash('message', 'Le produit à bien été Mis à jour');
 
         return redirect()->route('products.index');
     }
+
+/*    public function saveProduct()
+    {
+        $validate = $this->validate();
+        Product::create($validate);
+
+        session()->flash('message', 'Le produit à bien été ajouté');
+
+        return redirect()->route('products.index');
+    }*/
+
+/*    public function update()
+    {
+        $validatedDate = $this->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+        ]);
+
+        if ($this->user_id) {
+            $user = User::find($this->user_id);
+            $user->update([
+                'name' => $this->name,
+                'email' => $this->email,
+            ]);
+            $this->updateMode = false;
+            session()->flash('message', 'Users Updated Successfully.');
+            $this->resetInputFields();
+
+        }
+    }*/
 
     public function render()
     {

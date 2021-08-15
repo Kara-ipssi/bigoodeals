@@ -25,6 +25,7 @@ class Product extends Model
     public $timestamps = true;
 
 
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      * Get the stock of the current Product

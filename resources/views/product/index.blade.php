@@ -32,7 +32,8 @@
                 <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                         <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                            <table class="min-w-full divide-y divide-gray-200">
+                            <livewire:product-list/>
+                            {{--<table class="min-w-full divide-y divide-gray-200">
                                 <thead class="bg-gray-50">
                                     <tr>
                                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -84,16 +85,16 @@
                                             </div>
                                         </td>
 
-                                        {{--<td class="px-6 py-4 whitespace-nowrap">
+                                        --}}{{--<td class="px-6 py-4 whitespace-nowrap">
                                             <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                                               Active
                                             </span>
-                                        </td>--}}
-                                        {{--<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        </td>--}}{{--
+                                        --}}{{--<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                             <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                                               Admin
                                             </span>
-                                        </td>--}}
+                                        </td>--}}{{--
                                         <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                                             <a href="{{route('products.show', $product->id)}}" class="text-indigo-600 hover:text-indigo-900">{{ __('Show') }}</a>
                                             <a href="{{route('products.edit', $product->id)}}" class="text-yellow-600 hover:text-yellow-900">{{ __('Edit') }}</a>
@@ -104,7 +105,7 @@
 
                                 <!-- More people... -->
                                 </tbody>
-                            </table>
+                            </table>--}}
                         </div>
                     </div>
                 </div>

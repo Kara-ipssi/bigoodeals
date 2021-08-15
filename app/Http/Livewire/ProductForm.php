@@ -8,7 +8,10 @@ use Livewire\Component;
 
 class ProductForm extends Component
 {
-    public $reference = "REF_";
+    public $prefix = "REF";
+    public $dataref = "";
+
+    public $reference = "";
     public $name;
     public $description = "";
     public $price;
@@ -20,7 +23,7 @@ class ProductForm extends Component
     public $categories = [];
 
     protected $rules = [
-        'reference' => 'required|unique:product|min:3',
+        'reference' => 'required|unique:product|min:3|max:10',
         'name' => 'required|unique:product|min:3|max:25',
         'price' => 'required|int|min:0',
         'stripe_price' => 'required|unique:product|min:0',
@@ -51,6 +54,7 @@ class ProductForm extends Component
 
     public function saveProduct()
     {
+        $this->reference = $this->prefix . $this->dataref;
         $validate = $this->validate();
         Product::create($validate);
 

@@ -4,7 +4,12 @@
         <div class="grid grid-cols-6 gap-6">
             <div class="col-span-6 sm:col-span-3 lg:col-span-6" >
                 <label for="reference" class="block text-sm font-medium text-gray-700">{{ __('Reference') }}</label>
-                <input wire:model="reference" type="text" name="reference" id="reference" autocomplete="given-reference" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                <div class="mt-1 flex rounded-md shadow-sm">
+                  <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
+                    REF
+                  </span>
+                    <input wire:model="dataref" type="text" name="reference" id="reference" autocomplete="given-reference" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="0000">
+                </div>
                 @error('reference') <span class="error">{{ $message }}</span> @enderror
             </div>
 
