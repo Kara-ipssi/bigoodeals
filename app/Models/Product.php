@@ -34,4 +34,13 @@ class Product extends Model
     public function stocks(){
         return $this->hasMany(Stock::class, "product_id");
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * Get the images of this product
+     * One product can got a lot of images.
+     */
+    public function images(){
+        return $this->hasMany(Image::class, 'product_id');
+    }
 }

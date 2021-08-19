@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Image extends Model
 {
     use HasFactory;
 
@@ -13,7 +13,13 @@ class Category extends Model
      * the table associate to the modal
      * @var string
      */
-    protected $table = "category";
+    protected $table = "product_image";
+
+    protected $fillable = [
+        'name',
+        'image_url',
+        'product_id',
+    ];
 
     public $timestamps = true;
 }

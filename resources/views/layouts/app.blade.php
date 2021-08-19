@@ -124,7 +124,7 @@
     @if (isset($scripts))
         {{$scripts}}
     @endif
-{{--    <!-- SCRIPT LOADING START FORM HERE /////////////-->
+    <!-- SCRIPT LOADING START FORM HERE /////////////-->
     <!-- plugins:js -->
     <script src="/assets/vendors/js/core.js"></script>
     <script src="/assets/vendors/js/vendor.addons.js"></script>
@@ -135,7 +135,7 @@
     <!-- build:js -->
     <script src="/assets/js/template.js"></script>
     <script src="/assets/js/dashboard.js"></script>
-    <!-- endbuild -->--}}
+    <!-- endbuild -->
 </body>
 
 

@@ -2,12 +2,15 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Image;
 use App\Models\Product;
-use App\Models\ProductTag;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class ProductForm extends Component
 {
+    use WithFileUploads;
+
     public $prefix = "REF";
     public $dataref = "";
 
@@ -16,17 +19,21 @@ class ProductForm extends Component
     public $description = "";
     public $price;
     public $stripe_price;
+    public $photos = [];
 
 
     public $stocks = [];
     public $tags = [];
     public $categories = [];
 
+    public $modalVisibility = "hidden";
+
     protected $rules = [
         'reference' => 'required|unique:product|min:3|max:10',
         'name' => 'required|unique:product|min:3|max:25',
         'price' => 'required|int|min:0',
         'stripe_price' => 'required|unique:product|min:0',
+        'photos.*' => 'file|mimes:png,jpg,pdf|max:1024'
     ];
 
     protected $messages = [
@@ -47,16 +54,41 @@ class ProductForm extends Component
 
     ];
 
-    public function mount()
+    public function updateTagslist($tag)
     {
-        //
+        $this->tags[] = $tag;
+    }
+
+    public function setDeleteModalVisibilityToHidden()
+    {
+        $this->modalVisibility = "hidden";
+    }
+
+    public function setDeleteModalVisibilityToFixed()
+    {
+        $this->modalVisibility = "fixed";
     }
 
     public function saveProduct()
     {
         $this->reference = $this->prefix . $this->dataref;
         $validate = $this->validate();
-        Product::create($validate);
+
+        foreach ($this->photos as $key => $photo) {
+            $photo->store('public/products');
+        }
+
+        $product = Product::create($validate);
+        if(!empty($this->photos)){
+            foreach ($this->photos as $photo) {
+                $photo->store('public/products');
+                Image::create([
+                    'name'=>$photo->hashName(),
+                    'image_url'=>'storage/products/'.$photo->hashName(),
+                    'product_id'=>$product->id
+                ]);
+            }
+        }
 
         session()->flash('message', 'Le produit à bien été ajouté');
 
