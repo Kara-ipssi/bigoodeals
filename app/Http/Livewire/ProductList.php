@@ -49,7 +49,15 @@ class ProductList extends Component
      */
     public function deleteProduct(Product $product)
     {
-        $product->delete();
+        try {
+            $product->delete();
+        }
+        catch (\Exception $e){
+            session()->flash('error', 'Erreur - Impossible de supprimer le produit '.$product->name);
+
+            return redirect()->route('products.index');
+            //dd($e->getMessage());
+        }
         $this->productToDelete = null;
         $this->modalVisibility = "hidden";
     }

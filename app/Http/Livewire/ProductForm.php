@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Category;
 use App\Models\Image;
 use App\Models\Product;
 use Livewire\Component;
@@ -26,7 +27,7 @@ class ProductForm extends Component
     public $tags = [];
     public $categories = [];
 
-    public $modalVisibility = "hidden";
+    public $categoryModalVisibility = "hidden";
 
     protected $rules = [
         'reference' => 'required|unique:product|min:3|max:10',
@@ -54,19 +55,19 @@ class ProductForm extends Component
 
     ];
 
-    public function updateTagslist($tag)
+/*    public function updateTagslist($tag)
     {
         $this->tags[] = $tag;
+    }*/
+
+    public function setCategoryModalVisibilityToHidden()
+    {
+        $this->categoryModalVisibility = "hidden";
     }
 
-    public function setDeleteModalVisibilityToHidden()
+    public function setCategoryModalVisibilityToFixed()
     {
-        $this->modalVisibility = "hidden";
-    }
-
-    public function setDeleteModalVisibilityToFixed()
-    {
-        $this->modalVisibility = "fixed";
+        $this->categoryModalVisibility = "fixed";
     }
 
     public function saveProduct()
@@ -97,6 +98,8 @@ class ProductForm extends Component
 
     public function render()
     {
-        return view('livewire.product.product-form');
+        return view('livewire.product.product-form', [
+            'categoriesList' => Category::all()
+        ]);
     }
 }

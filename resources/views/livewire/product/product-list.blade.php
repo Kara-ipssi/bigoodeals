@@ -1,6 +1,7 @@
 <div>
-    <div class="col-span-3 sm:col-span-12 lg:col-span-3">
-        <input placeholder="Vous pouvez rechercher par nom, prix, référence" wire:model="search" type="search" name="search" id="search" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+    <div class="pt-2 relative mx-auto text-gray-600 flex flex-row-reverse mr-6 mb-2">
+        <input class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
+               type="search" name="search" placeholder="Recherche" wire:model="search">
     </div>
     <table class="min-w-full divide-y divide-gray-200">
         <thead class="bg-gray-50">

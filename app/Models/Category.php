@@ -14,6 +14,10 @@ class Category extends Model
      * @var string
      */
     protected $table = "category";
+    protected $fillable = [
+        'name',
+        'description',
+    ];
 
     public $timestamps = true;
 }

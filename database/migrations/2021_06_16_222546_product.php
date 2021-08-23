@@ -20,6 +20,7 @@ class Product extends Migration
             $table->text("description")->nullable();
             $table->double("price");
             $table->string("stripe_price")->unique();
+            $table->boolean("isActivated")->default(false);
             $table->timestamps();
         });
     }

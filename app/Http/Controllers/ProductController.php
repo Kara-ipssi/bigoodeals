@@ -15,9 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-        return view('product.index')->with(["products"=>$products]);
-
+        return view('product.index');
     }
 
     /**
@@ -26,8 +24,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $tags = Tag::All();
-        return view("product.create")->with(['tags'=>$tags]);
+
+        return view("product.create");
     }
 
     /**

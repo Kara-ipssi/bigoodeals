@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 use Illuminate\Http\Request;
@@ -51,6 +53,15 @@ Route::group(['middleware'=>'auth:sanctum'], function(){
     Route::resource('/dashboard/products', ProductController::class)
         ->missing(function (Request $request) {
             return Redirect::route('product.index');
+        });
+
+    /**
+     * Categories routes
+     * CRUD
+     */
+    Route::resource('/dashboard/categories', CategoryController::class)
+        ->missing(function (Request $request){
+            return Redirect::route('category.index');
         });
 });
 

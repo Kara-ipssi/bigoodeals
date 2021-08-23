@@ -722,5 +722,9 @@
     "Reference": "Référence",
     "Stripe price": "Stripe (code produit)",
     "Show": "Afficher",
-    "Add date": "Date d'ajout"
+    "Add date": "Date d'ajout",
+    "Categories": "Catégories",
+    "Add new category": "Ajouter une nouvelle catégorie",
+    "New category": "Nouvelle catégorie",
+    "Categories list": "Liste des catégories"
 }
