@@ -30,21 +30,24 @@ class ProductForm extends Component
     public $categoryModalVisibility = "hidden";
 
     protected $rules = [
-        'reference' => 'required|unique:product|min:3|max:10',
+        'reference' => 'required|unique:product|min:6|max:10',
         'name' => 'required|unique:product|min:3|max:25',
-        'price' => 'required|int|min:0',
+        'price' => 'required|numeric|between:0,999.99',
         'stripe_price' => 'required|unique:product|min:0',
-        'photos.*' => 'file|mimes:png,jpg,pdf|max:1024'
+        'photos.*' => 'file|mimes:png,jpg,pdf|max:1024',
+        'categories' => 'required',
+        'dataref' => 'int',
     ];
 
     protected $messages = [
         'reference.required' => 'La référence est requise.',
-        'reference.min' => 'La référence doit faire au minimum 3 caractères',
+        'reference.min' => 'La référence doit faire au minimum 6 caractères (REF inclus).',
+        'reference.max' => 'La référence doit faire au maximum 10 caractères (REF inclus).',
         'reference.unique' => 'Cette référence de produit existe déjà.',
 
-        'price.required' => 'Le Prix du produit est requis',
-        'price.min' => 'Le prix doit être supérieur ou égale à 0.',
-        'price.int' => 'Le prix doit être un nombre.',
+        'price.required' => 'Le prix du produit est requis.',
+        'price.numeric' => 'Le prix du produit doit être un nombre.',
+        'price.between' => 'Le prix doit être compris entre 0 et 999.99 € .',
 
         'name.required' => 'Le nom est requis.',
         'name.min' => 'Le nom doit faire au minimum 3 caratères.',
@@ -52,6 +55,8 @@ class ProductForm extends Component
         'name.unique' => 'Ce nom de produit existe déjà.',
 
         'stripe_price.unique' => 'Ce prix stripe est déjà affecté à un produit.',
+
+        'categories.required' => 'Vous devez choisir au moins une catégorie.',
 
     ];
 
@@ -78,7 +83,6 @@ class ProductForm extends Component
         foreach ($this->photos as $key => $photo) {
             $photo->store('public/products');
         }
-
         $product = Product::create($validate);
         if(!empty($this->photos)){
             foreach ($this->photos as $photo) {
@@ -90,6 +94,10 @@ class ProductForm extends Component
                 ]);
             }
         }
+        /**
+         * Add of the product category after the storing product
+         */
+        $product->categories()->sync($this->categories);
 
         session()->flash('message', 'Le produit à bien été ajouté');
 

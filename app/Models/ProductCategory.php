@@ -12,7 +12,7 @@ class ProductCategory extends Model
      * the table associate to the modal
      * @var string
      */
-    protected $table = "product_categorty";
+    protected $table = "product_category";
     public $timestamps = true;
 
     /**

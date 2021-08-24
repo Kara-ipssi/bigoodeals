@@ -31,48 +31,47 @@
         </thead>
         <tbody class="bg-white divide-y divide-gray-200">
         @foreach($products as $product)
-            @if($product->isActivated === true)
-                <tr>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-gray-900">{{$product->reference}}</div>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-gray-900">{{$product->name}}</div>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-gray-900">{{$product->price}}</div>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-gray-900">{{$product->stripe_price}}</div>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-gray-900">{{$product->created_at}}</div>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-gray-900">
-                            @foreach($product->stocks as $stock)
-                                {{$stock->quantity}}
-                            @endforeach
-                        </div>
-                    </td>
+            <tr>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-sm text-gray-900">{{$product->reference}}</div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-sm text-gray-900">{{$product->name}}</div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-sm text-gray-900">{{$product->price}}</div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-sm text-gray-900">{{$product->stripe_price}}</div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-sm text-gray-900">{{$product->created_at}}</div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-sm text-gray-900">
+                        @foreach($product->stocks as $stock)
+                            {{$stock->quantity}}
+                        @endforeach
+                    </div>
+                </td>
 
-                    {{--<td class="px-6 py-4 whitespace-nowrap">
-                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                          Active
-                        </span>
-                    </td>--}}
-                    {{--<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                          Admin
-                        </span>
-                    </td>--}}
-                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                        <a href="{{route('products.show', $product->id)}}" class="text-indigo-600 hover:text-indigo-900"><i class="fa fa-eye"></i> {{ __('Show') }} </a>
-                        <a href="{{route('products.edit', $product->id)}}" class="text-yellow-600 hover:text-yellow-900"><i class="fa fa-pencil-square"></i>  {{ __('Edit') }}</a>
-                        <button wire:click="setDeleteModalVisibilityToFixed({{$product->id}})" class="text-red-600 hover:text-red-900"><i class="fa fa-trash-o"></i> {{ __('Delete') }}</button>
-                    </td>
-                </tr>
-            @endif
+                {{--<td class="px-6 py-4 whitespace-nowrap">
+                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                        Active
+                    </span>
+                </td>--}}
+                {{--<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                        Admin
+                    </span>
+                </td>--}}
+                <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                    <a href="{{route('products.show', $product->id)}}" class="text-indigo-600 hover:text-indigo-900"><i class="fa fa-eye"></i> {{ __('Show') }} </a>
+                    <a href="{{route('products.edit', $product->id)}}" class="text-yellow-600 hover:text-yellow-900"><i class="fa fa-pencil-square"></i>  {{ __('Edit') }}</a>
+                    <button wire:click="setDeleteModalVisibilityToFixed({{$product->id}})" class="text-red-600 hover:text-red-900"><i class="fa fa-trash-o"></i> {{ __('Delete') }}</button>
+                </td>
+            </tr>
+            
         @endforeach
 
         <!-- More people... -->

@@ -43,4 +43,13 @@ class Product extends Model
     public function images(){
         return $this->hasMany(Image::class, 'product_id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * The categories that belong to the Product.
+     */
+    public function categories(){
+        return $this->belongsToMany(Category::class, 'product_category');
+    }
+    
 }

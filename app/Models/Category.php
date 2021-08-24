@@ -20,4 +20,13 @@ class Category extends Model
     ];
 
     public $timestamps = true;
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * Get the stock of the current Product
+     * Get the products for the category
+     */
+    public function products(){
+        return $this->hasMany(Product::class, 'category_id');
+    }
 }
