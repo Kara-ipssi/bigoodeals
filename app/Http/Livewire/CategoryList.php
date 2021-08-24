@@ -3,8 +3,10 @@
 namespace App\Http\Livewire;
 
 use App\Models\Category;
+use Exception;
 use Livewire\Component;
 use Livewire\WithPagination;
+use PhpParser\Node\Stmt\TryCatch;
 
 class CategoryList extends Component
 {
@@ -37,7 +39,13 @@ class CategoryList extends Component
      */
     public function deleteCategory(Category $category)
     {
-        $category->delete();
+        try {
+            $category->delete();
+        } catch (Exception $e) {
+            session()->flash('error', 'Erreur - Impossible de supprimer la catégorie '.$category->name);
+
+            return redirect()->route('categories.index');
+        }
         $this->categoryToDelete = null;
         $this->modalVisibility = "hidden";
     }

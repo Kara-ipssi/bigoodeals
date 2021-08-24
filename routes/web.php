@@ -52,7 +52,7 @@ Route::group(['middleware'=>'auth:sanctum'], function(){
      */
     Route::resource('/dashboard/products', ProductController::class)
         ->missing(function (Request $request) {
-            return Redirect::route('product.index');
+            return Redirect::route('products.index');
         });
 
     /**
@@ -61,7 +61,7 @@ Route::group(['middleware'=>'auth:sanctum'], function(){
      */
     Route::resource('/dashboard/categories', CategoryController::class)
         ->missing(function (Request $request){
-            return Redirect::route('category.index');
+            return Redirect::route('categories.index');
         });
 });
 
