@@ -18,10 +18,13 @@ class ProductEditForm extends Component
     public $price;
     public $stripe_price;
 
+    //Images
+    public $images = [];
 
     public $stocks = [];
     public $tags = [];
     public $categories = [];
+    public $cNb = 0;
 
     protected $rules = [
         'name' => 'required|min:3|max:25',
@@ -30,9 +33,6 @@ class ProductEditForm extends Component
     ];
 
     protected $messages = [
-        'reference.required' => 'La référence est requise.',
-        'reference.min' => 'La référence doit faire au minimum 3 caractères',
-        'reference.unique' => 'Cette référence de produit existe déjà.',
 
         'price.required' => 'Le Prix du produit est requis',
         'price.min' => 'Le prix doit être supérieur ou égale à 0.',
@@ -41,13 +41,16 @@ class ProductEditForm extends Component
         'name.required' => 'Le nom est requis.',
         'name.min' => 'Le nom doit faire au minimum 3 caratères.',
         'name.max' => 'Le nom doit faire au maximum 25 caratères.',
-        'name.unique' => 'Ce nom de produit existe déjà.',
 
-        'stripe_price.unique' => 'Ce prix stripe est déjà affecté à un produit.',
+        'stripe_price.required' => 'Le code produit stripe est requis.',
 
     ];
 
 
+    /**
+     * @param Product $product
+     * Hydrating data on composant mount.
+     */
     public function mount(Product $product)
     {
         $this->product = $product;
@@ -56,6 +59,12 @@ class ProductEditForm extends Component
         $this->description = $this->product->description;
         $this->price = $this->product->price;
         $this->stripe_price = $this->product->stripe_price;
+
+
+        foreach ($this->product->categories as $category){
+            $this->categories [] = $category;
+            $this->cNb ++;
+        }
     }
 
     public function updateProduct()

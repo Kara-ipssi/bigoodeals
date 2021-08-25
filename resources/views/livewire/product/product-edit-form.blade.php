@@ -2,13 +2,13 @@
     @csrf
     <div class="px-4 py-5 bg-white sm:p-6">
         <div class="grid grid-cols-6 gap-6">
-            <div class="col-span-6 sm:col-span-3 lg:col-span-6" >
+            <div class="col-span-6 sm:col-span-6 lg:col-span-6" >
                 <label for="reference" class="block text-sm font-medium text-gray-700">{{ __('Reference') }}</label>
                 <input type="text" name="reference" id="reference" wire:model="reference" disabled class="mt-1 focus:ring-indigo-500 lg:hover:bg-gray-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-700 rounded-md">
                 @error('reference') <span class="error">{{ $message }}</span> @enderror
             </div>
 
-            <div class="col-span-6 sm:col-span-3 lg:col-span-6">
+            <div class="col-span-6 sm:col-span-6 lg:col-span-6">
                 <label for="name" class="block text-sm font-medium text-gray-700">{{ __('Name') }}</label>
                 <input type="text" name="name" id="name" wire:model="name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                 @error('name') <span class="error">{{ $message }}</span> @enderror
@@ -21,7 +21,7 @@
                 </div>
             </div>
 
-            <div class="col-span-6 sm:col-span-3 lg:col-span-6">
+            <div class="col-span-6 sm:col-span-6 lg:col-span-6">
                 <label for="price" class="block text-sm font-medium text-gray-700">{{ __('Price') }}</label>
                 <input type="number" name="price" id="price" wire:model="price" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                 @error('price') <span class="error">{{ $message }}</span> @enderror
@@ -34,14 +34,28 @@
             </div>
 
             <div class="col-span-12 sm:col-span-12 lg:col-span-12">
+                @if (!empty($product->images))
+                    Images actuelles :
+                    <div class="flex flex-wrap">
+                        @foreach($product->images as $image)
+                            <div><img class="col-span-4 sm:col-span-4 lg:col-span-4 m-1" width="200" src="/{{ $image->image_url }}"></div>
+                        @endforeach
+                    </div>
+                @endif
+                {{--<label class="block text-sm font-medium text-gray-700">Upload images</label>
+                <input type="file" wire:model="images" multiple>--}}
+                @error('images.*') <span class="error">{{ $message }}</span> @enderror
+            </div>
+
+            {{--<div class="col-span-12 sm:col-span-12 lg:col-span-12">
                 <label for="country" class="block text-sm font-medium text-gray-700">{{__('Categories')}}</label>
                 <select id="categories" wire:model="categories" name="categories" autocomplete="categories" multiple class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                     @foreach($categoriesList as $category)
-                        <option value="{{$category->id}}">{{$category->name}}</option>
+                        <option value="{{$category->id}}" selected>{{$category->name}}</option>
                     @endforeach
                 </select>
                 @error('categories') <span class="error">{{ $message }}</span> @enderror
-            </div>
+            </div>--}}
 
         </div>
     </div>
