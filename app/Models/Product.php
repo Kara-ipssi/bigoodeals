@@ -41,7 +41,7 @@ class Product extends Model
      * One product can got a lot of images.
      */
     public function images(){
-        return $this->hasMany(Image::class, 'product_id');
+        return $this->hasMany(Image::class);
     }
 
     /**
@@ -51,5 +51,5 @@ class Product extends Model
     public function categories(){
         return $this->belongsToMany(Category::class, 'product_category');
     }
-    
+
 }

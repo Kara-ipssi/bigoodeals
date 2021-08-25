@@ -2,11 +2,14 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Category;
 use App\Models\Product;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class ProductEditForm extends Component
 {
+    use WithFileUploads;
     public $product;
 
     public $reference = "";
@@ -14,6 +17,7 @@ class ProductEditForm extends Component
     public $description = "";
     public $price;
     public $stripe_price;
+    public $photos = [];
 
 
     public $stocks = [];
@@ -53,7 +57,6 @@ class ProductEditForm extends Component
         $this->description = $this->product->description;
         $this->price = $this->product->price;
         $this->stripe_price = $this->product->stripe_price;
-
     }
 
     public function updateProduct()
@@ -66,38 +69,11 @@ class ProductEditForm extends Component
         return redirect()->route('products.index');
     }
 
-/*    public function saveProduct()
-    {
-        $validate = $this->validate();
-        Product::create($validate);
-
-        session()->flash('message', 'Le produit à bien été ajouté');
-
-        return redirect()->route('products.index');
-    }*/
-
-/*    public function update()
-    {
-        $validatedDate = $this->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-        ]);
-
-        if ($this->user_id) {
-            $user = User::find($this->user_id);
-            $user->update([
-                'name' => $this->name,
-                'email' => $this->email,
-            ]);
-            $this->updateMode = false;
-            session()->flash('message', 'Users Updated Successfully.');
-            $this->resetInputFields();
-
-        }
-    }*/
 
     public function render()
     {
-        return view('livewire.product.product-edit-form');
+        return view('livewire.product.product-edit-form', [
+            'categoriesList' => Category::all(),
+        ]);
     }
 }

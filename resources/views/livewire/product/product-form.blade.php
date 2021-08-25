@@ -44,17 +44,17 @@
 
 
                 <div class="col-span-12 sm:col-span-12 lg:col-span-12">
-                    @if (!empty($photos))
+                    @if (!empty($images))
                         Photo Preview :
                         <div class="flex flex-wrap">
-                            @foreach($photos as $photo)
-                                <div><img class="col-span-4 sm:col-span-4 lg:col-span-4 m-1" width="200" src="{{ $photo->temporaryUrl() }}"></div>
+                            @foreach($images as $image)
+                                <div><img class="col-span-4 sm:col-span-4 lg:col-span-4 m-1" width="200" src="{{ $image->temporaryUrl() }}"></div>
                             @endforeach
                         </div>
                     @endif
                     <label class="block text-sm font-medium text-gray-700">Upload images</label>
-                    <input type="file" wire:model="photos" multiple>
-                    @error('photos.*') <span class="error">{{ $message }}</span> @enderror
+                    <input type="file" wire:model="images" multiple>
+                    @error('images.*') <span class="error">{{ $message }}</span> @enderror
                 </div>
 
                 <div class="col-span-12 sm:col-span-12 lg:col-span-12">

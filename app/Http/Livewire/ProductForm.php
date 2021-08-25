@@ -20,7 +20,7 @@ class ProductForm extends Component
     public $description = "";
     public $price;
     public $stripe_price;
-    public $photos = [];
+    public $images = [];
 
 
     public $stocks = [];
@@ -34,7 +34,7 @@ class ProductForm extends Component
         'name' => 'required|unique:product|min:3|max:25',
         'price' => 'required|numeric|between:0,999.99',
         'stripe_price' => 'required|unique:product|min:0',
-        'photos.*' => 'file|mimes:png,jpg,pdf|max:1024',
+        'images.*' => 'file|mimes:png,jpg,pdf|max:1024',
         'categories' => 'required',
         'dataref' => 'int',
     ];
@@ -80,16 +80,16 @@ class ProductForm extends Component
         $this->reference = $this->prefix . $this->dataref;
         $validate = $this->validate();
 
-        foreach ($this->photos as $key => $photo) {
-            $photo->store('public/products');
+        foreach ($this->images as $key => $image) {
+            $image->store('public/products');
         }
         $product = Product::create($validate);
-        if(!empty($this->photos)){
-            foreach ($this->photos as $photo) {
-                $photo->store('public/products');
+        if(!empty($this->images)){
+            foreach ($this->images as $image) {
+                $image->store('public/products');
                 Image::create([
-                    'name'=>$photo->hashName(),
-                    'image_url'=>'storage/products/'.$photo->hashName(),
+                    'name'=>$image->hashName(),
+                    'image_url'=>'storage/products/'.$image->hashName(),
                     'product_id'=>$product->id
                 ]);
             }

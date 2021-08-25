@@ -22,4 +22,12 @@ class Image extends Model
     ];
 
     public $timestamps = true;
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * Get the product associated with the Image
+     */
+    public function product(){
+        return $this->hasOne(Product::class);
+    }
 }

@@ -33,17 +33,28 @@
                 @error('stripe_price') <span class="error">{{ $message }}</span> @enderror
             </div>
 
-            <div class="col-span-6 sm:col-span-6 lg:col-span-12">
-                <label for="tags" class="block text-sm font-medium text-gray-700">{{ __('Tags')}}</label>
-                <div class="mt-1">
-                    <textarea id="tags" name="tags" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="tags of your product here"></textarea>
-                </div>
+            <div class="col-span-12 sm:col-span-12 lg:col-span-12">
+                @if (!empty($photos))
+                    Photo Preview :
+                    <div class="flex flex-wrap">
+                        @foreach($photos as $photo)
+                            <div><img class="col-span-4 sm:col-span-4 lg:col-span-4 m-1" width="200" src="{{ $photo->temporaryUrl() }}"></div>
+                        @endforeach
+                    </div>
+                @endif
+                <label class="block text-sm font-medium text-gray-700">Upload images</label>
+                <input type="file" wire:model="photos" multiple>
+                @error('photos.*') <span class="error">{{ $message }}</span> @enderror
             </div>
-            <div class="col-span-6 sm:col-span-6 lg:col-span-12">
-                <label for="category" class="block text-sm font-medium text-gray-700">{{ __('Category')}}</label>
-                <div class="mt-1">
-                    <textarea id="category" name="category" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="Category of your product here"></textarea>
-                </div>
+
+            <div class="col-span-12 sm:col-span-12 lg:col-span-12">
+                <label for="country" class="block text-sm font-medium text-gray-700">{{__('Categories')}}</label>
+                <select id="categories" wire:model="categories" name="categories" autocomplete="categories" multiple class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    @foreach($categoriesList as $category)
+                        <option value="{{$category->id}}">{{$category->name}}</option>
+                    @endforeach
+                </select>
+                @error('categories') <span class="error">{{ $message }}</span> @enderror
             </div>
 
         </div>
