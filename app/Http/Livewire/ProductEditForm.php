@@ -17,7 +17,6 @@ class ProductEditForm extends Component
     public $description = "";
     public $price;
     public $stripe_price;
-    public $photos = [];
 
 
     public $stocks = [];

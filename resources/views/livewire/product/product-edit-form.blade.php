@@ -34,20 +34,6 @@
             </div>
 
             <div class="col-span-12 sm:col-span-12 lg:col-span-12">
-                @if (!empty($photos))
-                    Photo Preview :
-                    <div class="flex flex-wrap">
-                        @foreach($photos as $photo)
-                            <div><img class="col-span-4 sm:col-span-4 lg:col-span-4 m-1" width="200" src="{{ $photo->temporaryUrl() }}"></div>
-                        @endforeach
-                    </div>
-                @endif
-                <label class="block text-sm font-medium text-gray-700">Upload images</label>
-                <input type="file" wire:model="photos" multiple>
-                @error('photos.*') <span class="error">{{ $message }}</span> @enderror
-            </div>
-
-            <div class="col-span-12 sm:col-span-12 lg:col-span-12">
                 <label for="country" class="block text-sm font-medium text-gray-700">{{__('Categories')}}</label>
                 <select id="categories" wire:model="categories" name="categories" autocomplete="categories" multiple class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                     @foreach($categoriesList as $category)
