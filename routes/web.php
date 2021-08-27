@@ -24,7 +24,7 @@ Route::get('/', function () {
 
 Route::get('/test', function () {
     return view('product.test');
-});
+})->name('test');
 
 
 //dashboard routes

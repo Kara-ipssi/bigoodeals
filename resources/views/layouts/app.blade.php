@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="/assets/css/demo_1/style.css">
     <!-- End Ripple template -->
 
-@if (isset($title))
+    @if (isset($title))
         {{$title}}
     @else
         <title>BiGooDeal - Panel Administration</title>
