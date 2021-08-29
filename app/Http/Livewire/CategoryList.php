@@ -12,25 +12,22 @@ class CategoryList extends Component
 {
     use WithPagination;
 
+    public $categoryCount;
+    public $recentlyAddedCategory;
+
+    protected $listeners = ['categoryAdded'];
 
     public $search = '';
-    public $modalVisibility;
-    public $categoryToDelete;
 
     public function mount()
     {
-        $this->modalVisibility = "hidden";
+        // 
     }
 
-    public function showModal(Category $category)
+    public function categoryAdded(Category $category)
     {
-        $this->modalVisibility = "fixed";
-        $this->categoryToDelete = $category;
-    }
-
-    public function hideModal()
-    {
-        $this->modalVisibility = "hidden";
+        $this->categoryCount = Category::count();
+        $this->recentlyAddedCategory = $category;
     }
 
     /**
@@ -41,20 +38,21 @@ class CategoryList extends Component
     {
         try {
             $category->delete();
+            session()->flash('success', 'La catégorie à bien été supprimé');
+            $this->emit('categoryDeleted');
+            return redirect()->route('categories.index');
         } catch (Exception $e) {
             session()->flash('error', 'Erreur - Impossible de supprimer la catégorie '.$category->name);
 
             return redirect()->route('categories.index');
         }
-        $this->categoryToDelete = null;
-        $this->modalVisibility = "hidden";
     }
 
 
     public function render()
     {
         return view('livewire.category.category-list', [
-            'categories' => Category::where("name", "like", "%".$this->search."%")->paginate(10), //search by name
+            'categories' => Category::where("name", "like", "%".$this->search."%")->paginate(5), //search by name
         ]);
     }
 }

@@ -26,15 +26,20 @@ class CategoryForm extends Component
         'name.unique' => 'Cette catégorie existe déjà.',
     ];
 
+    public function resetInputsFields()
+    {
+        $this->name = '';
+        $this->description = '';
+    }
+
     public function saveCategory()
     {
         $validate = $this->validate();
 
-        Category::create($validate);
+        $category = Category::create($validate);
 
-        session()->flash('message', 'La catégorie à bien été ajouté');
-
-        return redirect()->route('categories.index');
+        $this->resetInputsFields();
+        $this->emit('categoryAdded', $category->id);
     }
 
 

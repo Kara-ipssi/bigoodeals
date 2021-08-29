@@ -2,7 +2,7 @@
     <ul class="navigation-menu">
         <li class="nav-category-divider">MAIN</li>
         <li>
-            <a href="{{route('test')}}">
+            <a href="{{route('dashboard')}}">
                 <span class="link-title">{{__('Dashboard')}}</span>
                 <i class="mdi mdi-gauge link-icon"></i>
             </a>
@@ -14,10 +14,10 @@
             </a>
             <ul class="collapse navigation-submenu" id="ui-elements">
                 <li>
-                    <a href="" >{{__('Products list')}}</a>
+                    <a href="{{route("products.index")}}" >{{__('Products list')}}</a>
                 </li>
                 <li>
-                    <a href="" >{{__('Add')}}</a>
+                    <a href="#" >{{__('Add')}}</a>
                 </li>
             </ul>
         </li>
@@ -28,10 +28,10 @@
             </a>
             <ul class="collapse navigation-submenu" id="forms">
                 <li>
-                    <a href="" >{{__('Categories list')}}</a>
+                    <a href="{{route("categories.index")}}" >{{__('Categories list')}}</a>
                 </li>
                 <li>
-                    <a href="" >{{__('Add')}}</a>
+                    <a href="{{route("categories.create")}}" >{{__('Add')}}</a>
                 </li>
             </ul>
         </li>
@@ -64,7 +64,7 @@
                 <img class="profile-img" src="http://www.placehold.it/50x50" alt="">
             </div>
             <div class="user-type-wrapper">
-                <p class="user_name">{{ Auth::user()->name }}</p>
+                <p class="user_name"></p>
                 <div class="d-flex align-items-center">
                     <div class="status-indicator small rounded-indicator bg-success"></div>
                     <small class="user_access_level">Admin</small>

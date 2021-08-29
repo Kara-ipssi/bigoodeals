@@ -70,6 +70,34 @@
         })
     };
 
+    showSuccessCategoryAdd = function (e) {
+        'use strict';
+        resetToastPosition();
+        $.toast({
+            text: e,
+            icon: 'success',
+            allowToastClose: false,
+            heading: 'Well done',
+            position: 'top-right',
+            loader: true,
+            loaderBg: '#00ba7a'
+        })
+    };
+
+    showCategoryDelete = function (e) {
+        'use strict';
+        resetToastPosition();
+        $.toast({
+            text: e,
+            icon: 'warning',
+            allowToastClose: false,
+            heading: 'SUPPRIMÉ',
+            position: 'top-right',
+            loader: true,
+            loaderBg: '#ff0000'
+        })
+    };
+
     showWarningToast = function () {
         'use strict';
         resetToastPosition();

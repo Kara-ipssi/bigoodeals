@@ -1,8 +1,16 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
+<x-admin-layout>
+    <x-slot name="breadcrumb">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb has-arrow">
+                <li class="breadcrumb-item">
+                    <a href="{{route("dashboard")}}">{{__("Dashboard")}}</a>
+                </li>
+            </ol>
+        </nav>
     </x-slot>
 
-</x-app-layout>
+    <x-slot name="slot">
+        
+    </x-slot>
+
+</x-admin-layout>
