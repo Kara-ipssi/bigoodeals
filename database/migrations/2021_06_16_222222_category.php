@@ -17,6 +17,7 @@ class Category extends Migration
             $table->bigIncrements("id");
             $table->string("name", 50)->unique();
             $table->text("description")->nullable();
+            $table->text("image")->nullable();
             $table->timestamps();
         });
     }

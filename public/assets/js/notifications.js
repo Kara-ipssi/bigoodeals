@@ -77,7 +77,7 @@
             text: e,
             icon: 'success',
             allowToastClose: false,
-            heading: 'Well done',
+            heading: 'Bien joué',
             position: 'top-right',
             loader: true,
             loaderBg: '#00ba7a'
