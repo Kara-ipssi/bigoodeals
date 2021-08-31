@@ -20,12 +20,13 @@
 
     <x-slot name="scripts">
         <script>
-            Livewire.on('categoryAdded', ()=>{
-                showSuccessCategoryAdd("La catégorie à bien été ajouté");
+            Livewire.on('categoryAdded', category =>{
+                console.log(category);
+                showSuccessCategoryAdd(`La catégorie ${category.name} à bien été ajouté.`);
             });
 
-            Livewire.on('categoryDeleted' () =>{
-                showCategoryDelete("La catégorie à bien été supprimé")
+            Livewire.on('categoryDeleted', () =>{
+                showCategoryDelete("La catégorie à bien été supprimé");
             })
         </script>
     </x-slot>

@@ -28,11 +28,11 @@
             </a>
             <ul class="collapse navigation-submenu" id="forms">
                 <li>
-                    <a href="{{route("categories.index")}}" >{{__('Categories list')}}</a>
+                    <a href="{{route("categories.index")}}" >{{__('Categories management')}}</a>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="{{route("categories.create")}}" >{{__('Add')}}</a>
-                </li>
+                </li> --}}
             </ul>
         </li>
     </ul>

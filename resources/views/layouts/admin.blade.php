@@ -75,7 +75,7 @@
                     <div class="content-viewport">
                         @if (session()->has('success'))
                             <!-- This example requires Tailwind CSS v2.0+ -->
-                            <div class="bg-indigo-600">
+                            <div class="bg-indigo-600" id="successMessage">
                                 <div class="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
                                     <div class="flex items-center justify-between flex-wrap">
                                         <div class="w-0 flex-1 flex items-center">
@@ -95,7 +95,7 @@
                                             </p>
                                         </div>
                                         <div class="order-2 flex-shrink-0 sm:order-3 sm:ml-3">
-                                            <button type="button" class="-mr-1 flex p-2 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-white sm:-mr-2">
+                                            <button type="button" class="-mr-1 flex p-2 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-white sm:-mr-2" id="closeSuccessMessage" wire:click="$emit('closeModal')">
                                                 <span class="sr-only">Dismiss</span>
                                                 <!-- Heroicon name: outline/x -->
                                                 <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -122,6 +122,13 @@
 
         {{-- Livewire Scripts --}}
         @livewireScripts
+
+        <script>
+            Livewire.on('closeModal', ()=>{
+                let successMessage = document.getElementById('successMessage');
+                console.log(successMessage)
+            })
+        </script>
 
         <!--page body ends -->
         <!-- SCRIPT LOADING START FORM HERE /////////////-->

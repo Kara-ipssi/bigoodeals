@@ -39,7 +39,7 @@ class CategoryForm extends Component
         $category = Category::create($validate);
 
         $this->resetInputsFields();
-        $this->emit('categoryAdded', $category->id);
+        $this->emit('categoryAdded', $category->id, $category);
     }
 
 
