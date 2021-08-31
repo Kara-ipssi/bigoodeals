@@ -28,6 +28,14 @@
             Livewire.on('categoryDeleted', () =>{
                 showCategoryDelete("La catégorie à bien été supprimé");
             })
+
+            Livewire.on('editRequest', ()=>{
+                showCategoryEditMode();
+            })
+
+            Livewire.on('cancelEdit', ()=>{
+                showCategoryEditModeLeave();
+            })
         </script>
     </x-slot>
 

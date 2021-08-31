@@ -80,9 +80,9 @@ class ProductForm extends Component
         $this->reference = $this->prefix . $this->dataref;
         $validate = $this->validate();
 
-        foreach ($this->images as $key => $image) {
+        /* foreach ($this->images as $key => $image) {
             $image->store('public/products');
-        }
+        } */
         $product = Product::create($validate);
         if(!empty($this->images)){
             foreach ($this->images as $image) {

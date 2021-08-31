@@ -98,6 +98,34 @@
         })
     };
 
+    showCategoryEditMode = function(){
+        'use strict';
+        resetToastPosition();
+        $.toast({
+            text: "Vous êtes dans le mode d'édition de la catégorie",
+            icon: 'warning',
+            allowToastClose: false,
+            heading: 'Attention',
+            position: 'top-right',
+            loader: true,
+            loaderBg: '#ff0000'
+        })
+    }
+
+    showCategoryEditModeLeave = function(){
+        'use strict';
+        resetToastPosition();
+        $.toast({
+            text: "Vous avez quitté le mode édition de la categorie",
+            icon: 'warning',
+            allowToastClose: false,
+            heading: 'Attention',
+            position: 'top-right',
+            loader: true,
+            loaderBg: '#ff0000'
+        })
+    }
+
     showWarningToast = function () {
         'use strict';
         resetToastPosition();

@@ -15,7 +15,7 @@ class CategoryList extends Component
     public $categoryCount;
     public $recentlyAddedCategory;
 
-    protected $listeners = ['categoryAdded'];
+    protected $listeners = ['categoryAdded', "categoryUpdated"];
 
     public $search = '';
 
@@ -28,6 +28,11 @@ class CategoryList extends Component
     {
         $this->categoryCount = Category::count();
         $this->recentlyAddedCategory = $category;
+    }
+
+    public function categoryUpdated()
+    {
+        $this->categoryCount = Category::count();
     }
 
     /**
@@ -52,6 +57,7 @@ class CategoryList extends Component
     {
         return view('livewire.category.category-list', [
             'categories' => Category::where("name", "like", "%".$this->search."%")->paginate(5), //search by name
+            'cNumber' => Category::count(),
         ]);
     }
 }
