@@ -8,11 +8,11 @@
             </a>
         </li>
         <li>
-            <a href="#ui-elements" data-toggle="collapse" aria-expanded="false">
+            <a href="#products" data-toggle="collapse" aria-expanded="false">
                 <span class="link-title">{{__('Products')}}</span>
                 <i class="mdi mdi-bullseye link-icon"></i>
             </a>
-            <ul class="collapse navigation-submenu" id="ui-elements">
+            <ul class="collapse navigation-submenu" id="products">
                 <li>
                     <a href="{{route("products.index")}}" >{{__('Products list')}}</a>
                 </li>
@@ -22,11 +22,11 @@
             </ul>
         </li>
         <li>
-            <a href="#forms" data-toggle="collapse" aria-expanded="false">
+            <a href="#categories" data-toggle="collapse" aria-expanded="false">
                 <span class="link-title">{{__('Categories')}}</span>
                 <i class="mdi mdi-clipboard-outline link-icon"></i>
             </a>
-            <ul class="collapse navigation-submenu" id="forms">
+            <ul class="collapse navigation-submenu" id="categories">
                 <li>
                     <a href="{{route("categories.index")}}" >{{__('Categories management')}}</a>
                 </li>
