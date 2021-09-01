@@ -21,6 +21,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            {{-- Recently category added --}}
                             @if(isset($recentlyAddedCategory) && $cNumber > 5)
                                 <tr>
                                     <td>{{$recentlyAddedCategory->id}}</td>
@@ -52,6 +53,7 @@
                                     </div>
                                 </div>
                             @endif
+                            {{-- Categories list --}}
                             @foreach ($categories as $category)
                                 <tr>
                                     <td>{{$category->id}}</td>
