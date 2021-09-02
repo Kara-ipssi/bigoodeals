@@ -46,7 +46,7 @@
                             @error('description') <span class="error">{{ $message }}</span> @enderror
                         </div>
                         <div class="col-md-10 showcase_content_area">
-                            <textarea class="form-control focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" id="description" cols="12" rows="5" wire:model="description"></textarea>
+                            <textarea class="form-control focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" id="description" cols="12" rows="5" wire:model="description" placeholder="informations supplémentaires"></textarea>
                         </div>
                     </div>
 

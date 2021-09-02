@@ -13,6 +13,7 @@
 
     <x-slot name="slot">
         <div class="row">
+            <livewire:product-form/>
             <livewire:product-list/>
         </div>
     </x-slot>
