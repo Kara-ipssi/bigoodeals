@@ -20,32 +20,26 @@
                                         </div>
                                         {{-- <input type="number" wire:model.defer="reference" id="reference" class="form-control enable-mask number-mask" placeholder="0000" /> --}}
                                         <input wire:model="dataref" type="text" name="reference" id="reference" autocomplete="given-reference" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="0000">
-                                        @error('reference') <span class="error">{{ $message }}</span> @enderror
-                                        @error('dataref') <span class="error">{{ $message }}</span> @enderror
                                     </div>
+                                    @error('reference') <span class="error">{{ $message }}</span> @enderror
+                                    @error('dataref') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="col">
                                     <label for="name">{{__('Name')}}</label>
-                                    <div class="input-group">
-                                        <input type="text" wire:model="name" id="name" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300" placeholder="" />
-                                        @error('name') <span class="error">{{ $message }}</span> @enderror
-                                    </div>
+                                    <input type="text" wire:model="name" id="name" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300" placeholder="" />
+                                    @error('name') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                             <div class="form-group row mb-3">
                                 <div class="col">
                                     <label for="price">{{__('Price')}}</label>
-                                    <div class="input-group">
-                                        <input type="number" wire:model="price" id="price" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300" placeholder="" />
-                                        @error('price') <span class="error">{{ $message }}</span> @enderror
-                                    </div>
+                                    <input type="number" wire:model="price" id="price" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300" placeholder="" />
+                                    @error('price') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="col">
                                     <label for="stripe_price">{{__('Stripe price')}}</label>
-                                    <div class="input-group">
-                                        <input type="text" wire:model.defer="stripe_price" id="stripe_price" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300" placeholder="" />
-                                        @error('stripe_price') <span class="error">{{ $message }}</span> @enderror
-                                    </div>
+                                    <input type="text" wire:model.defer="stripe_price" id="stripe_price" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300" placeholder="" />
+                                    @error('stripe_price') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                             <div class="form-group row mb-3">
@@ -101,31 +95,40 @@
                                                 </a>
                                             @endforeach
                                         </div>
+                                        @error('categories') <span class="error">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group row mb-3">
-                                <div class="col-3 mt-2">
+                                {{-- <div class="col-3 mt-2">
                                     <div class="custom-control custom-switch">
                                         <input type="checkbox" class="custom-control-input" id="customSwitch1" name="size" wire:model="size">
                                         <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
                                     </div>
-                                </div>
-                                <div class="col mt-1">
-                                    <label for="location" class="block text-sm font-medium text-gray-700">Sélectionnez le type de taille de votre produit</label>
+                                </div> --}}
+                                <div class="col mt-1.5">
+                                    <label for="sizeType" class="block text-sm font-medium text-gray-700">Sélectionnez le type de taille de votre produit</label>
                                     <select 
                                         id="sizeType" 
                                         name="sizeType"
                                         wire:model="sizeType"
                                         class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
                                     >
-                                        <option value="1">Chaussures</option>
-                                        <option value="2">Vetements</option>
+                                        @foreach ($sizesTypesList as $item)
+                                            <option value="{{$item->id}}">{{$item->name}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="col">
-                                    <label for="js-select-example">{{__('Stock')}}</label>
-                                    <input type="number" wire:model.defer="stock" id="stock" name="stock" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300" placeholder="" />
+                                    <label for="js-select-example">{{__('Quantity')}}</label>
+                                    <input 
+                                        type="number" 
+                                        wire:model.lazy="quantity"
+                                        id="quantity"
+                                        name="quantity" 
+                                        class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300"
+                                    />
+                                    @error('quantity') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                             <div class="form-group row mb-3">
@@ -133,8 +136,8 @@
                                     <label class="block font-medium text-gray-700">Ajout de l'image</label>
                                     <div class="input-group">
                                         <input type="file" wire:model="images" multiple>
-                                        @error('images.*') <span class="error">{{ $message }}</span> @enderror
                                     </div>
+                                    @error('images.*') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                             @if (!empty($images))

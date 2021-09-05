@@ -18,4 +18,12 @@
         </div>
     </x-slot>
 
+    <x-slot name="scripts">
+        <script>
+            Livewire.on('productAdded', ()=>{
+                showSuccessAdd('Le produit a été ajouté avec succès')
+            })
+        </script>
+    </x-slot>
+
 </x-admin-layout>

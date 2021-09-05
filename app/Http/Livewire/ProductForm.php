@@ -5,9 +5,11 @@ namespace App\Http\Livewire;
 use App\Models\Category;
 use App\Models\Image;
 use App\Models\Product;
+use App\Models\SizeType;
 use Exception;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use App\Models\Stock;
 
 class ProductForm extends Component
 {
@@ -46,10 +48,9 @@ class ProductForm extends Component
     /**
      * Product stocks and sizes
      */
-    public $size = false;
+    public $sizesTypesList;
     public $sizeType;
-    public $stock;
-    public $stocks = [];
+    public $quantity;
 
     
 
@@ -59,6 +60,8 @@ class ProductForm extends Component
          * ORM Array
          */
         $this->categoriesList = Category::all();
+        
+        $this->sizesTypesList = SizeType::all();
     }
 
     protected $rules = [
@@ -70,6 +73,7 @@ class ProductForm extends Component
         'categories' => 'required',
         'dataref' => 'int',
         'description' => 'max:500',
+        'quantity' => 'required|int|min:10|max:9999',
     ];
 
     protected $messages = [
@@ -89,10 +93,13 @@ class ProductForm extends Component
 
         'stripe_price.unique' => 'Ce prix stripe est déjà affecté à un produit.',
 
+        'quantity.required' => 'la quantité du produit est requise.',
+        'quantity.min' => 'la quantité minimum requise est 10.',
+        'quantity.max' => 'la quantité ne doit pas excéder 9999.',
+
         'categories.required' => 'Vous devez choisir au moins une catégorie.',
 
         'description.max' => 'La description ne peux pas faire plus de 500 caractères',
-
     ];
 
     public function addCategory(Category $category)
@@ -116,14 +123,27 @@ class ProductForm extends Component
         }
     }
 
+    public function resetInputsFileds()
+    {
+        $this->name = '';
+        $this->dataref = '';
+        $this->reference = '';
+    
+        $this->description = '';
+        $this->price = '';
+        $this->stripe_price = '';
+        $this->quantity = '';
+        $this->categories = [];
+        $this->categoriesList = Category::all();
+        $this->tags = [];
+        $this->images = [];
+    }
+
     public function saveProduct()
     {
         $this->reference = $this->prefix . $this->dataref;
         $validate = $this->validate();
-
-        /* foreach ($this->images as $key => $image) {
-            $image->store('public/products');
-        } */
+        
         $product = Product::create($validate);
         if(!empty($this->images)){
             foreach ($this->images as $image) {
@@ -138,17 +158,36 @@ class ProductForm extends Component
         /**
          * Add of the product category after the storing product
          */
-        foreach ($this->categories as $key => $value) {
-            # code...
+        foreach ($this->categories as $value) {
             $this->cats [] = $value['id']; 
         }
         if (!empty($this->cats)) {
             $product->categories()->sync($this->cats);
         }
+
+        $listOfSize = [];
+        $sizeType = SizeType::find($this->sizeType);
+        foreach($sizeType->sizes as $size){
+            $listOfSize [] = $size;
+        }
+        $nb = count($listOfSize);
+        
+        /**
+         * Saving of the stock
+         */
+        foreach($listOfSize as $size){
+            $stock = new Stock();
+            $stock->quantity = ($this->quantity / $nb);
+            $stock->description = 'description';
+            $stock->product_id = $product->id;
+            $stock->size_id = $size->id;
+            $stock->save();
+        }
         
         session()->flash('message', 'Le produit à bien été ajouté');
-
-        return redirect()->route('products.index');
+        $this->emit('productAdded');
+        $this->resetInputsFileds();
+        // return redirect()->route('products.index');
     }
 
     public function render()

@@ -99,7 +99,7 @@ class CategoryForm extends Component
 
     public function saveCategory()
     {
-        $validate = $this->validate();
+        $this->validate();
 
         $category = new Category();
         if(!empty($this->image)){

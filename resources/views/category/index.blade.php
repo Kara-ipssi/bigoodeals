@@ -22,7 +22,7 @@
         <script>
             Livewire.on('categoryAdded', category =>{
                 console.log(category);
-                showSuccessCategoryAdd(`La catégorie ${category.name} à bien été ajouté.`);
+                showSuccessAdd(`La catégorie ${category.name} à bien été ajouté.`);
             });
 
             Livewire.on('categoryDeleted', () =>{

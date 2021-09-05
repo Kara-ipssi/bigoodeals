@@ -70,7 +70,7 @@
         })
     };
 
-    showSuccessCategoryAdd = function (e) {
+    showSuccessAdd = function (e) {
         'use strict';
         resetToastPosition();
         $.toast({

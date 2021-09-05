@@ -15,8 +15,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        /**
+         * create the admin user
+         * admin@yopmail.com
+         * Azerty123
+         */
         User::factory(1)->create();
 
+        /**
+         * create the size type factory
+         */
         DB::table('size_type')->insert([
             [
                 'name'=>'Vêtement', //id = 1
@@ -26,6 +34,9 @@ class DatabaseSeeder extends Seeder
             ]
         ]);
 
+        /**
+         * create the size factory
+         */
         DB::table('size')->insert([
             //Vêtements
             [
