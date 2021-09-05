@@ -18,6 +18,7 @@ class Stock extends Migration
             $table->integer("quantity");
             $table->text("description");
             $table->foreignId("product_id")->constrained("product");
+            $table->foreignId("size_id")->constrained("size");
             $table->timestamps();
         });
     }

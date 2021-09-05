@@ -13,26 +13,45 @@ class ProductForm extends Component
 {
     use WithFileUploads;
 
+    /**
+     * Product reference
+     */
     public $prefix = "REF";
     public $dataref = "";
-
     public $reference = "";
+
+
     public $name;
     public $description = "";
     public $price;
     public $stripe_price;
+
+    /**
+     * Product images
+     */
     public $images = [];
 
+    /**
+     * Product Categories
+     */
     public $categoriesList;
-
-
-    public $stocks = [];
-    public $tags = [];
     public $categories = [];
-
     protected $cats;
 
-    // public $categoryModalVisibility = "hidden";
+    /**
+     * Product tags
+     */
+    public $tags = [];
+
+    /**
+     * Product stocks and sizes
+     */
+    public $size = false;
+    public $sizeType;
+    public $stock;
+    public $stocks = [];
+
+    
 
     public function mount()
     {
