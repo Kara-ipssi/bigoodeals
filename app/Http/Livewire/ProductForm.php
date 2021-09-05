@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Category;
 use App\Models\Image;
 use App\Models\Product;
+use Exception;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -22,12 +23,24 @@ class ProductForm extends Component
     public $stripe_price;
     public $images = [];
 
+    public $categoriesList;
+
 
     public $stocks = [];
     public $tags = [];
     public $categories = [];
 
-    public $categoryModalVisibility = "hidden";
+    protected $cats;
+
+    // public $categoryModalVisibility = "hidden";
+
+    public function mount()
+    {
+        /**
+         * ORM Array
+         */
+        $this->categoriesList = Category::all();
+    }
 
     protected $rules = [
         'reference' => 'required|unique:product|min:6|max:10',
@@ -37,6 +50,7 @@ class ProductForm extends Component
         'images.*' => 'file|mimes:png,jpg,pdf|max:1024',
         'categories' => 'required',
         'dataref' => 'int',
+        'description' => 'max:500',
     ];
 
     protected $messages = [
@@ -58,21 +72,29 @@ class ProductForm extends Component
 
         'categories.required' => 'Vous devez choisir au moins une catégorie.',
 
+        'description.max' => 'La description ne peux pas faire plus de 500 caractères',
+
     ];
 
-/*    public function updateTagslist($tag)
+    public function addCategory(Category $category)
     {
-        $this->tags[] = $tag;
-    }*/
-
-    public function setCategoryModalVisibilityToHidden()
-    {
-        $this->categoryModalVisibility = "hidden";
+        $this->categories [] = $category;
+        for ($i=0; $i < count($this->categoriesList); $i++) { 
+            if ($this->categoriesList[$i]->id === $category->id) {
+                unset($this->categoriesList[$i]);
+            }
+        }
     }
 
-    public function setCategoryModalVisibilityToFixed()
+    public function cancelAddCategory(Category $category)
     {
-        $this->categoryModalVisibility = "fixed";
+
+        foreach ($this->categories as $key => $item) {
+            if ($item['id'] == $category->id) {
+                unset($this->categories[$key]);
+                $this->categoriesList [] = $category; 
+            }
+        }
     }
 
     public function saveProduct()
@@ -97,8 +119,14 @@ class ProductForm extends Component
         /**
          * Add of the product category after the storing product
          */
-        $product->categories()->sync($this->categories);
-
+        foreach ($this->categories as $key => $value) {
+            # code...
+            $this->cats [] = $value['id']; 
+        }
+        if (!empty($this->cats)) {
+            $product->categories()->sync($this->cats);
+        }
+        
         session()->flash('message', 'Le produit à bien été ajouté');
 
         return redirect()->route('products.index');
@@ -106,8 +134,6 @@ class ProductForm extends Component
 
     public function render()
     {
-        return view('livewire.product.product-form', [
-            'categoriesList' => Category::all()
-        ]);
+        return view('livewire.product.product-form');
     }
 }

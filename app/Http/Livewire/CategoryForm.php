@@ -30,13 +30,13 @@ class CategoryForm extends Component
 
     protected $rules = [
         'name' => 'required|unique:category|min:3|max:25',
-        'description' => 'max:700',
+        'description' => 'max:500',
         'image.*' => 'file|mimes:png,jpg,pdf|max:1024|required'
     ];
 
     protected $messages = [
 
-        'description.max' => 'La description doit faire au maximum 700 caractères',
+        'description.max' => 'La description ne peux pas faire plus de 500 caractères',
 
         'name.required' => 'Le nom est requis.',
         'name.min' => 'Le nom doit faire au minimum 3 caratères.',

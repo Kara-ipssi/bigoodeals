@@ -90,9 +90,13 @@
                                     <label for="reference">{{__('Reference')}}</label>
                                     <div class="input-group">
                                         <div class="input-group-append">
-                                            <div class="input-group-text">REF</div>
+                                            {{-- <div class="input-group-text">REF</div> --}}
+                                            <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
+                                                REF
+                                            </span>
                                         </div>
-                                        <input type="number" wire:model="reference" id="reference" class="form-control enable-mask date-mask" placeholder="0000" />
+                                        {{-- <input type="number" wire:model.defer="reference" id="reference" class="form-control enable-mask number-mask" placeholder="0000" /> --}}
+                                        <input wire:model="dataref" type="text" name="reference" id="reference" autocomplete="given-reference" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="0000">
                                         @error('reference') <span class="error">{{ $message }}</span> @enderror
                                         @error('dataref') <span class="error">{{ $message }}</span> @enderror
                                     </div>
@@ -100,7 +104,7 @@
                                 <div class="col">
                                     <label for="name">{{__('Name')}}</label>
                                     <div class="input-group">
-                                        <input type="text" wire:model="name" id="name" class="form-control" placeholder="" />
+                                        <input type="text" wire:model="name" id="name" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300" placeholder="" />
                                         @error('name') <span class="error">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
@@ -109,14 +113,14 @@
                                 <div class="col">
                                     <label for="price">{{__('Price')}}</label>
                                     <div class="input-group">
-                                        <input type="number" wire:model="price" id="price" class="form-control" placeholder="" />
+                                        <input type="number" wire:model="price" id="price" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300" placeholder="" />
                                         @error('price') <span class="error">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
                                 <div class="col">
                                     <label for="stripe_price">{{__('Stripe price')}}</label>
                                     <div class="input-group">
-                                        <input type="text" wire:model="stripe_price" id="stripe_price" class="form-control" placeholder="" />
+                                        <input type="text" wire:model.defer="stripe_price" id="stripe_price" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300" placeholder="" />
                                         @error('stripe_price') <span class="error">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
@@ -128,7 +132,7 @@
                                         <textarea wire:model="description" 
                                             id="maxlength-textarea" 
                                             name="description" 
-                                            class="form-control focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" 
+                                            class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300" 
                                             placeholder="Informations supplémentaires" 
                                             maxlength="500"
                                             rows="5" ></textarea>
@@ -137,35 +141,66 @@
                                     </div>
                                 </div>
                             </div>
+                            @if (!empty($categories))
+                                <div class="form-group row mb-0">
+                                    <div class="col">
+                                        <label for="inputType12">{{__('Categories')}} sélectionnés</label>
+                                        <div class="showcase_content_area">
+                                            <div class="form-group shadow-sm h-20 rounded-sm p-1">
+                                                @foreach ($categories as $category)
+                                                    <span class="my-2 ml-2 inline-flex rounded-full items-center py-0.5 pl-2.5 p-2 text-sm font-medium bg-indigo-100 text-indigo-700">
+                                                        {{$category['name']}}
+                                                        <a href="javascript:void(0)" wire:click="cancelAddCategory({{$category['id']}})" type="button" class="flex-shrink-0 ml-0.5 h-4 w-4 rounded-full inline-flex items-center justify-center text-indigo-400 hover:bg-indigo-200 hover:text-indigo-500 focus:outline-none focus:bg-indigo-500 focus:text-white">
+                                                            <span class="sr-only">Remove large option</span>
+                                                            <svg class="h-2 w-2" stroke="currentColor" fill="none" viewBox="0 0 8 8">
+                                                                <path stroke-linecap="round" stroke-width="1.5" d="M1 1l6 6m0-6L1 7" />
+                                                            </svg>
+                                                        </a>
+                                                    </span>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
                             <div class="form-group row mb-0">
                                 <div class="col">
                                     <label for="js-select-example">{{__('Categories')}}</label>
                                     <div class="showcase_content_area">
-                                        <div class="form-group">
-                                            <select id="js-select-example" class="form-control" name="categories" wire:model="categories" multiple>
-                                                @foreach($categoriesList as $category)
-                                                    <option value="{{$category->id}}">{{$category->name}}</option>
-                                                @endforeach
-                                            </select>
+                                        <div class="form-group shadow-sm h-20 rounded-sm p-1 ">
+                                            @foreach($categoriesList as $category)
+                                                <a 
+                                                    href="javascript:void(0)" 
+                                                    wire:click="addCategory({{$category->id}})" 
+                                                    value="{{$category->id}}"
+                                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xm font-medium bg-gray-100 text-gray-800"
+                                                >
+                                                    {{$category->name}}
+                                                </a>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group row mb-0">
                                 <div class="col">
-                                    <div class="custom-file">
-                                        <input type="file" wire:model="images" class="custom-file-input" id="customFile" name="images" multiple>
-                                        <label class="custom-file-label" for="customFile">{{!empty($images) ? '2 images' : __('Choose file')}}</label>
+                                    <label class="block font-medium text-gray-700">Ajout de l'image</label>
+                                    <div class="input-group">
+                                        <input type="file" wire:model="images" multiple>
+                                        @error('images.*') <span class="error">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
                             </div>
-                            {{-- @if (!empty($images))
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-sm btn-primary">{{__("Add")}}</button>
+                            </div>
+                            @if (!empty($images))
                                 <div class="form-group row">
                                     @foreach ($images as $image)
-                                        <div class="col"> <img src="{{$image->temporaryUrl()}}" width="200" alt="Image"> </div>
+                                        <div class="m-1"> <img src="{{$image->temporaryUrl()}}" width="200" alt="Image"> </div>
                                     @endforeach
                                 </div>
-                            @endif --}}
+                            @endif
                             
                         </form>
                     </div>

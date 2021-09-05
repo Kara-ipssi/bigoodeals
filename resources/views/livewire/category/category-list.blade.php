@@ -62,7 +62,7 @@
                                     <td class="text-center">
                                         <a href="{{route('categories.show', $category->id)}}" class="text-indigo-600 hover:text-indigo-900"><i class="fa fa-eye"></i> {{ __('Show') }} </a>
                                         {{-- <a href="{{route('categories.edit', $category->id)}}" class="text-yellow-600 hover:text-yellow-900"><i class="fas fa-pencil"></i> {{ __('Edit') }}</a> --}}
-                                        <button wire:click="$emit('editRequest', '{{$category->id}}')" class="text-yellow-600 hover:text-yellow-900"><i class="fas fa-pencil"></i> {{ __('Edit') }}</button>
+                                        <a href="#" wire:click="$emit('editRequest', '{{$category->id}}')" class="text-yellow-600 hover:text-yellow-900"><i class="fas fa-pencil"></i> {{ __('Edit') }}</a>
                                         <button type="button" data-toggle="modal" data-target="#categoryDeleteModal{{$category->id}}" class="text-red-600 hover:text-red-900"><i class="fas fa-trash-alt"></i> {{ __('Delete') }}</button>
                                     </td>
                                 </tr>
