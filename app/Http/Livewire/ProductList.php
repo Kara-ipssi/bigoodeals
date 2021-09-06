@@ -40,14 +40,34 @@ class ProductList extends Component
      */
     public function deleteProduct(Product $product)
     {
+        // dd($product->stocks);
+        $name = $product->name;
         try {
-            $product->categories()->detach();
+            
+            // Category delete
+            if($product->categories !== null){
+                $product->categories()->detach();
+            }
+
+            // Stock delete
+            if($product->stocks !== null){
+                foreach($product->stocks as $stock){
+                    $stock->delete();
+                }
+            }
+
+            // Image delete 
+            if($product->images !== null){
+                foreach($product->images as $image){
+                    $image->delete();
+                }
+            }
             $product->delete();
-            session()->flash('message', 'Erreur - Impossible de supprimer le produit '.$product->name);
+            session()->flash('message','Success - Le produit '.$name.' à bien été supprimé.');
             return redirect()->route('products.index');
         }
         catch (\Exception $e){
-            session()->flash('error', 'Erreur - Impossible de supprimer le produit '.$product->name);
+            session()->flash('error', 'Erreur - Impossible de supprimer le produit '.$name);
 
             return redirect()->route('products.index');
             //dd($e->getMessage());
@@ -61,7 +81,7 @@ class ProductList extends Component
         return view('livewire.product.product-list', [
             'products' => Product::where("name", "like", "%".$this->search."%") //recherche par nom
                 ->orWhere("reference", "like", "%".$this->search."%") //recherche par reference
-                ->orWhere("price", "like", "%".$this->search."%")->paginate(10), //par prix
+                ->orWhere("price", "like", "%".$this->search."%")->paginate(5), //par prix
         ]);
     }
 }

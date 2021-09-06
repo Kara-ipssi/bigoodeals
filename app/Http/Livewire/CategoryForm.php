@@ -17,7 +17,7 @@ class CategoryForm extends Component
     /**
      * For edit
      */
-    public $category;
+    protected $category;
     public $editMode = false;
     public $hiddenId;
     public $currentImageURL = null; 
@@ -91,6 +91,7 @@ class CategoryForm extends Component
         $this->description = '';
         $this->currentImageURL = null;
         $this->newImage = null;
+        $this->image=[];
         $this->category = null;
         $this->emit('cancelEdit');
     }

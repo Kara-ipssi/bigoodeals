@@ -41,13 +41,14 @@ class CategoryList extends Component
      */
     public function deleteCategory(Category $category)
     {
+        $name = $category->name;
         try {
             $category->delete();
-            session()->flash('success', 'La catégorie à bien été supprimé');
+            session()->flash('success', 'La catégorie '.$name.' à bien été supprimé');
             $this->emit('categoryDeleted');
             return redirect()->route('categories.index');
         } catch (Exception $e) {
-            session()->flash('error', 'Erreur - Impossible de supprimer la catégorie '.$category->name);
+            session()->flash('error', 'Erreur - Impossible de supprimer la catégorie '.$name);
 
             return redirect()->route('categories.index');
         }

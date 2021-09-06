@@ -6,7 +6,6 @@ use App\Models\Category;
 use App\Models\Image;
 use App\Models\Product;
 use App\Models\SizeType;
-use Exception;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Stock;
@@ -14,6 +13,11 @@ use App\Models\Stock;
 class ProductForm extends Component
 {
     use WithFileUploads;
+
+    /**
+     * The events listeners
+     */
+    protected $listeners = ['editProductRequest'];
 
     /**
      * Product reference
@@ -51,6 +55,13 @@ class ProductForm extends Component
     public $sizesTypesList;
     public $sizeType;
     public $quantity;
+
+    /**
+     * For edit mode
+     */
+    protected $productToEdit;
+    public $editMode = false;
+    public $currentsImages = [];
 
     
 
@@ -137,6 +148,40 @@ class ProductForm extends Component
         $this->categoriesList = Category::all();
         $this->tags = [];
         $this->images = [];
+    }
+
+    public function editProductRequest(Product $product)
+    {
+        $this->productToEdit = $product;
+        $this->categoriesList = Category::all();
+
+        $quantity = 0;
+        foreach($product->stocks as $stock){
+            $quantity += $stock->quantity;
+        }
+
+        $categories = [];
+        foreach($product->categories as $key => $cat){
+            $categories[$key] = $cat;
+            foreach ($this->categoriesList as $i => $value) {
+                if($value->id === $categories[$key]->id){
+                    unset($this->categoriesList[$i]);
+                }
+            }
+        }
+
+        $this->editMode = true;
+        $this->name = $product->name;
+        /** Don't take the REF chart thanks to the substr method*/
+        $this->dataref = substr($product->reference, 3);
+        $this->description = $product->description;
+        $this->price = $product->price;
+        $this->stripe_price = $product->stripe_price;
+        $this->quantity = $quantity;
+        $this->categories = $product->categories;
+        
+        // $this->tags = [];
+        $this->currentsImages = $this->productToEdit->images;
     }
 
     public function saveProduct()

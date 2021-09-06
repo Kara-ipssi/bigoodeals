@@ -140,6 +140,13 @@
                                     @error('images.*') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
+                            @if ($editMode === true)
+                                <div class="form-group row">
+                                    @foreach ($currentsImages as $image)
+                                        <div class="m-1"> <img src="/{{$image->image_url}}" width="200" alt="Image"> </div>
+                                    @endforeach
+                                </div>
+                            @endif
                             @if (!empty($images))
                                 <div class="form-group row">
                                     @foreach ($images as $image)

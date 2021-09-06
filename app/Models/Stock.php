@@ -14,4 +14,9 @@ class Stock extends Model
      * @var string
      */
     protected $table = "stock";
+
+    public function size()
+    {
+        return $this->belongsTo(Size::class);
+    }
 }
