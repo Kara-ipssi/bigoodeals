@@ -16,6 +16,7 @@ class CartContent extends Migration
         Schema::create('cart_content', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->foreignId('product_id')->constrained('product');
+            $table->foreignId('cart_id')->constrained('cart');
             $table->integer('quantity');
             $table->timestamps();
         });

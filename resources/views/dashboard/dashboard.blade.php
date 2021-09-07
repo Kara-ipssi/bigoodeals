@@ -1,8 +1,11 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
+<x-admin-layout>
+    <x-slot name="breadcrumb">
+        
     </x-slot>
 
-</x-app-layout>
+    <x-slot name="slot">
+        <h1>Salut dashboard</h1>
+        <livewire:category-form/>
+    </x-slot>
+
+</x-admin-layout>
