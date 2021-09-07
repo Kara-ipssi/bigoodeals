@@ -13,10 +13,17 @@ class ProductList extends Component
     use WithPagination;
     public $search;
 
+    protected $listeners = ['productUpdated', 'productAdded'];
+    public $productCount;
 
-    public function mount()
+    public function productUpdated()
     {
-        //
+        $this->productCount = Product::count();
+    }
+
+    public function productAdded()
+    {
+        $this->productCount = Product::count();
     }
 
     public function updatingSearch()

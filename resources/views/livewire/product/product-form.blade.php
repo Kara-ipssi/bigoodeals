@@ -1,7 +1,6 @@
 <div class="col-lg-12">
-    
     <div class="grid">
-        <p class="grid-header"> {{__('Add')}}</p>
+        <p class="grid-header">{{$editMode === true ? 'Modification' : __('Add')}}</p>
         <div class="grid-body">
             <div class="item-wrapper"> 
                 <div class="row">
@@ -19,7 +18,16 @@
                                             </span>
                                         </div>
                                         {{-- <input type="number" wire:model.defer="reference" id="reference" class="form-control enable-mask number-mask" placeholder="0000" /> --}}
-                                        <input wire:model="dataref" type="text" name="reference" id="reference" autocomplete="given-reference" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="0000">
+                                        <input 
+                                            wire:model="dataref" 
+                                            type="text" 
+                                            name="reference" 
+                                            id="reference"  
+                                            autocomplete="given-reference" 
+                                            class="{{$editMode === true ? 'bg-gray-100 cursor-not-allowed' : '' }} focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" 
+                                            placeholder="0000"
+                                            {{$editMode === true ? 'disabled' : '' }}
+                                        >
                                     </div>
                                     @error('reference') <span class="error">{{ $message }}</span> @enderror
                                     @error('dataref') <span class="error">{{ $message }}</span> @enderror
@@ -133,34 +141,75 @@
                             </div>
                             <div class="form-group row mb-3">
                                 <div class="col">
-                                    <label class="block font-medium text-gray-700">Ajout de l'image</label>
+                                    <label class="block font-medium text-gray-700">Ajout des images</label>
                                     <div class="input-group">
-                                        <input type="file" wire:model="images" multiple>
+                                        <input type="file" wire:model="{{$editMode === true ? 'newImages' : 'images'}}" multiple>
                                     </div>
                                     @error('images.*') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
-                            @if ($editMode === true)
-                                <div class="form-group row">
-                                    @foreach ($currentsImages as $image)
-                                        <div class="m-1"> <img src="/{{$image->image_url}}" width="200" alt="Image"> </div>
-                                    @endforeach
-                                </div>
-                            @endif
-                            @if (!empty($images))
+                            @if (!empty($images) && $editMode === false)
+                            Prévisualisation des images :
                                 <div class="form-group row">
                                     @foreach ($images as $image)
                                         <div class="m-1"> <img src="{{$image->temporaryUrl()}}" width="200" alt="Image"> </div>
                                     @endforeach
                                 </div>
                             @endif
+                            @if ($editMode === true)
+                                images actuelles :
+                                <div class="form-group row">
+                                    @foreach ($currentsImages as $image)
+                                        <div class="m-1"> <img src="/{{$image->image_url}}" width="200" alt="Image"> </div>
+                                    @endforeach
+                                </div>
+                                @if (!empty($newImages))
+                                    Nouvelles Images :
+                                    <div class="form-group row">
+                                        @foreach ($newImages as $img)
+                                            <div class="m-1"> <img src="{{$img->temporaryUrl()}}" width="200" alt="Image"> </div>
+                                        @endforeach
+                                    </div>
+                                @endif
+                            @endif
+                            
                             <div class="text-right">
-                                <button type="submit" class="btn btn-sm btn-primary">{{__("Add")}}</button>
+                                @if ($editMode === true)
+                                    <a wire:click="cancelEdit()" class="btn btn-sm btn-secondary cursor-pointer">{{__("Cancel")}}</a>
+                                    <a wire:click="updateProduct()" class="btn btn-sm btn-success cursor-pointer">{{__("Update")}}</a>
+                                @else
+                                    <button type="submit" class="btn btn-sm btn-primary">{{__("Add")}}</button>
+                                @endif
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+        @if($editMode === true)
+            <div class="bg-green-600" id="successMessage">
+                <div class="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
+                    <div class="flex items-center justify-between flex-wrap">
+                        <div class="w-0 flex-1 flex items-center">
+                            <span class="flex p-2 rounded-lg bg-green-800">
+                                <!-- Heroicon name: outline/speakerphone -->
+                                {{-- <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" />
+                                </svg> --}}
+                                <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" stroke="currentColor" aria-hidden="true">
+                                    <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
+                                    <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" />
+                                </svg>
+                            </span>
+                            <p class="ml-3 font-medium text-white truncate">
+                                <span>
+                                    Mode édition
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
     </div>
 </div>

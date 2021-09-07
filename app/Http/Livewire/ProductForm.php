@@ -9,6 +9,7 @@ use App\Models\SizeType;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Stock;
+use Exception;
 
 class ProductForm extends Component
 {
@@ -53,15 +54,16 @@ class ProductForm extends Component
      * Product stocks and sizes
      */
     public $sizesTypesList;
-    public $sizeType;
+    public $sizeType = 2;
     public $quantity;
 
     /**
      * For edit mode
      */
-    protected $productToEdit;
+    public $productToEdit;
     public $editMode = false;
     public $currentsImages = [];
+    public $newImages = [];
 
     
 
@@ -134,21 +136,7 @@ class ProductForm extends Component
         }
     }
 
-    public function resetInputsFileds()
-    {
-        $this->name = '';
-        $this->dataref = '';
-        $this->reference = '';
-    
-        $this->description = '';
-        $this->price = '';
-        $this->stripe_price = '';
-        $this->quantity = '';
-        $this->categories = [];
-        $this->categoriesList = Category::all();
-        $this->tags = [];
-        $this->images = [];
-    }
+
 
     public function editProductRequest(Product $product)
     {
@@ -179,9 +167,95 @@ class ProductForm extends Component
         $this->stripe_price = $product->stripe_price;
         $this->quantity = $quantity;
         $this->categories = $product->categories;
+        $this->sizeType = $this->productToEdit->stocks[0]->size->size_type->id;
         
         // $this->tags = [];
         $this->currentsImages = $this->productToEdit->images;
+    }
+
+    public function cancelEdit()
+    {
+        $this->editMode = false;
+        $this->resetInputsFileds();
+    }
+
+    public function updateProduct()
+    {
+        $validate = $this->validate([
+            'name' => 'required|min:3|max:25',
+            'price' => 'required|numeric|between:0,999.99',
+            'stripe_price' => 'required|min:0',
+            'newImages.*' => 'file|mimes:png,jpg,pdf|max:1024',
+            'categories' => 'required',
+            'description' => 'max:500',
+            'quantity' => 'required|int|min:0|max:9999',
+        ]);
+        
+        if ($this->editMode === true) {
+            foreach ($this->categories as $value) {
+                $this->cats [] = $value['id']; 
+            }
+            if (!empty($this->cats)) {
+                $this->productToEdit->categories()->sync($this->cats);
+            }
+            
+            // update of the quantity only if value is more than 10
+            if($this->quantity > 10){
+                $listOfSize = [];
+                $sizeType = SizeType::find($this->sizeType);
+                foreach($sizeType->sizes as $size){
+                    $listOfSize [] = $size;
+                }
+                $nb = count($listOfSize);
+                
+                /**
+                 * Saving of the stock
+                 */
+                foreach($this->productToEdit->stocks as $stock){
+                    $stock->delete();
+                }
+                foreach($listOfSize as $size){
+                    $stock = new Stock();
+                    $stock->quantity = ($this->quantity / $nb);
+                    $stock->description = 'description';
+                    $stock->product_id = $this->productToEdit->id;
+                    $stock->size_id = $size->id;
+                    $stock->save();
+                }
+            }
+             
+            if (!empty($this->newImages)) {
+                if(count($this->productToEdit->images)>=1){
+                    // deleting olds images
+                    foreach($this->productToEdit->images as $img){
+                        try {
+                            $img->delete();
+                        } catch (Exception $e) {
+                            dd($e->getMessage());
+                        }
+                    }
+                }
+                // seting of the news images
+                foreach ($this->newImages as $image) {
+                    $image->store('public/products');
+                    Image::create([
+                        'name'=>$image->hashName(),
+                        'image_url'=>'storage/products/'.$image->hashName(),
+                        'product_id'=>$this->productToEdit->id
+                    ]);
+                }
+            }
+            try {
+                $this->productToEdit->update($validate);
+                $this->emit('productUpdated', $this->productToEdit->name);
+                $this->resetInputsFileds();
+            } catch (Exception $e) {
+                dd($e->getMessage());
+            }
+        }
+        else{
+            return redirect()->route('products.index');
+        }
     }
 
     public function saveProduct()
@@ -233,6 +307,27 @@ class ProductForm extends Component
         $this->emit('productAdded');
         $this->resetInputsFileds();
         // return redirect()->route('products.index');
+    }
+
+    public function resetInputsFileds()
+    {
+        $this->editMode = false;
+        $this->productToEdit = '';
+        $this->name = '';
+        $this->dataref = '';
+        $this->reference = '';
+    
+        $this->description = '';
+        $this->price = '';
+        $this->stripe_price = '';
+        $this->quantity = '';
+        $this->categories = [];
+        $this->categoriesList = Category::all();
+        $this->tags = [];
+        $this->images = [];
+        $this->newImages = [];
+        $this->currentsImages = [];
+        $this->cats = [];
     }
 
     public function render()

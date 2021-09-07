@@ -91,6 +91,10 @@
             Livewire.on('productAdded', ()=>{
                 showSuccessAdd('Le produit a été ajouté avec succès')
             })
+
+            Livewire.on('productUpdated', (name)=>{
+                showSuccessAdd(`Le produit ${name} à bien été mis à jour`);
+            });
         </script>
     </x-slot>
 

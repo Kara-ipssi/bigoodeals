@@ -17,7 +17,7 @@ class CategoryForm extends Component
     /**
      * For edit
      */
-    protected $category;
+    public $category;
     public $editMode = false;
     public $hiddenId;
     public $currentImageURL = null; 
@@ -64,9 +64,10 @@ class CategoryForm extends Component
 
     public function updateCategory()
     {
-        $validate = $this->validate([
+        
+        $this->validate([
             'name' => 'required|min:3|max:25',
-            'description' => 'max:700',
+            'description' => 'max:500',
             'newImage.*' => 'file|mimes:png,jpg,pdf|max:1024'
         ]);
 
