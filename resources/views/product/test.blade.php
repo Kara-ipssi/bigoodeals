@@ -22,7 +22,7 @@
               allowfullscreen="true"
             >
           </iframe>
-        </div> 
+        </div>
     </x-slot>
 
 </x-admin-layout>
