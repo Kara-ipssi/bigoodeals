@@ -87,7 +87,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#" id="messageDropdown" data-toggle="dropdown" aria-expanded="false">
                         <i class="mdi mdi-message-outline mdi-1x"></i>
-                        <span class="notification-indicator notification-indicator-primary notification-indicator-ripple"></span>
+                        {{-- <span class="notification-indicator notification-indicator-primary notification-indicator-ripple"></span> --}}
                     </a>
                     <div class="dropdown-menu navbar-dropdown dropdown-menu-right" aria-labelledby="messageDropdown">
                     <div class="dropdown-header">
