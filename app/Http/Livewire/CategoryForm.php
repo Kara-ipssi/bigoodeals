@@ -75,7 +75,7 @@ class CategoryForm extends Component
         {
             if(!empty($this->newImage)){
                 $this->newImage->store('public/categories');
-                $this->category->image = 'storage/categories/'.$this->newImage->hashName();
+                $this->category->image = '/storage/categories/'.$this->newImage->hashName();
             }
             $this->category->name = $this->name;
             $this->category->description = $this->description;

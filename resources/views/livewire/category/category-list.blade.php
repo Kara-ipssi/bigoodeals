@@ -28,7 +28,7 @@
                                 <tr>
                                     <td class="text-center">{{$recentlyAddedCategory->id}}</td>
                                     <td class="text-center">{{$recentlyAddedCategory->name}}</td>
-                                    <td class="text-center"><img src="/{{$recentlyAddedCategory->image}}" width="50" alt="Image categories {{$recentlyAddedCategory->name}}"></td>
+                                    <td class="text-center"><img src="{{$recentlyAddedCategory->image}}" width="50" alt="Image categories {{$recentlyAddedCategory->name}}"></td>
                                     <td class="text-center">{{$recentlyAddedCategory->created_at}}</td>
                                     <td class="text-center">{{$recentlyAddedCategory->updated_at}}</td>
                                     <td class="text-center">
@@ -62,7 +62,7 @@
                                 <tr>
                                     <td class="text-center">{{$cat->id}}</td>
                                     <td class="text-center">{{$cat->name}}</td>
-                                    <td class="text-center"><img src="/{{$cat->image}}" width="50" alt="Image categories {{$cat->name}}"></td>
+                                    <td class="text-center"><img src="{{$cat->image}}" width="50" alt="Image categories {{$cat->name}}"></td>
                                     <td class="text-center">{{$cat->created_at}}</td>
                                     <td class="text-center">{{$cat->updated_at}}</td>
                                     <td class="text-center">

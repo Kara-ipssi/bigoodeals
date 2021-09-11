@@ -10,6 +10,7 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Stock;
 use Exception;
+use Illuminate\Support\Facades\DB;
 
 class ProductForm extends Component
 {
@@ -24,6 +25,7 @@ class ProductForm extends Component
      * Product reference
      */
     public $prefix = "REF";
+    public $prefix_start = 10001;
     public $dataref = "";
     public $reference = "";
 
@@ -65,10 +67,21 @@ class ProductForm extends Component
     public $currentsImages = [];
     public $newImages = [];
 
-    
+
+    /**
+     * Last product
+     */
+    public $lastPrduct;
 
     public function mount()
     {
+        $this->lastProduct = DB::table('product')->orderBy('id', 'desc')->first();
+        if($this->lastProduct === null){
+            $this->dataref = $this->prefix_start;
+        }
+        else{
+            $this->dataref = (int)substr($this->lastProduct->reference, 3) + 1;
+        }
         /**
          * ORM Array
          */
@@ -269,7 +282,7 @@ class ProductForm extends Component
                 $image->store('public/products');
                 Image::create([
                     'name'=>$image->hashName(),
-                    'image_url'=>'storage/products/'.$image->hashName(),
+                    'image_url'=>'/storage/products/'.$image->hashName(),
                     'product_id'=>$product->id
                 ]);
             }
@@ -314,7 +327,7 @@ class ProductForm extends Component
         $this->editMode = false;
         $this->productToEdit = '';
         $this->name = '';
-        $this->dataref = '';
+        // $this->dataref = '';
         $this->reference = '';
     
         $this->description = '';
@@ -328,6 +341,8 @@ class ProductForm extends Component
         $this->newImages = [];
         $this->currentsImages = [];
         $this->cats = [];
+        $this->lastProduct = DB::table('product')->orderBy('id', 'desc')->first();
+        $this->dataref = (int)substr($this->lastProduct->reference, 3) + 1;
     }
 
     public function render()

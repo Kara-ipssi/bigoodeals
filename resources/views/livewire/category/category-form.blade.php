@@ -78,7 +78,7 @@
                                 @if ($editMode === true)
                                         <div>
                                             image actuelle :
-                                            <img class="m-2" width="180" src="/{{ $currentImageURL }}">
+                                            <img class="m-2" width="180" src="{{ $currentImageURL }}">
                                         </div>
                                     @if ($newImage !== null)
                                         <div>
