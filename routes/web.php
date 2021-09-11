@@ -19,12 +19,21 @@ use App\Http\Controllers\ProductController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('shop.index');
+});
+
+Route::get('/shop', function () {
+    return view('shop.index'); 
 });
 
 Route::get('/test', function () {
     return view('product.test');
 })->name('test');
+
+Route::get('/404', function () {
+    return view('error.page404');
+})->name('test');
+
 
 
 //dashboard routes

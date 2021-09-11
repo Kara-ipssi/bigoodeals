@@ -5,7 +5,7 @@
 
     <x-slot name="slot">
         <h1>Salut dashboard</h1>
-        <livewire:category-form/>
+        {{-- <livewire:category-form/> --}}
     </x-slot>
 
 </x-admin-layout>

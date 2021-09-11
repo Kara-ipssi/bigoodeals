@@ -1,42 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Ripple UI - Responsive Bootstrap 4 Admin & Dashboard Template</title>
-    <!-- plugins:css -->
-    <link rel="stylesheet" href="{{asset('assets/vendors/iconfonts/mdi/css/materialdesignicons.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/vendors/css/vendor.addons.css')}}">
-    <!-- endinject -->
-    <!-- vendor css for this page -->
-    <!-- End vendor css for this page -->
-    <!-- inject:css -->
-    <link rel="stylesheet" href="{{asset('assets/css/shared/style.css')}}">
-    <!-- endinject -->
-    <!-- Layout style -->
-    <link rel="stylesheet" href="{{asset('assets/css/demo_1/style.css')}}">
-    <!-- Layout style -->
-    <link rel="shortcut icon" href="{{asset('assets/images/favicon.ico')}}" />
-  </head>
-  <body>
-    <div class="error_page error_3">
-      <div class="container inner-wrapper">
-        <h1 class="error-heading">404</h1>
-        <h2 class="error-code">Page Not Found!</h2>
-        <p class="error-message">The page you are looking for might have been removed had its name changed or is temporarily unavailable.</p>
-        <a href="#" class="btn btn-primary">Back to Home</a>
-      </div>
-    </div>
-    <!--page body ends -->
-    <!-- SCRIPT LOADING START FORM HERE /////////////-->
-    <!-- plugins:js -->
-    <script src="{{asset('assets/vendors/js/core.js')}}"></script>
-    <script src="{{asset('assets/vendors/js/vendor.addons.js')}}"></script>
-    <!-- endinject -->
-    <!-- Vendor Js For This Page Ends-->
-    <!-- Vendor Js For This Page Ends-->
-    <!-- build:js -->
-    <script src="{{asset('assets/js/template.js')}}"></script>
-    <!-- endbuild -->
-  </body>
-</html>
+<x-guest-layout>
+    <x-slot name="slot">
+      <div class="bg-white min-h-screen px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8">
+        <div class="max-w-max mx-auto">
+          <main class="sm:flex">
+            <p class="text-4xl font-extrabold text-indigo-600 sm:text-5xl">404</p>
+            <div class="sm:ml-6">
+              <div class="sm:border-l sm:border-gray-200 sm:pl-6">
+                <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">Page not found</h1>
+                <p class="mt-1 text-base text-gray-500">Please check the URL in the address bar and try again.</p>
+              </div>
+              <div class="mt-10 flex space-x-3 sm:border-l sm:border-transparent sm:pl-6">
+                <a href="/shop" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                  {{__("Go back home")}}
+                </a>
+                <a href="mailto:k.coulibaly@ecole-ipssi.net" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                  {{__('Contact support')}}
+                </a>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div> 
+    </x-slot>
+</x-guest-layout>

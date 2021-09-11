@@ -1,6 +1,5 @@
 {
     "Log In": "Se connecter",
-
     "30 Days": "30 jours",
     "60 Days": "60 jours",
     "90 Days": "90 jours",
@@ -727,5 +726,11 @@
     "Add new category": "Ajouter une nouvelle catégorie",
     "New category": "Nouvelle catégorie",
     "Categories list": "Liste des catégories",
-    "Categories management": "Gestion des catégories"
+    "Categories management": "Gestion des catégories",
+    "Our products": "Nos produits",
+    "Men": "Hommes",
+    "Women": "Femmes",
+    "Contact us": "Nous contacter",
+    "About": "A propos",
+    "Home" : "Accueil"
 }

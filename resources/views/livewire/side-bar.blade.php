@@ -57,7 +57,10 @@
             </div>
             <a class="user-profile-item" href="#"><i class="mdi mdi-account"></i> Profile</a>
             <a class="user-profile-item" href="#"><i class="mdi mdi-settings"></i> Account Settings</a>
-            <a class="btn btn-primary btn-logout" href="{{route("logout")}}">Logout</a>
+            <form action="{{route("logout")}}" method="post">
+                @csrf
+                <button class="btn btn-primary btn-logout">Logout</button>
+            </form>
         </div>
         <div class="btn-group admin-access-level">
             <div class="avatar">
