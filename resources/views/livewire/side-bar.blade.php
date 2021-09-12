@@ -14,10 +14,7 @@
             </a>
             <ul class="collapse navigation-submenu" id="products">
                 <li>
-                    <a href="{{route("products.index")}}" >{{__('Products list')}}</a>
-                </li>
-                <li>
-                    <a href="#" >{{__('Add')}}</a>
+                    <a href="{{route("products.index")}}" >{{__('Gestion des produits')}}</a>
                 </li>
             </ul>
         </li>
@@ -30,15 +27,24 @@
                 <li>
                     <a href="{{route("categories.index")}}" >{{__('Categories management')}}</a>
                 </li>
-                {{-- <li>
-                    <a href="{{route("categories.create")}}" >{{__('Add')}}</a>
-                </li> --}}
+            </ul>
+        </li>
+        <li class="nav-category-divider">APP</li>
+        <li>
+            <a href="#shopProducts" data-toggle="collapse" aria-expanded="false">
+                <span class="link-title">{{__('Products')}}</span>
+                <i class="mdi mdi-bullseye link-icon"></i>
+            </a>
+            <ul class="collapse navigation-submenu" id="shopProducts">
+                <li>
+                    <a href="#" >Produits en tendances</a>
+                </li>
             </ul>
         </li>
     </ul>
     <div class="sidebar_footer">
         <div class="user-account">
-            <div class="user-profile-item-tittle">Switch User</div>
+            {{-- <div class="user-profile-item-tittle">Switch User</div>
             <div class="user-profile-itemcategory">
                 <a class="user-profile-item" href="#">
                     <div class="avatar">
@@ -54,7 +60,7 @@
                     <div class="avatar">
                         <img class="profile-img img-rounded img-sm" src="http://www.placehold.it/50x50" alt="profile image"> Olivia Collier </div>
                 </a>
-            </div>
+            </div> --}}
             <a class="user-profile-item" href="#"><i class="mdi mdi-account"></i> Profile</a>
             <a class="user-profile-item" href="#"><i class="mdi mdi-settings"></i> Account Settings</a>
             <form action="{{route("logout")}}" method="post">

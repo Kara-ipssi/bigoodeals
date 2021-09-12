@@ -9,8 +9,6 @@
             -->
             {{-- Hero section --}}
             <livewire:shop-hero/>
-            {{-- <div style="height: 40vh" class="w-full bg-blue-700">
-            </div> --}}
             <main>
                 <section aria-labelledby="trending-heading">
                     <div class="max-w-7xl mx-auto py-24 px-4 sm:px-6 sm:py-32 lg:pt-32 lg:px-8">

@@ -253,7 +253,7 @@ class ProductForm extends Component
                     $image->store('public/products');
                     Image::create([
                         'name'=>$image->hashName(),
-                        'image_url'=>'storage/products/'.$image->hashName(),
+                        'image_url'=>'/storage/products/'.$image->hashName(),
                         'product_id'=>$this->productToEdit->id
                     ]);
                 }

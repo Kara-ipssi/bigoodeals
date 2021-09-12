@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ShopController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,13 +19,7 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('shop.index');
-});
 
-Route::get('/shop', function () {
-    return view('shop.index'); 
-});
 
 Route::get('/test', function () {
     return view('product.test');
@@ -37,7 +32,7 @@ Route::get('/404', function () {
 
 
 //dashboard routes
-Route::get('/dashboard', ['uses'=>'App\Http\Controllers\HomeController@index', 'as'=>'dashboard'])->middleware(['auth:sanctum', 'verified']);
+Route::get('/dashboard/index', ['uses'=>'App\Http\Controllers\HomeController@index', 'as'=>'dashboard'])->middleware(['auth:sanctum', 'verified']);
 
 
 /**
@@ -72,6 +67,31 @@ Route::group(['middleware'=>'auth:sanctum'], function(){
         ->missing(function (Request $request){
             return Redirect::route('categories.index');
         });
+});
+
+/**
+ * Shop routes
+ */
+Route::name('shop.')->group(function () {
+
+    Route::get('/', function () {
+        return Redirect::route('shop.index');
+    });
+
+    // Route name "shop.index"
+    Route::get('/shop', function () {
+        return view('shop.index'); 
+    })->name('index');
+
+    // Route name "shop.products"
+    Route::get('/shop/products', function () {
+        return view('shop.products');
+    })->name('products');
+
+    // Route::get('/shop/products/{id}', function(){
+        
+    // })->name('product');
+    Route::get('/shop/products/{id}', [ShopController::class ,'showProduct'])->name('product.show');
 });
 
 

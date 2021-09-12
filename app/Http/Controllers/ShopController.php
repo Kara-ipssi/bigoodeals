@@ -9,11 +9,15 @@ use App\Models\Product;
 class ShopController extends Controller
 {
     /**
-     * Display a listing of the products in the shop.
+     * Display product in the shop.
      *
      */
-    public function index()
+    public function showProduct($id)
     {
-        return view('');
+        $product = Product::find($id);
+        if($product){
+            return view('shop.product-page')->with(['product'=>$product]);
+        }
+        return view('error.page404');
     }
 }
