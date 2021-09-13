@@ -31,7 +31,7 @@
                                     <td>{{$product->stripe_price}}</td>
                                     <td>{{$product->created_at}}</td>
                                     <td class="text-center">
-                                        <a href="{{route('products.show', $product->id)}}" class="text-indigo-600 hover:text-indigo-900"><i class="fa fa-eye"></i> {{ __('Show') }} </a>
+                                        <a href="{{route('shop.product.show', $product->id)}}" target="_blank" class="text-indigo-600 hover:text-indigo-900"><i class="fa fa-eye"></i> {{ __('Show') }} </a>
                                         <a href="javascript:void(0)" wire:click="$emit('editProductRequest', {{$product->id}})" class="text-yellow-600 hover:text-yellow-900"><i class="fas fa-pencil"></i> {{ __('Edit') }}</a>
                                         <button type="button" data-toggle="modal" data-target="#productDeleteModal{{$product->id}}" class="text-red-600 hover:text-red-900"><i class="fas fa-trash-alt"></i> {{ __('Delete') }}</button>
                                     </td>
