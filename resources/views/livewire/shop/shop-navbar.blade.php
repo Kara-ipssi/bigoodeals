@@ -482,9 +482,12 @@
                                 </div>
                             </div>
         
-                            <a href="#" class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">{{__('Contact us')}}</a>
+                            
+                            <a href="{{route('shop.myaccount')}}" class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">{{__('My account')}}</a>
+                            
+
+                            {{-- <a href="#" class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">{{__('Contact us')}}</a> --}}
         
-                            <a href="#" class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">{{__('About')}}</a>
                         </div>
                         </div>
                     </div>
@@ -548,8 +551,8 @@
                                 </form>
                             @endif
                         @else
-                            <a href="{{route('login')}}" class="px-3 hidden text-sm font-medium text-gray-700 hover:text-gray-800 lg:block">Log in</a>
-                            <a href="{{route('register')}}" class="hidden text-sm font-medium text-gray-700 hover:text-gray-800 lg:block">Sign in</a>
+                            <a href="{{route('login')}}" class="px-3 hidden text-sm font-medium text-gray-700 hover:text-gray-800 lg:block">{{__('Login')}}</a>
+                            <a href="{{route('register')}}" class="hidden text-sm font-medium text-gray-700 hover:text-gray-800 lg:block">{{__('Register')}}</a>
                         @endif
         
                         <!-- Cart -->

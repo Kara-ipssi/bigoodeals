@@ -3,7 +3,7 @@
     <x-slot name="slot">
         <livewire:shop-product-list/>
 
-        <livewire:shop-footer/>
+        {{-- <livewire:shop-footer/> --}}
     </x-slot>
 
 </x-guest-layout>

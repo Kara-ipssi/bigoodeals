@@ -80,6 +80,7 @@ Route::name('shop.')->group(function () {
     Route::get('/', function () {
         return Redirect::route('shop.index');
     });
+    
 
     // Route name "shop.index"
     Route::get('/shop', function () {
@@ -91,10 +92,14 @@ Route::name('shop.')->group(function () {
         return view('shop.products');
     })->name('products');
 
-    // Route::get('/shop/products/{id}', function(){
-        
-    // })->name('product');
     Route::get('/shop/products/{id}', [ShopController::class ,'showProduct'])->name('product.show');
+
+    Route::get('/shop/myaccount', function(){
+        return view('shop.account');
+    })->name('myaccount')->middleware(['auth:sanctum']);
+
+    
+    Route::get('/shop/checkout',[ShopController::class, 'checkoutPage'])->name('checkout')->middleware(['auth:sanctum']);
 });
 
 

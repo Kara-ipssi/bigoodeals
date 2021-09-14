@@ -70,10 +70,11 @@ class ShopProduct extends Component
             }
         }
         else{
+            
             $newItem = new CartContent();
             $newItem->quantity = 1;
             $newItem->product_id = $this->product->id;
-            $newItem->size_id = $validate['size'];
+            $newItem->size_id = (int)$validate['size'];
             $newItem->shop_cart_id = $this->cart->id;
             $newItem->save();
             $this->size='';

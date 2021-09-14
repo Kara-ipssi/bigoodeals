@@ -153,7 +153,7 @@
                 </section>
             </main>
     
-            <livewire:shop-footer/>
+            {{-- <livewire:shop-footer/> --}}
         </div>
   
     </x-slot>
