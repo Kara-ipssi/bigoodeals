@@ -100,6 +100,13 @@ Route::name('shop.')->group(function () {
 
     
     Route::get('/shop/checkout',[ShopController::class, 'checkoutPage'])->name('checkout')->middleware(['auth:sanctum']);
+
+    Route::post('/shop/stripe/checkout', [ShopController::class, 'stripeCheckoutSession'])->name('stripe');
+    Route::get('/shop/checkout/success', [ShopController::class, 'success'])->name('checkout.success')->middleware('auth:sanctum');
+    Route::get('/checkout/success', [ShopController::class, 'successPage'])->name('success');
+    Route::get('/shop/myaccount/orders', function(){
+        return view('shop.success');
+    })->name('myOrders')->middleware('auth:sanctum');
 });
 
 

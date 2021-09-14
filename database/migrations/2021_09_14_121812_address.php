@@ -23,6 +23,7 @@ class Address extends Migration
             $table->string('city',50)->nullable();
             $table->string('country',50)->nullable();
             $table->text('more_info')->nullable();
+            $table->text('phone')->nullable();
             $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });
