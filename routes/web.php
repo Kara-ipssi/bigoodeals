@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 use Illuminate\Http\Request;
@@ -32,7 +33,7 @@ Route::get('/404', function () {
 
 
 //dashboard routes
-Route::get('/dashboard/index', ['uses'=>'App\Http\Controllers\HomeController@index', 'as'=>'dashboard'])->middleware(['auth:sanctum', 'verified']);
+// Route::get('/dashboard/index', ['uses'=>'App\Http\Controllers\HomeController@index', 'as'=>''])->middleware(['is_admin', 'verified']);
 
 
 /**
@@ -42,7 +43,9 @@ Route::get('/dashboard/index', ['uses'=>'App\Http\Controllers\HomeController@ind
  * for the create route, we can do the same for all actions.
  */
 
-Route::group(['middleware'=>'auth:sanctum'], function(){
+Route::group(['middleware'=>'is_admin'], function(){
+
+    Route::get('/dashboard/index', [HomeController::class, 'index'])->name('dashboard');
     /**
      * Tags Routes
      */
@@ -95,3 +98,4 @@ Route::name('shop.')->group(function () {
 });
 
 
+Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');

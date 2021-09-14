@@ -49,8 +49,11 @@ class ProductList extends Component
     {
         // dd($product->stocks);
         $name = $product->name;
+        if(count($product->cartContent) > 1){
+            session()->flash('error', 'Erreur - Impossible de supprimer le produit '.$name.' il est dans une transaction.');
+            return redirect()->route('products.index');
+        }
         try {
-            
             // Category delete
             if($product->categories !== null){
                 $product->categories()->detach();

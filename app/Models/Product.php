@@ -37,6 +37,14 @@ class Product extends Model
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * Get the carts of the current product
+     */
+    public function cartContent(){
+        return $this->hasMany(ShopCartContent::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      * Get the images of this product
      * One product can got a lot of images.
      */

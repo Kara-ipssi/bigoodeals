@@ -13,7 +13,7 @@ class ShopController extends Controller
      *
      */
     public function showProduct($id)
-    {
+    {   
         $product = Product::find($id);
         if($product){
             return view('shop.product-page')->with(['product'=>$product]);
