@@ -36,6 +36,7 @@ class ShopCart extends Component
                 $this->cart = $cart;
             }
 
+            $this->total = 0;
             foreach($this->cart->items as $item){
                 $this->total += (int)($item->quantity) * (int)($item->product->price);
             }
