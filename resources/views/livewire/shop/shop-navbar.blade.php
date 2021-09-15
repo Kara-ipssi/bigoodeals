@@ -64,7 +64,7 @@
                     @click="mobileMenuOpen = !mobileMenuOpen"
                     type="button" 
                     class="-m-2 p-2 rounded-md inline-flex items-center justify-center text-gray-400">
-                        <span class="sr-only">Close menu</span>
+                        <span class="sr-only">{{__('Close menu')}}</span>
                         <!-- Heroicon name: outline/x -->
                         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -82,7 +82,7 @@
                         @click="toggleWomen()"
                         :class="{'text-indigo-600 border-indigo-600': women, 'text-gray-700 hover:text-gray-800': !women}"
                         class="text-gray-900 border-transparent flex-1 whitespace-nowrap py-4 px-1 border-b-2 text-base font-medium" aria-controls="tabs-1-panel-1" role="tab" type="button">
-                        Women
+                        {{__('Women')}}
                     </button>
         
                     <!-- Selected: "text-indigo-600 border-indigo-600", Not Selected: "text-gray-900 border-transparent" -->
@@ -91,7 +91,7 @@
                         @click='toggleMen()'
                         :class="{'text-indigo-600 border-indigo-600': men, 'text-gray-700 hover:text-gray-800': !men}" 
                         class="text-gray-900 border-transparent flex-1 whitespace-nowrap py-4 px-1 border-b-2 text-base font-medium" aria-controls="tabs-1-panel-2" role="tab" type="button">
-                        Men
+                        {{__('Men')}}
                     </button>
                     </div>
                 </div>
@@ -107,9 +107,9 @@
                         </div>
                         <a href="{{route('shop.products')}}" class="mt-6 block text-sm font-medium text-gray-900">
                         <span class="absolute z-10 inset-0" aria-hidden="true"></span>
-                        New Arrivals
+                        {{__('New Arrivals')}}
                         </a>
-                        <p aria-hidden="true" class="mt-1 text-sm text-gray-500">Shop now</p>
+                        <p aria-hidden="true" class="mt-1 text-sm text-gray-500">{{__('Shop now')}}</p>
                     </div>
         
                     <div class="group relative">
@@ -120,7 +120,7 @@
                         <span class="absolute z-10 inset-0" aria-hidden="true"></span>
                         Basic Tees
                         </a>
-                        <p aria-hidden="true" class="mt-1 text-sm text-gray-500">Shop now</p>
+                        <p aria-hidden="true" class="mt-1 text-sm text-gray-500">{{__('Shop now')}}</p>
                     </div>
         
                     <div class="group relative">
@@ -131,7 +131,7 @@
                         <span class="absolute z-10 inset-0" aria-hidden="true"></span>
                         Accessories
                         </a>
-                        <p aria-hidden="true" class="mt-1 text-sm text-gray-500">Shop now</p>
+                        <p aria-hidden="true" class="mt-1 text-sm text-gray-500">{{__('Shop now')}}</p>
                     </div>
         
                     <div class="group relative">
@@ -142,7 +142,7 @@
                         <span class="absolute z-10 inset-0" aria-hidden="true"></span>
                         Carry
                         </a>
-                        <p aria-hidden="true" class="mt-1 text-sm text-gray-500">Shop now</p>
+                        <p aria-hidden="true" class="mt-1 text-sm text-gray-500">{{__('Shop now')}}</p>
                     </div>
                     </div>
                 </div>
@@ -160,7 +160,7 @@
                         <span class="absolute z-10 inset-0" aria-hidden="true"></span>
                         New Arrivals
                         </a>
-                        <p aria-hidden="true" class="mt-1 text-sm text-gray-500">Shop now</p>
+                        <p aria-hidden="true" class="mt-1 text-sm text-gray-500">{{__('Shop now')}}</p>
                     </div>
         
                     <div class="group relative">
@@ -171,7 +171,7 @@
                         <span class="absolute z-10 inset-0" aria-hidden="true"></span>
                         Basic Tees
                         </a>
-                        <p aria-hidden="true" class="mt-1 text-sm text-gray-500">Shop now</p>
+                        <p aria-hidden="true" class="mt-1 text-sm text-gray-500">{{__('Shop now')}}</p>
                     </div>
         
                     <div class="group relative">
@@ -182,7 +182,7 @@
                         <span class="absolute z-10 inset-0" aria-hidden="true"></span>
                         Accessories
                         </a>
-                        <p aria-hidden="true" class="mt-1 text-sm text-gray-500">Shop now</p>
+                        <p aria-hidden="true" class="mt-1 text-sm text-gray-500">{{__('Shop now')}}</p>
                     </div>
         
                     <div class="group relative">
@@ -193,53 +193,64 @@
                         <span class="absolute z-10 inset-0" aria-hidden="true"></span>
                         Carry
                         </a>
-                        <p aria-hidden="true" class="mt-1 text-sm text-gray-500">Shop now</p>
+                        <p aria-hidden="true" class="mt-1 text-sm text-gray-500">{{__('Shop now')}}</p>
                     </div>
                     </div>
                 </div>
             </div>
-    
-            <div class="border-t border-gray-200 py-6 px-4 space-y-6">
-            <div class="flow-root">
-                <a href="#" class="-m-2 p-2 block font-medium text-gray-900">{{__('Contact us')}}</a>
-            </div>
 
+            @auth
+                <div class="border-t border-gray-200 py-6 px-4 space-y-6">
+                    <div class="flow-root">
+                        <a href="{{route('shop.myaccount')}}" class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">{{__('My account')}}</a>
+                    </div>
+                </div>
+                @if (Auth::user()->is_admin == true)
+                    <div class="border-t border-gray-200 py-6 px-4 space-y-6">
+                        <div class="flow-root">
+                            <a href="{{route('dashboard')}}" class=" px-2 text-sm font-medium text-gray-700 hover:text-gray-800 lg:block">Admin</a>
+                        </div>
+                    </div>
+                    <div class="border-t border-gray-200 py-6 px-4 space-y-6">
+                        <form action="{{route('logout')}}" method="POST">
+                            @csrf
+                            <button class="text-sm font-medium text-gray-700 hover:text-gray-800 lg:block"> {{__('Logout')}} </button>
+                        </form>
+                    </div>
+                @else
+                    <form action="{{route('logout')}}" method="POST">
+                        @csrf
+                        <div class="flow-root">
+                            <button class="-m-2 p-2 block font-medium text-gray-900"> {{__('Logout')}} </button>
+                        </div>
+                    </form>
+                @endif
+            @else
+                <div class="border-t border-gray-200 py-6 px-4 space-y-6">
+                    <div class="flow-root">
+                        <a href="{{route('login')}}" class="-m-2 p-2 block font-medium text-gray-900">{{__('Login')}}</a>
+                    </div>
+                </div>
+                <div class="border-t border-gray-200 py-6 px-4 space-y-6">
+                    <div class="flow-root">
+                        <a href="{{route('register')}}" class="-m-2 p-2 block font-medium text-gray-900">{{__('Register')}}</a>
+                    </div>
+                </div>
+            @endauth
+
+            <div class="border-t border-gray-200 py-6 px-4 space-y-6">
+                <div class="flow-root">
+                    <a href="#" class="-m-2 p-2 block font-medium text-gray-900">{{__('Contact us')}}</a>
+                </div>
             </div>
     
             <div class="border-t border-gray-200 py-6 px-4 space-y-6">
                 <div class="flow-root">
-                    {{-- TO DO --}}
-                    {{-- <a href="#" class="-m-2 p-2 block font-medium text-gray-900">Sign in</a> --}}
+                    
                     <a href="#" class="-m-2 p-2 block font-medium text-gray-900">{{__('About')}}</a>
                 </div>
             </div>
     
-            <div class="border-t border-gray-200 py-6 px-4 space-y-6">
-                <!-- Currency selector -->
-                {{-- <form>
-                    <div class="inline-block">
-                    <label for="mobile-currency" class="sr-only">Currency</label>
-                    <div class="-ml-2 group relative border-transparent rounded-md focus-within:ring-2 focus-within:ring-white">
-                        <select id="mobile-currency" name="currency" class="bg-none border-transparent rounded-md py-0.5 pl-2 pr-5 flex items-center text-sm font-medium text-gray-700 group-hover:text-gray-800 focus:outline-none focus:ring-0 focus:border-transparent">
-                        <option>CAD</option>
-        
-                        <option>USD</option>
-        
-                        <option>AUD</option>
-        
-                        <option>EUR</option>
-        
-                        <option>GBP</option>
-                        </select>
-                        <div class="absolute right-0 inset-y-0 flex items-center pointer-events-none">
-                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" class="w-5 h-5 text-gray-500">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 8l4 4 4-4" />
-                        </svg>
-                        </div>
-                    </div>
-                    </div>
-                </form> --}}
-            </div>
         </div>
     </div>
     
@@ -304,7 +315,7 @@
                                         type="button"
                                         :class="{'text-indigo-600': women, 'text-gray-700 hover:text-gray-800': !women}"
                                         class="text-gray-700 hover:text-gray-800 relative flex items-center justify-center transition-colors ease-out duration-200 text-sm font-medium" aria-expanded="false">
-                                    Women
+                                    {{__('Women')}}
                                     <!-- Open: "bg-indigo-600", Closed: "" -->
                                     <span class="absolute z-20 -bottom-px inset-x-0 h-0.5 transition ease-out duration-200" aria-hidden="true"></span>
                                     </button>
@@ -346,9 +357,9 @@
                                                 </div>
                                                 <a href="{{route('shop.products')}}" class="mt-4 block font-medium text-gray-900">
                                                 <span class="absolute z-10 inset-0" aria-hidden="true"></span>
-                                                New Arrivals
+                                                {{__('New Arrivals')}}
                                                 </a>
-                                                <p aria-hidden="true" class="mt-1">Shop now</p>
+                                                <p aria-hidden="true" class="mt-1">{{__('Shop now')}}</p>
                                             </div>
                 
                                             <div class="group relative">
@@ -357,9 +368,9 @@
                                                 </div>
                                                 <a href="{{route('shop.products')}}" class="mt-4 block font-medium text-gray-900">
                                                 <span class="absolute z-10 inset-0" aria-hidden="true"></span>
-                                                Basic Tees
+                                                {{__('Basic Tees')}}
                                                 </a>
-                                                <p aria-hidden="true" class="mt-1">Shop now</p>
+                                                <p aria-hidden="true" class="mt-1">{{__('Shop now')}}</p>
                                             </div>
                 
                                             <div class="group relative">
@@ -368,9 +379,9 @@
                                                 </div>
                                                 <a href="{{route('shop.products')}}" class="mt-4 block font-medium text-gray-900">
                                                 <span class="absolute z-10 inset-0" aria-hidden="true"></span>
-                                                Accessories
+                                                {{__('Accessories')}}
                                                 </a>
-                                                <p aria-hidden="true" class="mt-1">Shop now</p>
+                                                <p aria-hidden="true" class="mt-1">{{__('Shop now')}}</p>
                                             </div>
                 
                                             <div class="group relative">
@@ -379,9 +390,9 @@
                                                 </div>
                                                 <a href="{{route('shop.products')}}" class="mt-4 block font-medium text-gray-900">
                                                 <span class="absolute z-10 inset-0" aria-hidden="true"></span>
-                                                Carry
+                                                {{__('Carry')}}
                                                 </a>
-                                                <p aria-hidden="true" class="mt-1">Shop now</p>
+                                                <p aria-hidden="true" class="mt-1">{{__('Shop now')}}</p>
                                             </div>
                                             </div>
                                         </div>
@@ -397,7 +408,7 @@
                                         type="button"
                                         :class="{'text-indigo-600': men, 'text-gray-700 hover:text-gray-800': !men}" 
                                         class="text-gray-700 hover:text-gray-800 relative flex items-center justify-center transition-colors ease-out duration-200 text-sm font-medium" aria-expanded="false">
-                                    Men
+                                    {{__('Men')}}
                                     <!-- Open: "bg-indigo-600", Closed: "" -->
                                     <span class="absolute z-20 -bottom-px inset-x-0 h-0.5 transition ease-out duration-200" aria-hidden="true"></span>
                                     </button>
@@ -439,9 +450,9 @@
                                             </div>
                                             <a href="{{route('shop.products')}}" class="mt-4 block font-medium text-gray-900">
                                             <span class="absolute z-10 inset-0" aria-hidden="true"></span>
-                                            New Arrivals
+                                            {{__('New Arrivals')}}
                                             </a>
-                                            <p aria-hidden="true" class="mt-1">Shop now</p>
+                                            <p aria-hidden="true" class="mt-1">{{__('Shop now')}}</p>
                                         </div>
             
                                         <div class="group relative">
@@ -450,9 +461,9 @@
                                             </div>
                                             <a href="{{route('shop.products')}}" class="mt-4 block font-medium text-gray-900">
                                             <span class="absolute z-10 inset-0" aria-hidden="true"></span>
-                                            Basic Tees
+                                            {{__('Basic Tees')}}
                                             </a>
-                                            <p aria-hidden="true" class="mt-1">Shop now</p>
+                                            <p aria-hidden="true" class="mt-1">{{__('Shop now')}}</p>
                                         </div>
             
                                         <div class="group relative">
@@ -461,9 +472,9 @@
                                             </div>
                                             <a href="{{route('shop.products')}}" class="mt-4 block font-medium text-gray-900">
                                             <span class="absolute z-10 inset-0" aria-hidden="true"></span>
-                                            Accessories
+                                            {{__('Accessories')}}
                                             </a>
-                                            <p aria-hidden="true" class="mt-1">Shop now</p>
+                                            <p aria-hidden="true" class="mt-1">{{__('Shop now')}}</p>
                                         </div>
             
                                         <div class="group relative">
@@ -472,9 +483,9 @@
                                             </div>
                                             <a href="{{route('shop.products')}}" class="mt-4 block font-medium text-gray-900">
                                             <span class="absolute z-10 inset-0" aria-hidden="true"></span>
-                                            Carry
+                                            {{__('Carry')}}
                                             </a>
-                                            <p aria-hidden="true" class="mt-1">Shop now</p>
+                                            <p aria-hidden="true" class="mt-1">{{__('Shop now')}}</p>
                                         </div>
                                         </div>
                                     </div>
@@ -500,7 +511,7 @@
                             type="button"
                             @click="mobileMenuOpen = !mobileMenuOpen"
                             class="-ml-2 bg-white p-2 rounded-md text-gray-400 cursor-pointer">
-                        <span class="sr-only">Open menu</span>
+                        <span class="sr-only">{{__('Open menu')}}</span>
                         <!-- Heroicon name: outline/menu -->
                         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -509,7 +520,7 @@
         
                         <!-- Search -->
                         <a href="{{route('shop.products')}}" class="ml-2 p-2 text-gray-400 hover:text-gray-500">
-                        <span class="sr-only">Search</span>
+                        <span class="sr-only">{{__('Search')}}</span>
                         <!-- Heroicon name: outline/search -->
                         <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -530,13 +541,15 @@
         
                         <div class="flex items-center lg:ml-8">
                         <!-- Help -->
-                        <a href="{{route('dashboard')}}" class="p-2 text-gray-400 hover:text-gray-500 lg:hidden">
-                            <span class="sr-only">Admin</span>
-                            <!-- Heroicon name: outline/question-mark-circle -->
-                            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                        </a>
+                        @auth
+                            <a href="{{route('dashboard')}}" class="p-2 text-gray-400 hover:text-gray-500 lg:hidden">
+                                <span class="sr-only">Admin</span>
+                                <!-- Heroicon name: outline/question-mark-circle -->
+                                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </a>
+                        @endauth
                         @if(!empty(Auth::user()))
                             @if (Auth::user()->is_admin == true)
                                 <a href="{{route('dashboard')}}" class=" px-2 hidden text-sm font-medium text-gray-700 hover:text-gray-800 lg:block">Admin</a>
@@ -566,7 +579,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                                 </svg>
                                 <span class="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">{{$cartCount}}</span>
-                                <span class="sr-only">items in cart, view bag</span>
+                                <span class="sr-only">{{__('items in cart, view bag')}}</span>
                             </a>
                         </div>
                         </div>
