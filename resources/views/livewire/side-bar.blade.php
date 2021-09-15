@@ -43,16 +43,22 @@
                 </li>
             </ul>
         </li>
-        {{-- <li class="nav-category-divider">APP</li>
-        <li>
-            <a href="#shopProducts" data-toggle="collapse" aria-expanded="false">
-                <span class="link-title">{{__('Products')}}</span>
+        <li class="nav-category-divider">APP</li>
+        {{-- <li>
+            <a href="#pages" data-toggle="collapse" aria-expanded="false">
+                <span class="link-title">{{__('Pages')}}</span>
                 <i class="mdi mdi-bullseye link-icon"></i>
             </a>
-            <ul class="collapse navigation-submenu" id="shopProducts">
-                
+            <ul class="collapse navigation-submenu" id="pages">
+                <li>
+                    <a href="{{route("products.index")}}" >{{__('Home')}}</a>
+                </li>
+                <li>
+                    <a href="#" >Produits en tendances</a>
+                </li>
             </ul>
         </li> --}}
+
     </ul>
     <div class="sidebar_footer">
         <div class="user-account">
