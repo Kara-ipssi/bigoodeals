@@ -756,5 +756,14 @@
     "shipping":"livraison",
     "Taxes": "Taxes",
     "Items in your cart": "Articles dans votre panier",
-    "My address": "Mes adresses"
+    "My address": "Mes adresses",
+    "Orders": "Commandes",
+    "orders": "commandes",
+    "Orders list": "Liste des commandes",
+    "orders list": "liste des commandes",
+    "Customer": "Client",
+    "Order number":"Numéro de la commande",
+    "Purchased on": "Date d'achat",
+    "Order price": "Prix de la commande",
+    "Order status": "Status de la commande"
 }

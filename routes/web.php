@@ -70,6 +70,10 @@ Route::group(['middleware'=>'is_admin'], function(){
         ->missing(function (Request $request){
             return Redirect::route('categories.index');
         });
+    
+    Route::get('/dashboard/orders', function(){
+        return view('order.index');
+    })->name('orders.index');
 });
 
 /**

@@ -16,6 +16,9 @@
                 <li>
                     <a href="{{route("products.index")}}" >{{__('Gestion des produits')}}</a>
                 </li>
+                <li>
+                    <a href="#" >Produits en tendances</a>
+                </li>
             </ul>
         </li>
         <li>
@@ -29,18 +32,27 @@
                 </li>
             </ul>
         </li>
-        <li class="nav-category-divider">APP</li>
+        <li>
+            <a href="#orders" data-toggle="collapse" aria-expanded="false">
+                <span class="link-title">{{__('Orders')}}</span>
+                <i class="mdi mdi-clipboard-outline link-icon"></i>
+            </a>
+            <ul class="collapse navigation-submenu" id="orders">
+                <li>
+                    <a href="{{route('orders.index')}}" >{{__('Gestion des commandes')}}</a>
+                </li>
+            </ul>
+        </li>
+        {{-- <li class="nav-category-divider">APP</li>
         <li>
             <a href="#shopProducts" data-toggle="collapse" aria-expanded="false">
                 <span class="link-title">{{__('Products')}}</span>
                 <i class="mdi mdi-bullseye link-icon"></i>
             </a>
             <ul class="collapse navigation-submenu" id="shopProducts">
-                <li>
-                    <a href="#" >Produits en tendances</a>
-                </li>
+                
             </ul>
-        </li>
+        </li> --}}
     </ul>
     <div class="sidebar_footer">
         <div class="user-account">
