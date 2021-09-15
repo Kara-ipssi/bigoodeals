@@ -244,7 +244,7 @@
                                     {{__('Total')}}
                                 </dt>
                                 <dd class="text-base font-medium text-gray-900">
-                                    {{$total}}.00 €
+                                    {{$cart->total}}.00 €
                                 </dd>
                             </div>
                         </dl>

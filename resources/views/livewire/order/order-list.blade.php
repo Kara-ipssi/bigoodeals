@@ -28,7 +28,7 @@
                                     <td class="text-center">{{$order->user->name}}</td>
                                     <td class="text-center">{{$order->number}}</td>
                                     <td class="text-center">{{$order->created_at}}</td>
-                                    <td class="text-center"></td>
+                                    <td class="text-center">{{$order->cart->total}}.00 €</td>
                                     <td class="text-center">
                                         @if($order->state->id === 3 ) {{-- Validée --}}
                                             <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-medium bg-red-100 text-red-800">
@@ -47,7 +47,10 @@
                                         @endif
                                     </td>
                                     <td class="text-center">
-                                        Mettre en préparation
+                                        <button wire:click="changeState({{$order->id}},3)" class="inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-medium bg-red-100 text-red-800"> Validée </button>
+                                        <button wire:click="changeState({{$order->id}},4)" class="inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-medium bg-yellow-100 text-yellow-800"> En préparation </button>
+                                        <button wire:click="changeState({{$order->id}},5)" class="inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-medium bg-purple-100 text-purple-800"> Expédiée </button>
+
                                     </td>
                                 </tr>
                             @endforeach

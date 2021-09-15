@@ -58,6 +58,9 @@ class ShopCheckoutForm extends Component
                 $this->total += (int)($item->quantity) * (int)($item->product->price) + (int)$this->delivery;
             }
 
+            $this->cart->total = $this->total;
+            $this->cart->save();
+
             $this->subtotal = $this->total - (int)$this->delivery;
 
             $this->addressList = Address::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
@@ -134,14 +137,14 @@ class ShopCheckoutForm extends Component
 
     public function stripeCheckoutSession()
     {
-        $stripe = \Stripe\Stripe::setApiKey("sk_test_51IemdvAzYx5RZHudnVeb3A8niDLVkVZo3ilrUOI6EcaB490JzYNm5J05emESYT2hdolbEpqXkoKoDhFkRRLS881k00eMPxmofg");
+        $stripe = \Stripe\Stripe::setApiKey(env('STRIP_KEY'));
         $session = \Stripe\Checkout\Session::create([
             'payment_method_types' => ['card'],
             'customer_email' => Auth::user()->email,
             'line_items' => $this->itemLines,
             'mode' => 'payment',
-            'success_url' => 'https://bigoodeals.tk/shop/checkout/success',
-            'cancel_url' => 'https://bigoodeals.tk/shop/checkout/cancel',
+            'success_url' => env('APP_URL').'/shop/checkout/success',
+            'cancel_url' => env('APP_URL').'/shop/checkout/cancel',
         ]);
         return redirect($session->url);
     }

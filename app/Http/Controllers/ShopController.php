@@ -70,7 +70,6 @@ class ShopController extends Controller
             $order->user_id = $cart->user_id;
             $order->state_id = 3; // 3 => Validée
             $order->cart_id = $cart->id;
-            $order->price = $total_price;
 
             $cart->state_id = 2;
             $cart->purchase_at = now();
