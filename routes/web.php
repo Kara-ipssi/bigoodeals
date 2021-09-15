@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 use Illuminate\Http\Request;
@@ -32,7 +33,7 @@ Route::get('/404', function () {
 
 
 //dashboard routes
-Route::get('/dashboard/index', ['uses'=>'App\Http\Controllers\HomeController@index', 'as'=>'dashboard'])->middleware(['auth:sanctum', 'verified']);
+// Route::get('/dashboard/index', ['uses'=>'App\Http\Controllers\HomeController@index', 'as'=>''])->middleware(['is_admin', 'verified']);
 
 
 /**
@@ -42,7 +43,9 @@ Route::get('/dashboard/index', ['uses'=>'App\Http\Controllers\HomeController@ind
  * for the create route, we can do the same for all actions.
  */
 
-Route::group(['middleware'=>'auth:sanctum'], function(){
+Route::group(['middleware'=>'is_admin'], function(){
+
+    Route::get('/dashboard/index', [HomeController::class, 'index'])->name('dashboard');
     /**
      * Tags Routes
      */
@@ -67,6 +70,10 @@ Route::group(['middleware'=>'auth:sanctum'], function(){
         ->missing(function (Request $request){
             return Redirect::route('categories.index');
         });
+    
+    Route::get('/dashboard/orders', function(){
+        return view('order.index');
+    })->name('orders.index');
 });
 
 /**
@@ -77,6 +84,7 @@ Route::name('shop.')->group(function () {
     Route::get('/', function () {
         return Redirect::route('shop.index');
     });
+    
 
     // Route name "shop.index"
     Route::get('/shop', function () {
@@ -88,10 +96,22 @@ Route::name('shop.')->group(function () {
         return view('shop.products');
     })->name('products');
 
-    // Route::get('/shop/products/{id}', function(){
-        
-    // })->name('product');
     Route::get('/shop/products/{id}', [ShopController::class ,'showProduct'])->name('product.show');
+
+    Route::get('/shop/myaccount', function(){
+        return view('shop.account');
+    })->name('myaccount')->middleware(['auth:sanctum']);
+
+    
+    Route::get('/shop/checkout',[ShopController::class, 'checkoutPage'])->name('checkout')->middleware(['auth:sanctum']);
+
+    Route::post('/shop/stripe/checkout', [ShopController::class, 'stripeCheckoutSession'])->name('stripe');
+    Route::get('/shop/checkout/success', [ShopController::class, 'success'])->name('checkout.success')->middleware('auth:sanctum');
+    Route::get('/checkout/success', [ShopController::class, 'successPage'])->name('success');
+    Route::get('/shop/myaccount/orders', function(){
+        return view('shop.success');
+    })->name('myOrders')->middleware('auth:sanctum');
 });
 
 
+Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');

@@ -44,11 +44,6 @@
                                     <input type="number" wire:model="price" id="price" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300" placeholder="" />
                                     @error('price') <span class="error text-red-600">{{ $message }}</span> @enderror
                                 </div>
-                                <div class="col">
-                                    <label for="stripe_price">{{__('Stripe price')}}</label>
-                                    <input type="text" wire:model.defer="stripe_price" id="stripe_price" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300" placeholder="" />
-                                    @error('stripe_price') <span class="error text-red-600">{{ $message }}</span> @enderror
-                                </div>
                             </div>
                             <div class="form-group row mb-3">
                                 <div class="col">

@@ -33,7 +33,7 @@ class ProductForm extends Component
     public $name;
     public $description = "";
     public $price;
-    public $stripe_price;
+    // public $stripe_price;
 
     /**
      * Product images
@@ -94,7 +94,7 @@ class ProductForm extends Component
         'reference' => 'required|unique:product|min:6|max:10',
         'name' => 'required|unique:product|min:3|max:25',
         'price' => 'required|numeric|between:0,999.99',
-        'stripe_price' => 'required|unique:product|min:0',
+        // 'stripe_price' => 'required|unique:product|min:0',
         'images.*' => 'file|mimes:png,jpg,pdf|max:1024',
         'categories' => 'required',
         'dataref' => 'int',
@@ -117,7 +117,7 @@ class ProductForm extends Component
         'name.max' => 'Le nom doit faire au maximum 25 caratères.',
         'name.unique' => 'Ce nom de produit existe déjà.',
 
-        'stripe_price.unique' => 'Ce prix stripe est déjà affecté à un produit.',
+        // 'stripe_price.unique' => 'Ce prix stripe est déjà affecté à un produit.',
 
         'quantity.required' => 'la quantité du produit est requise.',
         'quantity.min' => 'la quantité minimum requise est 10.',
@@ -177,7 +177,7 @@ class ProductForm extends Component
         $this->dataref = substr($product->reference, 3);
         $this->description = $product->description;
         $this->price = $product->price;
-        $this->stripe_price = $product->stripe_price;
+        // $this->stripe_price = $product->stripe_price;
         $this->quantity = $quantity;
         $this->categories = $product->categories;
         $this->sizeType = $this->productToEdit->stocks[0]->size->size_type->id;
@@ -197,7 +197,7 @@ class ProductForm extends Component
         $validate = $this->validate([
             'name' => 'required|min:3|max:25',
             'price' => 'required|numeric|between:0,999.99',
-            'stripe_price' => 'required|min:0',
+            // 'stripe_price' => 'required|min:0',
             'newImages.*' => 'file|mimes:png,jpg,pdf|max:1024',
             'categories' => 'required',
             'description' => 'max:500',
@@ -263,6 +263,7 @@ class ProductForm extends Component
                 $this->emit('productUpdated', $this->productToEdit->name);
                 $this->resetInputsFileds();
             } catch (Exception $e) {
+                session()->flash('error', 'impossible de supprimer le produit');
                 dd($e->getMessage());
             }
         }
@@ -332,7 +333,7 @@ class ProductForm extends Component
     
         $this->description = '';
         $this->price = '';
-        $this->stripe_price = '';
+        // $this->stripe_price = '';
         $this->quantity = '';
         $this->categories = [];
         $this->categoriesList = Category::all();

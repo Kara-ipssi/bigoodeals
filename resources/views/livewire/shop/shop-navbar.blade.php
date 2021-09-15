@@ -482,9 +482,12 @@
                                 </div>
                             </div>
         
-                            <a href="#" class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">{{__('Contact us')}}</a>
+                            
+                            <a href="{{route('shop.myaccount')}}" class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">{{__('My account')}}</a>
+                            
+
+                            {{-- <a href="#" class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">{{__('Contact us')}}</a> --}}
         
-                            <a href="#" class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">{{__('About')}}</a>
                         </div>
                         </div>
                     </div>
@@ -527,14 +530,30 @@
         
                         <div class="flex items-center lg:ml-8">
                         <!-- Help -->
-                        <a href="#" class="p-2 text-gray-400 hover:text-gray-500 lg:hidden">
-                            <span class="sr-only">Support</span>
+                        <a href="{{route('dashboard')}}" class="p-2 text-gray-400 hover:text-gray-500 lg:hidden">
+                            <span class="sr-only">Admin</span>
                             <!-- Heroicon name: outline/question-mark-circle -->
                             <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                         </a>
-                        <a href="#" class="hidden text-sm font-medium text-gray-700 hover:text-gray-800 lg:block">Support</a>
+                        @if(!empty(Auth::user()))
+                            @if (Auth::user()->is_admin == true)
+                                <a href="{{route('dashboard')}}" class=" px-2 hidden text-sm font-medium text-gray-700 hover:text-gray-800 lg:block">Admin</a>
+                                <form action="{{route('logout')}}" method="POST">
+                                    @csrf
+                                    <button class="hidden text-sm font-medium text-gray-700 hover:text-gray-800 lg:block"> {{__('Logout')}} </button>
+                                </form>
+                            @else
+                                <form action="{{route('logout')}}" method="POST">
+                                    @csrf
+                                    <button class="hidden text-sm font-medium text-gray-700 hover:text-gray-800 lg:block"> {{__('Logout')}} </button>
+                                </form>
+                            @endif
+                        @else
+                            <a href="{{route('login')}}" class="px-3 hidden text-sm font-medium text-gray-700 hover:text-gray-800 lg:block">{{__('Login')}}</a>
+                            <a href="{{route('register')}}" class="hidden text-sm font-medium text-gray-700 hover:text-gray-800 lg:block">{{__('Register')}}</a>
+                        @endif
         
                         <!-- Cart -->
                         <div class="ml-4 flow-root lg:ml-8">
@@ -546,7 +565,7 @@
                                 <svg class="flex-shrink-0 h-6 w-6 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                                 </svg>
-                                <span class="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">0</span>
+                                <span class="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">{{$cartCount}}</span>
                                 <span class="sr-only">items in cart, view bag</span>
                             </a>
                         </div>

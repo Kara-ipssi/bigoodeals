@@ -10,7 +10,7 @@ class Category extends Model
     use HasFactory;
 
     /**
-     * the table associate to the modal
+     * the table associate to the model
      * @var string
      */
     protected $table = "category";

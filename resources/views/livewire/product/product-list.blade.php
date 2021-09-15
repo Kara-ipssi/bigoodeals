@@ -14,24 +14,24 @@
                     <table class="table info-table table-striped">
                         <thead>
                             <tr>
-                                <th>{{ __('Reference') }}</th>
-                                <th>{{ __('Name') }}</th>
-                                <th>{{ __('Price') }}</th>
-                                <th>{{ __('Stripe price') }}</th>
-                                <th>{{ __('Add date') }}</th>
+                                <th class="text-center">{{ __('Reference') }}</th>
+                                <th class="text-center">{{ __('Name') }}</th>
+                                <th class="text-center">{{__('Image')}}</th>
+                                <th class="text-center">{{ __('Price') }}</th>
+                                <th class="text-center">{{ __('Add date') }}</th>
                                 <th class="text-center">{{ __('Actions') }}</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($products as $product)
                                 <tr>
-                                    <td>{{$product->reference}}</td>
-                                    <td>{{$product->name}}</td>
-                                    <td>{{$product->price}}</td>
-                                    <td>{{$product->stripe_price}}</td>
-                                    <td>{{$product->created_at}}</td>
+                                    <td class="text-center">{{$product->reference}}</td>
+                                    <td class="text-center">{{$product->name}}</td>
+                                    <td class="text-center"><img src="{{$product->images[0]->image_url}}" width="50" alt="Image produit {{$product->namme}}"></td>
+                                    <td class="text-center">{{$product->price}}</td>
+                                    <td class="text-center">{{$product->created_at}}</td>
                                     <td class="text-center">
-                                        <a href="{{route('products.show', $product->id)}}" class="text-indigo-600 hover:text-indigo-900"><i class="fa fa-eye"></i> {{ __('Show') }} </a>
+                                        <a href="{{route('shop.product.show', $product->id)}}" target="_blank" class="text-indigo-600 hover:text-indigo-900"><i class="fa fa-eye"></i> {{ __('Show') }} </a>
                                         <a href="javascript:void(0)" wire:click="$emit('editProductRequest', {{$product->id}})" class="text-yellow-600 hover:text-yellow-900"><i class="fas fa-pencil"></i> {{ __('Edit') }}</a>
                                         <button type="button" data-toggle="modal" data-target="#productDeleteModal{{$product->id}}" class="text-red-600 hover:text-red-900"><i class="fas fa-trash-alt"></i> {{ __('Delete') }}</button>
                                     </td>

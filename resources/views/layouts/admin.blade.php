@@ -72,6 +72,9 @@
 
             <div class="page-content-wrapper">
                 <div class="page-content-wrapper-inner">
+                    @if (isset($breadcrumb))
+                        {{$breadcrumb}}
+                    @endif
                     <div class="content-viewport">
                         @if (session()->has('success'))
                             <!-- This example requires Tailwind CSS v2.0+ -->

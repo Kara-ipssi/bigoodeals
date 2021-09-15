@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,7 +21,23 @@ class DatabaseSeeder extends Seeder
          * admin@yopmail.com
          * Azerty123
          */
-        User::factory(1)->create();
+        // User::factory(2)->create();
+        DB::table('users')->insert([
+            [
+                'name'=>'Admin',
+                'email'=>'admin@yopmail.com',
+                'password'=>'$2y$10$KnTghr72LR7ppf2QHIE2ZOAyY/Dpa7tNGW9BvRgny9xYytFgGhlOO', //azerty123
+                'is_admin'=>true,
+                'remember_token' => Str::random(10),
+            ],
+            [
+                'name'=>'User',
+                'email'=>'user@yopmail.com',
+                'password'=>'$2y$10$KnTghr72LR7ppf2QHIE2ZOAyY/Dpa7tNGW9BvRgny9xYytFgGhlOO', //azerty123
+                'is_admin'=>false,
+                'remember_token' => Str::random(10),
+            ]
+        ]);
 
         /**
          * create the size type factory
@@ -122,6 +139,17 @@ class DatabaseSeeder extends Seeder
 
         // validée, en préparation, expédiée
         DB::table('state')->insert([
+            // Paniers
+            [
+                'name' => 'create',
+                'description' => 'Représente l\'état initial d\'un panier',
+            ],
+            [
+                'name'=>'checkout',
+                'description' => 'Represente les paniers payés.',
+            ],
+
+            //Commandes
             [
                 'name'=> 'Validée',
                 'description' => 'repprésente les commandes validées.'

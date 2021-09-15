@@ -15,11 +15,15 @@
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
+
+        @livewireStyles
     </head>
     <body>
         <livewire:shop-navbar/>
         <div class="font-sans text-gray-900 antialiased">
             {{ $slot }}
         </div>
+        <livewire:shop-footer/>
+        @livewireScripts
     </body>
 </html>

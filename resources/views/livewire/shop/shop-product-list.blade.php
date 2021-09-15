@@ -276,8 +276,8 @@
                                     </div>
                                 </div>
                                 <div class="mt-6 flex items-center justify-center flex-row gap-1">
-                                    <a href="#" wire:click="addToCart({{$product->id}})" class="relative  bg-indigo-500 border border-transparent rounded-md py-2 px-8 text-sm font-medium text-white hover:bg-indigo-400">{{__('Add to cart')}}<span class="sr-only">, {{$product->name}}</span></a>
-                                    <a href="{{route('shop.product.show', $product->id)}}" class="relative  bg-gray-100 border border-transparent rounded-md py-2 px-8 text-sm font-medium text-gray-900 hover:bg-gray-200">{{__('View details')}}<span class="sr-only">, {{$product->name}}</span></a>
+                                    {{-- <a href="#" wire:click="addToCart({{$product->id}})" class="relative  bg-indigo-500 border border-transparent rounded-md py-2 px-8 text-sm font-medium text-white hover:bg-indigo-400">{{__('Add to cart')}}<span class="sr-only">, {{$product->name}}</span></a> --}}
+                                    <a href="{{route('shop.product.show', $product->id)}}" class="relative  bg-indigo-500 border border-transparent rounded-md py-2 px-8 text-sm font-medium text-white hover:bg-indigo-400">{{__('View details')}}<span class="sr-only">, {{$product->name}}</span></a>
                                 </div>
                             </div>
                         @endforeach

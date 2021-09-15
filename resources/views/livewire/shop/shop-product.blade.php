@@ -18,7 +18,7 @@
 			</a>
 		  </li>
 		</ol>
-	  </nav>
+	</nav>
 	<div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
 		<div class="lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start">
 			<!-- Image gallery -->
@@ -28,7 +28,7 @@
                     <div class="grid grid-cols-4 gap-6" aria-orientation="horizontal" role="tablist">
 
 						@foreach ($product->images as $image)
-							<button id="tabs-1-tab-1" class="relative h-24 bg-white rounded-md flex items-center justify-center text-sm font-medium uppercase text-gray-900 cursor-pointer hover:bg-gray-50 focus:outline-none focus:ring focus:ring-offset-4 focus:ring-opacity-50" aria-controls="tabs-1-panel-1" role="tab" type="button">
+							<button wire:click="setSelected('{{$image->image_url}}')" id="tabs-1-tab-1" class="relative h-24 bg-white rounded-md flex items-center justify-center text-sm font-medium uppercase text-gray-900 cursor-pointer hover:bg-gray-50 focus:outline-none focus:ring focus:ring-offset-4 focus:ring-opacity-50" aria-controls="tabs-1-panel-1" role="tab" type="button">
 								<span class="sr-only">
 									Angled view
 								</span>
@@ -131,27 +131,36 @@
 						@foreach ($product->stocks as $stock)
 							@if ($stock->quantity > 0)
 								<label class="border rounded-md py-3 px-3 flex items-center justify-center text-sm font-medium uppercase sm:flex-1 cursor-pointer focus:outline-none">
-									<input type="radio" name="size-choice" value="{{$stock->size->code}}" class="sr-only" aria-labelledby="size-choice-3-label">
+									<input type="radio" name="size-choice" wire:model="size" value="{{$stock->size->id}}" class="sr-only" aria-labelledby="size-choice-3-label">
 									<p id="size-choice-3-label">
 										{{$stock->size->code}}
 									</p>
 								</label>
 							@else
 								<label class="border rounded-md py-3 px-3 flex items-center justify-center text-sm font-medium uppercase sm:flex-1 opacity-25 cursor-not-allowed focus:outline-none">
-									<input type="radio" name="size-choice" value="{{$stock->size->code}}" class="sr-only" aria-labelledby="size-choice-3-label">
+									<input type="radio" name="size-choice" value="{{$stock->size->id}}" class="sr-only" aria-labelledby="size-choice-3-label">
 									<p id="size-choice-3-label">
 										{{$stock->size->code}}
 									</p>
 								</label>
 							@endif
 						@endforeach
-	
+						
 					</div>
+						@error('size') <span class="error text-red-500">{{ $message }}</span> @enderror
+
+					@auth
+						<button wire:click="addToCart()" class="mt-8 w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+								{{__('Add to cart')}}
+						</button> 
+						
+					@else
+						<a href="{{route('login')}}" class="mt-8 w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Add to cart</a>
+					@endauth
+					
 				</fieldset>
-			  </div>
-  
-			  <button type="submit" class="mt-8 w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Add to cart</button>
-			</form>
+			</div>
+			
 
 			<section aria-labelledby="details-heading" class="mt-12">
 				<h2 id="details-heading" class="sr-only">Additional details</h2>
