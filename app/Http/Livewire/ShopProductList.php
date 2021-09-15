@@ -19,12 +19,9 @@ class ShopProductList extends Component
         $this->productToDisplay = Product::all();
     }
 
-    public function addToCart($productId)
+    public function showMe(Product $product)
     {
-        if(cookie('test')){
-            dd(cookie('test'));
-        }
-        Cookie::make("test", $productId, 20 );
+        return redirect()->route("shop.product.show", $product->id);
     }
 
     public function render()
