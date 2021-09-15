@@ -27,7 +27,7 @@
                                 <tr>
                                     <td class="text-center">{{$product->reference}}</td>
                                     <td class="text-center">{{$product->name}}</td>
-                                    <td class="text-center"><img src="{{$product->images[0]->image_url}}" width="50" alt="Image produit {{$product->namme}}"></td>
+                                    <td class="text-center"><img src="{{isset($product->images[0]) ? $product->images[0]->image_url : ""}}" width="50" alt="Image produit {{$product->namme}}"></td>
                                     <td class="text-center">{{$product->price}}</td>
                                     <td class="text-center">{{$product->created_at}}</td>
                                     <td class="text-center">

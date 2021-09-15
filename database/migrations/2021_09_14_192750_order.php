@@ -16,6 +16,7 @@ class Order extends Migration
         Schema::create('order', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('number', 50);
+            $table->string('price', 50);
             $table->foreignId('state_id')->constrained('state');
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('cart_id')->constrained('shop_cart');

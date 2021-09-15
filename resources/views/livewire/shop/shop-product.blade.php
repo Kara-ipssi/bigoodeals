@@ -105,9 +105,9 @@
 
 				<div class="text-base text-gray-700 space-y-6">
 					@if (!empty($product->description))
-						<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolor ad labore repudiandae amet. Similique, eum! Voluptatem, deserunt consequatur dignissimos ab hic quam veritatis, mollitia itaque, facere sapiente consequuntur ex? A!</p>
-					@else
 						<p>{{$product->description}}</p>
+					@else
+						<p>Vous voyez ce message car nous cherchons encore une description à couper le soufle pour ce produit incroyable !!!</p>
 					@endif
 				</div>
 			</div>

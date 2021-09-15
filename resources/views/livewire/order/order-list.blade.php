@@ -16,7 +16,6 @@
                             <tr>
                                 <th class="text-center">{{__('Customer')}}</th>
                                 <th class="text-center">{{__('Order number')}}</th>
-                                
                                 <th class="text-center">{{__('Purchased on')}}</th>
                                 <th class="text-center">{{__('Order price')}}</th>
                                 <th class="text-center">{{__('Order status')}}</th>
@@ -24,15 +23,38 @@
                             </tr>
                         </thead>
                         <tbody>
-                            
-                            
-                        </tbody>
-                        <tfoot>
-                            {{$orders->links()}}
-                        </tfoot>
-                    </table>
-                    
+                            @foreach ($orders as $order)
+                                <tr>
+                                    <td class="text-center">{{$order->user->name}}</td>
+                                    <td class="text-center">{{$order->number}}</td>
+                                    <td class="text-center">{{$order->created_at}}</td>
+                                    <td class="text-center"></td>
+                                    <td class="text-center">
+                                        @if($order->state->id === 3 ) {{-- Validée --}}
+                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-medium bg-red-100 text-red-800">
+                                                {{$order->state->name}}
+                                            </span>
+                                        @else
+                                            @if($order->state->id === 4 )  {{-- En preparation --}}
+                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-medium bg-yellow-100 text-yellow-800">
+                                                    {{$order->state->name}}
+                                                </span>
+                                            @else                          {{-- Expédiée --}}
+                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-medium bg-purple-100 text-purple-800">
+                                                    {{$order->state->name}}
+                                                </span>
+                                            @endif
+                                        @endif
+                                    </td>
+                                    <td class="text-center">
+                                        Mettre en préparation
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody> 
+                    </table> 
                 </div>
+                {{$orders->links()}}
             </div>
         </div>
     </div>

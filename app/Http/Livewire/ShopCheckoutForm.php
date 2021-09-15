@@ -68,10 +68,10 @@ class ShopCheckoutForm extends Component
     }
 
     protected $rules = [
-        'firstname' => 'required|max:25',
-        'lastname' => 'required|max:25',
-        'email' => 'required|max:25',
-        'street' => 'required|max:25',
+        'firstname' => 'required|max:50',
+        'lastname' => 'required|max:50',
+        'email' => 'required|max:50',
+        'street' => 'required|max:50',
         'more_info' => 'max:100',
         'country'=> 'required',
         'phone' => 'min:10|max:13',

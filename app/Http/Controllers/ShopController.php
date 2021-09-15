@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\ShopCart as Cart;
-use Illuminate\Http\Response;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -59,12 +57,20 @@ class ShopController extends Controller
             /**
              * Setting of the Order number
              */
+            $total_price = 0;
+
+            foreach($cart->items as $item){
+                $total_price += $item->quantity * (int)$item->product->price;
+            }
+            $total_price += 5; //for the delivery price
+            
             $orderNumber = 'CMD'.$data;
             $order = new Order();
             $order->number = $orderNumber;
             $order->user_id = $cart->user_id;
             $order->state_id = 3; // 3 => Validée
             $order->cart_id = $cart->id;
+            $order->price = $total_price;
 
             $cart->state_id = 2;
             $cart->purchase_at = now();

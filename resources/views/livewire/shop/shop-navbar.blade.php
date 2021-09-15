@@ -105,7 +105,7 @@
                         <div class="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
                         <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg" alt="Models sitting back to back, wearing Basic Tee in black and bone." class="object-center object-cover">
                         </div>
-                        <a href="#" class="mt-6 block text-sm font-medium text-gray-900">
+                        <a href="{{route('shop.products')}}" class="mt-6 block text-sm font-medium text-gray-900">
                         <span class="absolute z-10 inset-0" aria-hidden="true"></span>
                         New Arrivals
                         </a>
@@ -116,7 +116,7 @@
                         <div class="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
                         <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg" alt="Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees." class="object-center object-cover">
                         </div>
-                        <a href="#" class="mt-6 block text-sm font-medium text-gray-900">
+                        <a href="{{route('shop.products')}}" class="mt-6 block text-sm font-medium text-gray-900">
                         <span class="absolute z-10 inset-0" aria-hidden="true"></span>
                         Basic Tees
                         </a>
@@ -127,7 +127,7 @@
                         <div class="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
                         <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-category-03.jpg" alt="Model wearing minimalist watch with black wristband and white watch face." class="object-center object-cover">
                         </div>
-                        <a href="#" class="mt-6 block text-sm font-medium text-gray-900">
+                        <a href="{{route('shop.products')}}" class="mt-6 block text-sm font-medium text-gray-900">
                         <span class="absolute z-10 inset-0" aria-hidden="true"></span>
                         Accessories
                         </a>
@@ -138,7 +138,7 @@
                         <div class="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
                         <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-category-04.jpg" alt="Model opening tan leather long wallet with credit card pockets and cash pouch." class="object-center object-cover">
                         </div>
-                        <a href="#" class="mt-6 block text-sm font-medium text-gray-900">
+                        <a href="{{route('shop.products')}}" class="mt-6 block text-sm font-medium text-gray-900">
                         <span class="absolute z-10 inset-0" aria-hidden="true"></span>
                         Carry
                         </a>
@@ -156,7 +156,7 @@
                         <div class="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
                         <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-01.jpg" alt="Hats and sweaters on wood shelves next to various colors of t-shirts on hangers." class="object-center object-cover">
                         </div>
-                        <a href="#" class="mt-6 block text-sm font-medium text-gray-900">
+                        <a href="{{route('shop.products')}}" class="mt-6 block text-sm font-medium text-gray-900">
                         <span class="absolute z-10 inset-0" aria-hidden="true"></span>
                         New Arrivals
                         </a>
@@ -167,7 +167,7 @@
                         <div class="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
                         <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-02.jpg" alt="Model wearing light heather gray t-shirt." class="object-center object-cover">
                         </div>
-                        <a href="#" class="mt-6 block text-sm font-medium text-gray-900">
+                        <a href="{{route('shop.products')}}" class="mt-6 block text-sm font-medium text-gray-900">
                         <span class="absolute z-10 inset-0" aria-hidden="true"></span>
                         Basic Tees
                         </a>
@@ -178,7 +178,7 @@
                         <div class="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
                         <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-03.jpg" alt="Grey 6-panel baseball hat with black brim, black mountain graphic on front, and light heather gray body." class="object-center object-cover">
                         </div>
-                        <a href="#" class="mt-6 block text-sm font-medium text-gray-900">
+                        <a href="{{route('shop.products')}}" class="mt-6 block text-sm font-medium text-gray-900">
                         <span class="absolute z-10 inset-0" aria-hidden="true"></span>
                         Accessories
                         </a>
@@ -189,7 +189,7 @@
                         <div class="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
                         <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-04.jpg" alt="Model putting folded cash into slim card holder olive leather wallet with hand stitching." class="object-center object-cover">
                         </div>
-                        <a href="#" class="mt-6 block text-sm font-medium text-gray-900">
+                        <a href="{{route('shop.products')}}" class="mt-6 block text-sm font-medium text-gray-900">
                         <span class="absolute z-10 inset-0" aria-hidden="true"></span>
                         Carry
                         </a>
@@ -344,7 +344,7 @@
                                                 <div class="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
                                                 <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg" alt="Models sitting back to back, wearing Basic Tee in black and bone." class="object-center object-cover">
                                                 </div>
-                                                <a href="#" class="mt-4 block font-medium text-gray-900">
+                                                <a href="{{route('shop.products')}}" class="mt-4 block font-medium text-gray-900">
                                                 <span class="absolute z-10 inset-0" aria-hidden="true"></span>
                                                 New Arrivals
                                                 </a>
@@ -355,7 +355,7 @@
                                                 <div class="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
                                                 <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg" alt="Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees." class="object-center object-cover">
                                                 </div>
-                                                <a href="#" class="mt-4 block font-medium text-gray-900">
+                                                <a href="{{route('shop.products')}}" class="mt-4 block font-medium text-gray-900">
                                                 <span class="absolute z-10 inset-0" aria-hidden="true"></span>
                                                 Basic Tees
                                                 </a>
@@ -366,7 +366,7 @@
                                                 <div class="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
                                                 <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-category-03.jpg" alt="Model wearing minimalist watch with black wristband and white watch face." class="object-center object-cover">
                                                 </div>
-                                                <a href="#" class="mt-4 block font-medium text-gray-900">
+                                                <a href="{{route('shop.products')}}" class="mt-4 block font-medium text-gray-900">
                                                 <span class="absolute z-10 inset-0" aria-hidden="true"></span>
                                                 Accessories
                                                 </a>
@@ -377,7 +377,7 @@
                                                 <div class="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
                                                 <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-category-04.jpg" alt="Model opening tan leather long wallet with credit card pockets and cash pouch." class="object-center object-cover">
                                                 </div>
-                                                <a href="#" class="mt-4 block font-medium text-gray-900">
+                                                <a href="{{route('shop.products')}}" class="mt-4 block font-medium text-gray-900">
                                                 <span class="absolute z-10 inset-0" aria-hidden="true"></span>
                                                 Carry
                                                 </a>
@@ -437,7 +437,7 @@
                                             <div class="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
                                             <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-01.jpg" alt="Hats and sweaters on wood shelves next to various colors of t-shirts on hangers." class="object-center object-cover">
                                             </div>
-                                            <a href="#" class="mt-4 block font-medium text-gray-900">
+                                            <a href="{{route('shop.products')}}" class="mt-4 block font-medium text-gray-900">
                                             <span class="absolute z-10 inset-0" aria-hidden="true"></span>
                                             New Arrivals
                                             </a>
@@ -448,7 +448,7 @@
                                             <div class="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
                                             <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-02.jpg" alt="Model wearing light heather gray t-shirt." class="object-center object-cover">
                                             </div>
-                                            <a href="#" class="mt-4 block font-medium text-gray-900">
+                                            <a href="{{route('shop.products')}}" class="mt-4 block font-medium text-gray-900">
                                             <span class="absolute z-10 inset-0" aria-hidden="true"></span>
                                             Basic Tees
                                             </a>
@@ -459,7 +459,7 @@
                                             <div class="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
                                             <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-03.jpg" alt="Grey 6-panel baseball hat with black brim, black mountain graphic on front, and light heather gray body." class="object-center object-cover">
                                             </div>
-                                            <a href="#" class="mt-4 block font-medium text-gray-900">
+                                            <a href="{{route('shop.products')}}" class="mt-4 block font-medium text-gray-900">
                                             <span class="absolute z-10 inset-0" aria-hidden="true"></span>
                                             Accessories
                                             </a>
@@ -470,7 +470,7 @@
                                             <div class="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
                                             <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-04.jpg" alt="Model putting folded cash into slim card holder olive leather wallet with hand stitching." class="object-center object-cover">
                                             </div>
-                                            <a href="#" class="mt-4 block font-medium text-gray-900">
+                                            <a href="{{route('shop.products')}}" class="mt-4 block font-medium text-gray-900">
                                             <span class="absolute z-10 inset-0" aria-hidden="true"></span>
                                             Carry
                                             </a>
@@ -508,7 +508,7 @@
                         </button>
         
                         <!-- Search -->
-                        <a href="#" class="ml-2 p-2 text-gray-400 hover:text-gray-500">
+                        <a href="{{route('shop.products')}}" class="ml-2 p-2 text-gray-400 hover:text-gray-500">
                         <span class="sr-only">Search</span>
                         <!-- Heroicon name: outline/search -->
                         <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
