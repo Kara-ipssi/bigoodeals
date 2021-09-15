@@ -140,8 +140,8 @@ class ShopCheckoutForm extends Component
             'customer_email' => Auth::user()->email,
             'line_items' => $this->itemLines,
             'mode' => 'payment',
-            'success_url' => 'http://localhost:8000/shop/checkout/success',
-            'cancel_url' => 'http://localhost:8000/shop/checkout/cancel',
+            'success_url' => 'https://bigoodeals.tk/shop/checkout/success',
+            'cancel_url' => 'https://bigoodeals.tk/shop/checkout/cancel',
         ]);
         return redirect($session->url);
     }
