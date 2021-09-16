@@ -104,24 +104,24 @@ class ShopCheckoutForm extends Component
         $address->save();
         
         foreach($this->cart->items as $item){
-            $newItemLine = [
+            $this->itemLines[] = [
                 'price_data' => [
                     'currency' => 'eur',
                     'product_data' => [
-                        'name' => 'T-shirt',
+                        'name' => $item->product->name,
+                        'images'=>[
+                            env('APP_URL').$item->product->images[0]->image_url
+                        ]
                     ],
-                    'unit_amount' => 2000,
+                    'unit_amount' => (int)$item->product->price * 100,
                 ],
-                'quantity' => 0,
+                'quantity' => $item->quantity,
             ];
-            $newItemLine['price_data']['product_data']['name'] = $item->product->name;
-            $newItemLine['price_data']['unit_amount'] = (int)$item->product->price * 100;
-            $newItemLine['quantity'] = $item->quantity;
 
-            $this->itemLines[] = $newItemLine;
+            
         }
 
-        $shippingItemLine = [
+        $this->itemLines[] = [
             'price_data' => [
                 'currency' => 'eur',
                 'product_data' => [
@@ -131,8 +131,6 @@ class ShopCheckoutForm extends Component
             ],
             'quantity' => 1,
         ];
-
-        $this->itemLines[] = $shippingItemLine;
 
         $this->stripeCheckoutSession();
     }
