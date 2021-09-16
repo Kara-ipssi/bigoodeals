@@ -101,7 +101,7 @@
             <div>
                 <dt class="font-medium text-gray-900">Adresse de Facturation</dt>
                 <dd class="mt-3 text-gray-500">
-                    <span class="block">{{$address->fistname == '' ? "John": $address->fistname}} {{$address->lastname == '' ? "Doe" : $address->lastname}}</span>
+                    <span class="block">{{$address->name}}</span>
                     <span class="block">{{$address->street}}</span>
                     <span class="block">{{ $address->country == '' ? 'France': $address->country}}, {{$address->city =='' ? "Paris" : $address->city }}, {{$address->postal_code == "" ? "75001" : $address->postal_code}}</span>
                 </dd>

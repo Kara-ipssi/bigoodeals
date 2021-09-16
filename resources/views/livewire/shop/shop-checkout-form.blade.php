@@ -21,10 +21,10 @@
                 <div class="mt-10 border-t border-gray-200 pt-10">
                     <h2 class="text-lg font-medium text-gray-900">{{__('Shipping information')}}</h2>
             
-                    <div class="sm:col-span-2 mt-3">
-                        <label for="country" class="block text-sm font-medium text-gray-700">{{__('My address')}}</label>
+                    {{-- <div class="sm:col-span-2 mt-3">
+                        <label for="" class="block text-sm font-medium text-gray-700">{{__('My address')}}</label>
                         <div class="mt-1">
-                            <select id="adressList" name="country" autocomplete="country" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            <select id="adressList" name="" autocomplete="" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                 <option> Choisissez parmis vos adresses de livraisons </option>
                                 @if (count($addressList) > 0)
                                     @foreach($addressList as $address)
@@ -34,7 +34,7 @@
                             </select>
                         </div>
                         @error('country') <span class="text-red-400 error">{{ $message }}</span> @enderror
-                    </div>
+                    </div> --}}
 
                     <div class="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
                         <div>

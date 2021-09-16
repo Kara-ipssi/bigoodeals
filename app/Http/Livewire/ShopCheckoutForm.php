@@ -77,6 +77,7 @@ class ShopCheckoutForm extends Component
         'street' => 'required|max:50',
         'more_info' => 'max:100',
         'country'=> 'required',
+        'city'=> 'required',
         'phone' => 'min:10|max:13',
         'delivery' => 'required'
     ];
@@ -98,7 +99,8 @@ class ShopCheckoutForm extends Component
         $address->more_info = $this->more_info;
         $address->phone = $this->phone;
         $address->user_id = Auth::user()->id;
-
+        $address->country = $this->country;
+        $address->city = $this->city;
         $address->save();
         
         foreach($this->cart->items as $item){
@@ -140,7 +142,7 @@ class ShopCheckoutForm extends Component
         $stripe = \Stripe\Stripe::setApiKey(env('STRIP_KEY'));
         $session = \Stripe\Checkout\Session::create([
             'payment_method_types' => ['card'],
-            'customer_email' => Auth::user()->email,
+            'customer_email' => $this->email,
             'line_items' => $this->itemLines,
             'mode' => 'payment',
             'success_url' => env('APP_URL').'/shop/checkout/success',
