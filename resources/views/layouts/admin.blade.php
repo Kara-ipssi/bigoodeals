@@ -129,8 +129,15 @@
         <script>
             Livewire.on('closeModal', ()=>{
                 let successMessage = document.getElementById('successMessage');
-                console.log(successMessage)
-            })
+            });
+
+            Livewire.on('removeTrending', (name)=>{
+                showSuccessAdd(`Le produit ${name} à été ajouté retiré de la page d'accueil.`);
+            });
+
+            Livewire.on('addTrending', (name)=>{
+                showSuccessAdd(`Le produit ${name} à été ajouté en page d'accueil.`);
+            });
         </script>
 
         <!--page body ends -->

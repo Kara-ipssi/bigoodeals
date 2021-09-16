@@ -17,7 +17,7 @@
                     <a href="{{route("products.index")}}" >{{__('Gestion des produits')}}</a>
                 </li>
                 <li>
-                    <a href="#" >Produits en tendances</a>
+                    <a href="{{route('products.trending')}}" >Produits en tendances</a>
                 </li>
             </ul>
         </li>

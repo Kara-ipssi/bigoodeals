@@ -17,8 +17,10 @@
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
     <body>
+        <livewire:shop-navbar/>
         <div class="font-sans text-gray-900 antialiased">
             {{ $slot }}
         </div>
+        <livewire:shop-footer/>
     </body>
 </html>

@@ -10,51 +10,10 @@
             {{-- Hero section --}}
             <livewire:shop-hero/>
             <main>
-                <section aria-labelledby="trending-heading">
-                    <div class="max-w-7xl mx-auto py-24 px-4 sm:px-6 sm:py-32 lg:pt-32 lg:px-8">
-                    <div class="md:flex md:items-center md:justify-between">
-                        <h2 id="favorites-heading" class="text-2xl font-extrabold tracking-tight text-gray-900">{{__('Trending Products')}}</h2>
-                        <a href="{{route('shop.products')}}" class="hidden text-sm font-medium text-indigo-600 hover:text-indigo-500 md:block">{{__('Shop the collection')}}<span aria-hidden="true"> &rarr;</span></a>
-                    </div>
-            
-                    <div class="mt-6 grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 md:grid-cols-4 md:gap-y-0 lg:gap-x-8">
-                        <div class="group relative">
-                            <div class="w-full h-56 rounded-md overflow-hidden group-hover:opacity-75 lg:h-72 xl:h-80">
-                                <img src="https://tailwindui.com/img/ecommerce-images/home-page-04-trending-product-02.jpg" alt="Hand stitched, orange leather long wallet." class="w-full h-full object-center object-cover">
-                            </div>
-                            <h3 class="mt-4 text-sm text-gray-700">
-                                <a href="#">
-                                <span class="absolute inset-0"></span>
-                                Leather Long Wallet
-                                </a>
-                            </h3>
-                            <p class="mt-1 text-sm text-gray-500">Natural</p>
-                            <p class="mt-1 text-sm font-medium text-gray-900">$75</p>
-                        </div>
-                        
-                        <div class="group relative">
-                            <div class="w-full h-56 rounded-md overflow-hidden group-hover:opacity-75 lg:h-72 xl:h-80">
-                                <img src="https://ae01.alicdn.com/kf/Hce5ed1b5c97c4314ad15f76573b4a14d1/Famous-Brand-Designer-3-IN-1-Shoulder-Bag-Women-Vintage-Printing-Purse-And-Hand-Bags-For.jpg_220x220xz.jpg_.webp" alt="Hand stitched, orange leather long wallet." class="w-full h-full object-center object-cover">
-                            </div>
-                            <h3 class="mt-4 text-sm text-gray-700">
-                                <a href="#">
-                                <span class="absolute inset-0"></span>
-                                Leather Long Wallet
-                                </a>
-                            </h3>
-                            <p class="mt-1 text-sm text-gray-500">Natural</p>
-                            <p class="mt-1 text-sm font-medium text-gray-900">$75</p>
-                        </div>
-                        
-                        <!-- More products... -->
-                    </div>
-            
-                    <div class="mt-8 text-sm md:hidden">
-                        <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Shop the collection<span aria-hidden="true"> &rarr;</span></a>
-                    </div>
-                    </div>
-                </section>
-        
+
+                {{-- Trending products --}}
+                <livewire:shop-trending/>
+                
                 <section aria-labelledby="perks-heading" class="bg-gray-50 border-t border-gray-200">
                     <h2 id="perks-heading" class="sr-only">Our perks</h2>
             

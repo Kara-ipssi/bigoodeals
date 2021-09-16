@@ -61,6 +61,10 @@ Route::group(['middleware'=>'is_admin'], function(){
         ->missing(function (Request $request) {
             return Redirect::route('products.index');
         });
+    
+    Route::get('/dashboard/product/trending', function(){
+        return view('product.trending');
+    })->name('products.trending');
 
     /**
      * Categories routes
