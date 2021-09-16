@@ -65,7 +65,7 @@
 			<!-- Reviews -->
 			<div class="mt-3">
 				<h3 class="sr-only">Reviews</h3>
-				<div class="flex items-center">
+				{{-- <div class="flex items-center">
 					<div class="flex items-center">
 						<!--
 						Heroicon name: solid/star
@@ -97,7 +97,7 @@
 						</svg>
 					</div>
 					<p class="sr-only">4 out of 5 stars</p>
-				</div>
+				</div> --}}
 			</div>
 
 			<div class="mt-6">
@@ -114,12 +114,14 @@
 
 			<div class="mt-6">
 				<div class="flex items-center justify-between">
-				  <h2 class="text-sm font-medium text-gray-900">Size</h2>
+				  <h2 class="text-sm font-medium text-gray-900">{{__('Sizes')}}</h2>
 				</div>
   
-				<fieldset class="mt-2">
+				<fieldset 
+					
+					class="mt-2">
 					<legend class="sr-only">
-						Choose a size
+						{{__('Choose a size')}}
 					</legend>
 					<div class="grid grid-cols-3 gap-3 sm:grid-cols-6">
 						<!--
@@ -130,8 +132,8 @@
 
 						@foreach ($product->stocks as $stock)
 							@if ($stock->quantity > 0)
-								<label class="border rounded-md py-3 px-3 flex items-center justify-center text-sm font-medium uppercase sm:flex-1 cursor-pointer focus:outline-none">
-									<input type="radio" name="size-choice" wire:model="size" value="{{$stock->size->id}}" class="sr-only" aria-labelledby="size-choice-3-label">
+								<label class="border rounded-md py-3 px-3 flex items-center justify-center text-sm font-medium uppercase sm:flex-1 cursor-pointer focus:outline-none focus:bg-blue-600">
+									<input type="radio" name="size-choice" wire:model="size" value="{{$stock->size->id}}" class="mr-2" aria-labelledby="size-choice-3-label">
 									<p id="size-choice-3-label">
 										{{$stock->size->code}}
 									</p>

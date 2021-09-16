@@ -208,7 +208,7 @@
                 @if (Auth::user()->is_admin == true)
                     <div class="border-t border-gray-200 py-6 px-4 space-y-6">
                         <div class="flow-root">
-                            <a href="{{route('dashboard')}}" class=" px-2 text-sm font-medium text-gray-700 hover:text-gray-800 lg:block">Admin</a>
+                            <a href="{{route('dashboard')}}" target="_blank" class=" px-2 text-sm font-medium text-gray-700 hover:text-gray-800 lg:block">Admin</a>
                         </div>
                     </div>
                     <div class="border-t border-gray-200 py-6 px-4 space-y-6">
@@ -552,7 +552,7 @@
                         @endauth
                         @if(!empty(Auth::user()))
                             @if (Auth::user()->is_admin == true)
-                                <a href="{{route('dashboard')}}" class=" px-2 hidden text-sm font-medium text-gray-700 hover:text-gray-800 lg:block">Admin</a>
+                                <a href="{{route('dashboard')}}" target="_blank" class="px-2 hidden text-sm font-medium text-gray-700 hover:text-gray-800 lg:block">Admin</a>
                                 <form action="{{route('logout')}}" method="POST">
                                     @csrf
                                     <button class="hidden text-sm font-medium text-gray-700 hover:text-gray-800 lg:block"> {{__('Logout')}} </button>
