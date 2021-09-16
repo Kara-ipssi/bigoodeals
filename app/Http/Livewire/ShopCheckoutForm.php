@@ -117,8 +117,6 @@ class ShopCheckoutForm extends Component
                 ],
                 'quantity' => $item->quantity,
             ];
-
-            
         }
 
         $this->itemLines[] = [
