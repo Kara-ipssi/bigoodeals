@@ -22,7 +22,7 @@
                                     <td class="text-center">
                                         <a href="{{route('shop.index')}}" target="_blank" class="text-indigo-600 hover:text-indigo-900"><i class="fa fa-eye"></i> {{ __('Show') }} </a>
                                         {{-- <button type="button" data-toggle="modal" data-target="#productDeleteModal{{$product->id}}" class="text-red-600 hover:text-red-900"><i class="fas fa-trash-alt"></i> {{ __('Delete') }}</button> --}}
-                                        <button type="button" wire:click='removeFromTrending({{$product->id}})' class="text-red-600 hover:text-red-900"><i class="fas fa-trash-alt"></i> Retirer des tendances</button>
+                                        <button type="button" wire:click='removeFromTrending({{$product->id}})' class="text-red-600 hover:text-red-900"><i class="fad fa-level-down-alt"></i> Retirer des tendances</button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -33,7 +33,7 @@
         </div>
     </div>
     <div class="grid">
-        <p class="grid-header">Liste des produits en tendances</p>
+        <p class="grid-header">Liste des produits</p>
         <div class="grid-body">
             <div class="item-wrapper">
                 <div class="table-responsive">
@@ -54,7 +54,7 @@
                                     <td class="text-center"><img src="{{isset($product->images[0]) ? $product->images[0]->image_url : ""}}" width="50" alt="Image produit {{$product->namme}}"></td>
                                     <td class="text-center">
                                         <a href="{{route('shop.product.show', $product->id)}}" target="_blank" class="text-indigo-600 hover:text-indigo-900"><i class="fa fa-eye"></i> {{ __('Show') }} </a>
-                                        <button type="button" wire:click="addToTrending({{$product->id}})" class="text-red-600 hover:text-red-900"><i class="fas fa-trash-alt"></i> Mettre en Avant</button>
+                                        <button type="button" wire:click="addToTrending({{$product->id}})" class="text-red-600 hover:text-red-900"><i class="fad fa-level-up-alt"></i>Mettre en Avant</button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -62,6 +62,7 @@
                     </table>
                 </div>
             </div>
+            {{$productsList->links()}}
         </div>
     </div>
 </div>
