@@ -135,7 +135,7 @@ class ShopCheckoutForm extends Component
 
     public function stripeCheckoutSession()
     {
-        $stripe = \Stripe\Stripe::setApiKey(env('STRIP_KEY'));
+        $stripe = \Stripe\Stripe::setApiKey(env('STRIPE_KEY'));
         $session = \Stripe\Checkout\Session::create([
             'payment_method_types' => ['card'],
             'customer_email' => $this->email,
