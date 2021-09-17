@@ -58,7 +58,7 @@
             x-transition:leave-start="translate-x-0"
             x-transition:leave-end="-translate-x-full"
             class="relative max-w-xs w-full bg-white shadow-xl pb-12 flex flex-col overflow-y-auto">
-
+            
             <div class="px-4 pt-5 pb-2 flex">
                 <button 
                     @click="mobileMenuOpen = !mobileMenuOpen"
@@ -101,49 +101,18 @@
                     x-show="women"
                     id="tabs-1-panel-1" class="px-4 py-6 space-y-12" aria-labelledby="tabs-1-tab-1" role="tabpanel" tabindex="0">
                     <div class="grid grid-cols-2 gap-x-4 gap-y-10">
-                    <div class="group relative">
-                        <div class="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
-                        <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg" alt="Models sitting back to back, wearing Basic Tee in black and bone." class="object-center object-cover">
-                        </div>
-                        <a href="{{route('shop.products')}}" class="mt-6 block text-sm font-medium text-gray-900">
-                        <span class="absolute z-10 inset-0" aria-hidden="true"></span>
-                        {{__('New Arrivals')}}
-                        </a>
-                        <p aria-hidden="true" class="mt-1 text-sm text-gray-500">{{__('Shop now')}}</p>
-                    </div>
-        
-                    <div class="group relative">
-                        <div class="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
-                        <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg" alt="Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees." class="object-center object-cover">
-                        </div>
-                        <a href="{{route('shop.products')}}" class="mt-6 block text-sm font-medium text-gray-900">
-                        <span class="absolute z-10 inset-0" aria-hidden="true"></span>
-                        Basic Tees
-                        </a>
-                        <p aria-hidden="true" class="mt-1 text-sm text-gray-500">{{__('Shop now')}}</p>
-                    </div>
-        
-                    <div class="group relative">
-                        <div class="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
-                        <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-category-03.jpg" alt="Model wearing minimalist watch with black wristband and white watch face." class="object-center object-cover">
-                        </div>
-                        <a href="{{route('shop.products')}}" class="mt-6 block text-sm font-medium text-gray-900">
-                        <span class="absolute z-10 inset-0" aria-hidden="true"></span>
-                        Accessories
-                        </a>
-                        <p aria-hidden="true" class="mt-1 text-sm text-gray-500">{{__('Shop now')}}</p>
-                    </div>
-        
-                    <div class="group relative">
-                        <div class="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
-                        <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-category-04.jpg" alt="Model opening tan leather long wallet with credit card pockets and cash pouch." class="object-center object-cover">
-                        </div>
-                        <a href="{{route('shop.products')}}" class="mt-6 block text-sm font-medium text-gray-900">
-                        <span class="absolute z-10 inset-0" aria-hidden="true"></span>
-                        Carry
-                        </a>
-                        <p aria-hidden="true" class="mt-1 text-sm text-gray-500">{{__('Shop now')}}</p>
-                    </div>
+                        @foreach ($womenCats as $cat)
+                            <div class="group relative">
+                                <div class="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
+                                <img src="{{$cat->image}}" alt="Models sitting back to back, wearing Basic Tee in black and bone." class="object-center object-cover">
+                                </div>
+                                <a href="{{route('shop.products')}}" class="mt-4 block font-medium text-gray-900">
+                                <span class="absolute z-10 inset-0" aria-hidden="true"></span>
+                                    {{$cat->name}}
+                                </a>
+                                <p aria-hidden="true" class="mt-1">{{__('Shop now')}}</p>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
         
@@ -152,49 +121,18 @@
                     x-show="men" 
                     id="tabs-1-panel-2" class="px-4 py-6 space-y-12" aria-labelledby="tabs-1-tab-2" role="tabpanel" tabindex="0">
                     <div class="grid grid-cols-2 gap-x-4 gap-y-10">
-                    <div class="group relative">
-                        <div class="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
-                        <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-01.jpg" alt="Hats and sweaters on wood shelves next to various colors of t-shirts on hangers." class="object-center object-cover">
-                        </div>
-                        <a href="{{route('shop.products')}}" class="mt-6 block text-sm font-medium text-gray-900">
-                        <span class="absolute z-10 inset-0" aria-hidden="true"></span>
-                        New Arrivals
-                        </a>
-                        <p aria-hidden="true" class="mt-1 text-sm text-gray-500">{{__('Shop now')}}</p>
-                    </div>
-        
-                    <div class="group relative">
-                        <div class="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
-                        <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-02.jpg" alt="Model wearing light heather gray t-shirt." class="object-center object-cover">
-                        </div>
-                        <a href="{{route('shop.products')}}" class="mt-6 block text-sm font-medium text-gray-900">
-                        <span class="absolute z-10 inset-0" aria-hidden="true"></span>
-                        Basic Tees
-                        </a>
-                        <p aria-hidden="true" class="mt-1 text-sm text-gray-500">{{__('Shop now')}}</p>
-                    </div>
-        
-                    <div class="group relative">
-                        <div class="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
-                        <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-03.jpg" alt="Grey 6-panel baseball hat with black brim, black mountain graphic on front, and light heather gray body." class="object-center object-cover">
-                        </div>
-                        <a href="{{route('shop.products')}}" class="mt-6 block text-sm font-medium text-gray-900">
-                        <span class="absolute z-10 inset-0" aria-hidden="true"></span>
-                        Accessories
-                        </a>
-                        <p aria-hidden="true" class="mt-1 text-sm text-gray-500">{{__('Shop now')}}</p>
-                    </div>
-        
-                    <div class="group relative">
-                        <div class="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
-                        <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-04.jpg" alt="Model putting folded cash into slim card holder olive leather wallet with hand stitching." class="object-center object-cover">
-                        </div>
-                        <a href="{{route('shop.products')}}" class="mt-6 block text-sm font-medium text-gray-900">
-                        <span class="absolute z-10 inset-0" aria-hidden="true"></span>
-                        Carry
-                        </a>
-                        <p aria-hidden="true" class="mt-1 text-sm text-gray-500">{{__('Shop now')}}</p>
-                    </div>
+                        @foreach ($menCats as $cat)
+                            <div class="group relative">
+                                <div class="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
+                                <img src="{{$cat->image}}" alt="Models sitting back to back, wearing Basic Tee in black and bone." class="object-center object-cover">
+                                </div>
+                                <a href="{{route('shop.products')}}" class="mt-4 block font-medium text-gray-900">
+                                <span class="absolute z-10 inset-0" aria-hidden="true"></span>
+                                    {{$cat->name}}
+                                </a>
+                                <p aria-hidden="true" class="mt-1">{{__('Shop now')}}</p>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -256,41 +194,6 @@
     
     <header class="relative">
         <nav aria-label="Top">
-            <!-- Top navigation -->
-            {{-- <div class="bg-gray-900">
-                <div class="max-w-7xl mx-auto h-10 px-4 flex items-center justify-between sm:px-6 lg:px-8">
-                    <!-- Currency selector -->
-                    <form>
-                        <div>
-                            <label for="desktop-currency" class="sr-only">Currency</label>
-                            <div class="-ml-2 group relative bg-gray-900 border-transparent rounded-md focus-within:ring-2 focus-within:ring-white">
-                            <select id="desktop-currency" name="currency" class="bg-none bg-gray-900 border-transparent rounded-md py-0.5 pl-2 pr-5 flex items-center text-sm font-medium text-white group-hover:text-gray-100 focus:outline-none focus:ring-0 focus:border-transparent">
-                                <option>CAD</option>
-            
-                                <option>USD</option>
-            
-                                <option>AUD</option>
-            
-                                <option>EUR</option>
-            
-                                <option>GBP</option>
-                            </select>
-                            <div class="absolute right-0 inset-y-0 flex items-center pointer-events-none">
-                                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" class="w-5 h-5 text-gray-300">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 8l4 4 4-4" />
-                                </svg>
-                            </div>
-                            </div>
-                        </div>
-                    </form>
-        
-                    <div class="flex items-center space-x-6">
-                        <a href="#" class="text-sm font-medium text-white hover:text-gray-100">Sign in</a>
-                        <a href="#" class="text-sm font-medium text-white hover:text-gray-100">Create an account</a>
-                    </div>
-                </div>
-            </div> --}}
-    
             <!-- Secondary navigation -->
             <div class="bg-white">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -351,49 +254,19 @@
                                     <div class="relative">
                                         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                                             <div class="grid grid-cols-4 gap-y-10 gap-x-8 py-16">
-                                            <div class="group relative">
-                                                <div class="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
-                                                <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg" alt="Models sitting back to back, wearing Basic Tee in black and bone." class="object-center object-cover">
-                                                </div>
-                                                <a href="{{route('shop.products')}}" class="mt-4 block font-medium text-gray-900">
-                                                <span class="absolute z-10 inset-0" aria-hidden="true"></span>
-                                                {{__('New Arrivals')}}
-                                                </a>
-                                                <p aria-hidden="true" class="mt-1">{{__('Shop now')}}</p>
-                                            </div>
-                
-                                            <div class="group relative">
-                                                <div class="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
-                                                <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg" alt="Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees." class="object-center object-cover">
-                                                </div>
-                                                <a href="{{route('shop.products')}}" class="mt-4 block font-medium text-gray-900">
-                                                <span class="absolute z-10 inset-0" aria-hidden="true"></span>
-                                                {{__('Basic Tees')}}
-                                                </a>
-                                                <p aria-hidden="true" class="mt-1">{{__('Shop now')}}</p>
-                                            </div>
-                
-                                            <div class="group relative">
-                                                <div class="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
-                                                <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-category-03.jpg" alt="Model wearing minimalist watch with black wristband and white watch face." class="object-center object-cover">
-                                                </div>
-                                                <a href="{{route('shop.products')}}" class="mt-4 block font-medium text-gray-900">
-                                                <span class="absolute z-10 inset-0" aria-hidden="true"></span>
-                                                {{__('Accessories')}}
-                                                </a>
-                                                <p aria-hidden="true" class="mt-1">{{__('Shop now')}}</p>
-                                            </div>
-                
-                                            <div class="group relative">
-                                                <div class="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
-                                                <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-category-04.jpg" alt="Model opening tan leather long wallet with credit card pockets and cash pouch." class="object-center object-cover">
-                                                </div>
-                                                <a href="{{route('shop.products')}}" class="mt-4 block font-medium text-gray-900">
-                                                <span class="absolute z-10 inset-0" aria-hidden="true"></span>
-                                                {{__('Carry')}}
-                                                </a>
-                                                <p aria-hidden="true" class="mt-1">{{__('Shop now')}}</p>
-                                            </div>
+                                                @foreach ($womenCats as $cat)
+                                                    <div class="group relative">
+                                                        <div class="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
+                                                        <img src="{{$cat->image}}" alt="Models sitting back to back, wearing Basic Tee in black and bone." class="object-center object-cover">
+                                                        </div>
+                                                        <a href="{{route('shop.products')}}" class="mt-4 block font-medium text-gray-900">
+                                                        <span class="absolute z-10 inset-0" aria-hidden="true"></span>
+                                                            {{$cat->name}}
+                                                        </a>
+                                                        <p aria-hidden="true" class="mt-1">{{__('Shop now')}}</p>
+                                                    </div>
+                                                @endforeach
+                    
                                             </div>
                                         </div>
                                     </div>
@@ -444,49 +317,18 @@
                                     <div class="relative">
                                     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                                         <div class="grid grid-cols-4 gap-y-10 gap-x-8 py-16">
-                                        <div class="group relative">
-                                            <div class="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
-                                            <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-01.jpg" alt="Hats and sweaters on wood shelves next to various colors of t-shirts on hangers." class="object-center object-cover">
-                                            </div>
-                                            <a href="{{route('shop.products')}}" class="mt-4 block font-medium text-gray-900">
-                                            <span class="absolute z-10 inset-0" aria-hidden="true"></span>
-                                            {{__('New Arrivals')}}
-                                            </a>
-                                            <p aria-hidden="true" class="mt-1">{{__('Shop now')}}</p>
-                                        </div>
-            
-                                        <div class="group relative">
-                                            <div class="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
-                                            <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-02.jpg" alt="Model wearing light heather gray t-shirt." class="object-center object-cover">
-                                            </div>
-                                            <a href="{{route('shop.products')}}" class="mt-4 block font-medium text-gray-900">
-                                            <span class="absolute z-10 inset-0" aria-hidden="true"></span>
-                                            {{__('Basic Tees')}}
-                                            </a>
-                                            <p aria-hidden="true" class="mt-1">{{__('Shop now')}}</p>
-                                        </div>
-            
-                                        <div class="group relative">
-                                            <div class="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
-                                            <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-03.jpg" alt="Grey 6-panel baseball hat with black brim, black mountain graphic on front, and light heather gray body." class="object-center object-cover">
-                                            </div>
-                                            <a href="{{route('shop.products')}}" class="mt-4 block font-medium text-gray-900">
-                                            <span class="absolute z-10 inset-0" aria-hidden="true"></span>
-                                            {{__('Accessories')}}
-                                            </a>
-                                            <p aria-hidden="true" class="mt-1">{{__('Shop now')}}</p>
-                                        </div>
-            
-                                        <div class="group relative">
-                                            <div class="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
-                                            <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-04.jpg" alt="Model putting folded cash into slim card holder olive leather wallet with hand stitching." class="object-center object-cover">
-                                            </div>
-                                            <a href="{{route('shop.products')}}" class="mt-4 block font-medium text-gray-900">
-                                            <span class="absolute z-10 inset-0" aria-hidden="true"></span>
-                                            {{__('Carry')}}
-                                            </a>
-                                            <p aria-hidden="true" class="mt-1">{{__('Shop now')}}</p>
-                                        </div>
+                                            @foreach ($menCats as $cat)
+                                                <div class="group relative">
+                                                    <div class="aspect-w-1 aspect-h-1 rounded-md bg-gray-100 overflow-hidden group-hover:opacity-75">
+                                                    <img src="{{$cat->image}}" alt="Models sitting back to back, wearing Basic Tee in black and bone." class="object-center object-cover">
+                                                    </div>
+                                                    <a href="{{route('shop.products')}}" class="mt-4 block font-medium text-gray-900">
+                                                    <span class="absolute z-10 inset-0" aria-hidden="true"></span>
+                                                        {{$cat->name}}
+                                                    </a>
+                                                    <p aria-hidden="true" class="mt-1">{{__('Shop now')}}</p>
+                                                </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                     </div>

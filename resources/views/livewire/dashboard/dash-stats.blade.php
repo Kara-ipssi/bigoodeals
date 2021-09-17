@@ -66,4 +66,5 @@
             </div>
         </div>
     </div>
+    <livewire:users-list/>
 </div>

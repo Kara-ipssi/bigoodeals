@@ -132,11 +132,11 @@
             });
 
             Livewire.on('removeTrending', (name)=>{
-                showSuccessAdd(`Le produit ${name} à été ajouté retiré de la page d'accueil.`);
+                showSuccessAdd(`Le produit ${name} à été retiré de la page d'accueil.`);
             });
 
             Livewire.on('addTrending', (name)=>{
-                showSuccessAdd(`Le produit ${name} à été ajouté en page d'accueil.`);
+                showSuccessAdd(`Le produit ${name} à été ajouté à la page d'accueil.`);
             });
         </script>
 
