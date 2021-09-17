@@ -8,7 +8,7 @@
           </div>
           <div class="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
             <h1 class="text-4xl font-extrabold tracking-tight text-white md:text-5xl lg:text-6xl">Mon Compte</h1>
-            <p class="mt-6 max-w-3xl text-xl text-gray-300">Tous le dont vous avez besoin et plus encore. Pourquoi ? eh bah parcequ'on aime vous faire plaisir sans plus.</p>
+            <p class="mt-6 max-w-3xl text-xl text-gray-300">Tout ce dont vous avez besoin et bien plus encore. Pourquoi ? Eh bah, nous aimons vous faire plaisir, sans plus.</p>
           </div>
         </div>
       
@@ -25,7 +25,7 @@
                   </svg>
                 </div>
                 <h3 class="text-xl font-medium text-gray-900">Mes dernières commandes</h3>
-                <p class="mt-4 text-base text-gray-500">Ne cherchez plus pendant des heures les objets que vous avez commandez dont vous avez oubliez le nom. Nous avons fait une petite compile qui devrais vous faire plaisir. Suivez le lien en bas</p>
+                <p class="mt-4 text-base text-gray-500">Ne cherchez plus pendant des heures les objets que vous avez commandés. Tout ce dont vous avez besoin se trouve dans le lien juste en bas.</p>
               </div>
               <div class="p-6 bg-gray-50 rounded-bl-2xl rounded-br-2xl md:px-8">
                 <a href="{{route("shop.myOrders")}}" class="text-base font-medium text-indigo-700 hover:text-indigo-600">Voir mes dernière commande<span aria-hidden="true"> &rarr;</span></a>
@@ -45,7 +45,7 @@
                 <p class="mt-4 text-base text-gray-500"></p>
               </div>
               <div class="p-6 bg-gray-50 rounded-bl-2xl rounded-br-2xl md:px-8">
-                <a href="#" class="text-base font-medium text-indigo-700 hover:text-indigo-600">Procahinement...<span aria-hidden="true"> &rarr;</span></a>
+                <a href="#" class="text-base font-medium text-indigo-700 hover:text-indigo-600">Prochainement...<span aria-hidden="true"> &rarr;</span></a>
               </div>
             </div>
       
@@ -61,7 +61,7 @@
                 <p class="mt-4 text-base text-gray-500"></p>
               </div>
               <div class="p-6 bg-gray-50 rounded-bl-2xl rounded-br-2xl md:px-8">
-                <a href="#" class="text-base font-medium text-indigo-700 hover:text-indigo-600">Procahinement...<span aria-hidden="true"> &rarr;</span></a>
+                <a href="#" class="text-base font-medium text-indigo-700 hover:text-indigo-600">Prochainement...<span aria-hidden="true"> &rarr;</span></a>
               </div>
             </div>
           </div>
